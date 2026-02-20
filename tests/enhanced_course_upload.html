@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Course Upload & Directory - Student Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --bg-dark: #0a0e27;
+            --bg-card: #1a1f3a;
+            --bg-elevated: #242b4a;
+            --border: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --glass-bg: rgba(26, 31, 58, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .bg-animated {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at top, #1e1b4b 0%, #0a0e27 50%, #000000 100%);
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            animation: float 25s infinite ease-in-out;
+        }
+
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            top: -200px;
+            left: -200px;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            bottom: -150px;
+            right: -150px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(50px, 30px) scale(1.05);
+            }
+        }
+
+        .header {
+            padding: 32px 64px;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 14, 39, 0.8);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .upload-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 48px 64px;
+        }
+
+        .directory-header {
+            margin-bottom: 40px;
+        }
+
+        .directory-title {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .directory-subtitle {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .search-filter-bar {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 48px 14px 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 15px;
+            font-family: var(--font-body);
+            transition: all 0.3s;
+            backdrop-filter: blur(20px);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .filter-btn {
+            padding: 12px 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(20px);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+        }
+
+        .course-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary);
+        }
+
+        .course-banner {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            position: relative;
+        }
+
+        .course-status {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 6px 14px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .course-content {
+            padding: 24px;
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .course-title {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .difficulty-badge {
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .difficulty-easy {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .difficulty-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        .difficulty-hard {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--error);
+        }
+
+        .course-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-item {
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .course-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            padding: 32px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--error);
+            color: white;
+        }
+
+        .modal-body {
+            padding: 32px;
+        }
+
+        .form-section {
+            margin-bottom: 32px;
+        }
+
+        .form-section-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 15px;
+            font-family: var(--font-body);
+            transition: all 0.3s;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .upload-zone {
+            border: 2px dashed var(--border);
+            border-radius: 16px;
+            padding: 48px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: var(--bg-elevated);
+        }
+
+        .upload-zone:hover,
+        .upload-zone.dragover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .upload-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .upload-hint {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .preview-item {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            background: var(--bg-elevated);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .preview-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .preview-name {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 0 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 100%;
+        }
+
+        .remove-preview {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--error);
+            border: none;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            padding: 24px 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-icon {
+            font-size: 96px;
+            margin-bottom: 24px;
+            opacity: 0.5;
+        }
+
+        .empty-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .empty-text {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2000;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast-icon {
+            font-size: 24px;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .toast-message {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animated">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span>⚡</span>
+                <span>StudentIQ ANALYTICS OS</span>
+            </div>
+            <button class="upload-btn" onclick="openUploadModal()">
+                <span>📤</span>
+                <span>INITIALIZE COURSE</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="directory-header">
+            <h1 class="directory-title">📚 Course Directory</h1>
+            <p class="directory-subtitle">All your courses are displayed here after upload</p>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-icon">📚</div>
+                <div class="stat-value" id="totalCourses">4</div>
+                <div class="stat-label">Total Courses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎓</div>
+                <div class="stat-value">887</div>
+                <div class="stat-label">Total Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value">3</div>
+                <div class="stat-label">Active This Semester</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-value">4.7</div>
+                <div class="stat-label">Avg Rating</div>
+            </div>
+        </div>
+
+        <div class="search-filter-bar">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search courses by name, code, or instructor..."
+                    id="searchInput">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="draft">Drafts</button>
+            </div>
+        </div>
+
+        <div class="courses-grid" id="coursesGrid">
+            <!-- Courses will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div class="modal-overlay" id="uploadModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">📤 Initialize New Course</h2>
+                <button class="modal-close" onclick="closeUploadModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="courseForm">
+                    <div class="form-section">
+                        <div class="form-section-title">📋 Basic Information</div>
+
+                        <div class="form-group">
+                            <label class="form-label">Course Name *</label>
+                            <input type="text" class="form-input" placeholder="e.g., Marketing Analysis - Level 1"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Course Code *</label>
+                            <input type="text" class="form-input" placeholder="e.g., MBA-MA-L1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Department/Program *</label>
+                            <input type="text" class="form-input" placeholder="e.g., Master of Business Administration"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Instructor Name *</label>
+                            <input type="text" class="form-input" placeholder="e.g., Prof. Sarah Johnson" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Semester *</label>
+                            <select class="form-select" required>
+                                <option value="">Select Semester</option>
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                                <option value="4">Semester 4</option>
+                                <option value="5">Semester 5</option>
+                                <option value="6">Semester 6</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Difficulty Level *</label>
+                            <select class="form-select" required>
+                                <option value="">Select Difficulty</option>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Course Description</label>
+                            <textarea class="form-textarea"
+                                placeholder="Brief description of the course objectives and content..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-title">📁 Course Materials</div>
+
+                        <div class="upload-zone" id="uploadZone">
+                            <div class="upload-icon">📄</div>
+                            <div class="upload-text">Drag & drop your syllabus or click to browse</div>
+                            <div class="upload-hint">Supported: PDF, DOCX, Images (Max 10MB each)</div>
+                            <input type="file" class="file-input" id="fileInput" multiple
+                                accept=".pdf,.doc,.docx,.jpg,.png">
+                        </div>
+
+                        <div class="preview-grid" id="previewGrid"></div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-title">⚙️ Additional Settings</div>
+
+                        <div class="form-group">
+                            <label class="form-label">Maximum Students</label>
+                            <input type="number" class="form-input" placeholder="e.g., 50" min="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Duration (Weeks)</label>
+                            <input type="number" class="form-input" placeholder="e.g., 12" min="1">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="form-footer">
+                <button class="btn btn-secondary" onclick="closeUploadModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="submitCourse()">Initialize Course</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample course data
+        let courses = [
+            {
+                id: 1,
+                name: "Marketing Analysis - Level 1",
+                code: "MBA-MA-L1",
+                program: "Master of Business Administration",
+                semester: "Semester 1",
+                instructor: "Prof. Sarah Johnson",
+                difficulty: "easy",
+                icon: "📊",
+                status: "Active",
+                students: 342
+            },
+            {
+                id: 2,
+                name: "leadership Systems - Level 1",
+                code: "MBA-LS-L1",
+                program: "Master of Business Administration",
+                semester: "Semester 1",
+                instructor: "Dr. Michael Chen",
+                difficulty: "medium",
+                icon: "👥",
+                status: "Active",
+                students: 289
+            },
+            {
+                id: 3,
+                name: "Ethics Analysis - Level 1",
+                code: "MBA-EA-L1",
+                program: "Master of Business Administration",
+                semester: "Semester 1",
+                instructor: "Prof. Emily Davis",
+                difficulty: "easy",
+                icon: "⚖️",
+                status: "Active",
+                students: 156
+            },
+            {
+                id: 4,
+                name: "Finance Analysis - Level 1",
+                code: "MBA-FA-L1",
+                program: "Master of Business Administration",
+                semester: "Semester 1",
+                instructor: "Dr. James Wilson",
+                difficulty: "hard",
+                icon: "💰",
+                status: "Active",
+                students: 100
+            }
+        ];
+
+        let uploadedFiles = [];
+
+        function renderCourses(filter = 'all') {
+            const grid = document.getElementById('coursesGrid');
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            let filteredCourses = courses.filter(course => {
+                const matchesSearch = course.name.toLowerCase().includes(searchTerm) ||
+                    course.code.toLowerCase().includes(searchTerm) ||
+                    course.instructor.toLowerCase().includes(searchTerm);
+                const matchesFilter = filter === 'all' || course.status.toLowerCase() === filter;
+                return matchesSearch && matchesFilter;
+            });
+
+            if (filteredCourses.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📚</div>
+                        <div class="empty-title">No courses found</div>
+                        <div class="empty-text">Try adjusting your search or filters</div>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filteredCourses.map(course => `
+                <div class="course-card">
+                    <div class="course-banner" style="background: ${getBannerGradient(course.difficulty)}">
+                        <span>${course.icon}</span>
+                        <div class="course-status">
+                            <span class="status-dot"></span>
+                            <span>${course.status}</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-header">
+                            <div>
+                                <div class="course-title">${course.name}</div>
+                            </div>
+                            <span class="difficulty-badge difficulty-${course.difficulty}">
+                                ${course.difficulty.charAt(0).toUpperCase() + course.difficulty.slice(1)}
+                            </span>
+                        </div>
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <span>📋</span>
+                                <span>${course.code}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🏛️</span>
+                                <span>${course.program}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>👨‍🏫</span>
+                                <span>${course.instructor}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎓</span>
+                                <span>${course.students} students</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span>
+                                <span>${course.semester}</span>
+                            </div>
+                        </div>
+                        <div class="course-actions">
+                            <button class="action-btn" onclick="viewCourse(${course.id})">👁️ View</button>
+                            <button class="action-btn" onclick="editCourse(${course.id})">✏️ Edit</button>
+                            <button class="action-btn" onclick="downloadSyllabus(${course.id})">📥 Syllabus</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getBannerGradient(difficulty) {
+            switch (difficulty) {
+                case 'easy': return 'linear-gradient(135deg, #43e97b, #38f9d7)';
+                case 'medium': return 'linear-gradient(135deg, #fa709a, #fee140)';
+                case 'hard': return 'linear-gradient(135deg, #f093fb, #f5576c)';
+                default: return 'linear-gradient(135deg, #667eea, #764ba2)';
+            }
+        }
+
+        function openUploadModal() {
+            document.getElementById('uploadModal').classList.add('active');
+        }
+
+        function closeUploadModal() {
+            document.getElementById('uploadModal').classList.remove('active');
+            document.getElementById('courseForm').reset();
+            uploadedFiles = [];
+            document.getElementById('previewGrid').innerHTML = '';
+        }
+
+        function setupFileUpload() {
+            const uploadZone = document.getElementById('uploadZone');
+            const fileInput = document.getElementById('fileInput');
+            const previewGrid = document.getElementById('previewGrid');
+
+            uploadZone.addEventListener('click', () => fileInput.click());
+
+            uploadZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadZone.classList.add('dragover');
+            });
+
+            uploadZone.addEventListener('dragleave', () => {
+                uploadZone.classList.remove('dragover');
+            });
+
+            uploadZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadZone.classList.remove('dragover');
+                handleFiles(e.dataTransfer.files);
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+        }
+
+        function handleFiles(files) {
+            const previewGrid = document.getElementById('previewGrid');
+
+            Array.from(files).forEach((file, index) => {
+                if (uploadedFiles.length >= 10) {
+                    showToast('Limit Reached', 'Maximum 10 files allowed', '⚠️');
+                    return;
+                }
+
+                uploadedFiles.push(file);
+                const fileId = uploadedFiles.length - 1;
+
+                const preview = document.createElement('div');
+                preview.className = 'preview-item';
+                preview.innerHTML = `
+                    <div class="preview-icon">${getFileIcon(file.name)}</div>
+                    <div class="preview-name">${file.name}</div>
+                    <button class="remove-preview" onclick="removeFile(${fileId})">×</button>
+                `;
+                previewGrid.appendChild(preview);
+            });
+        }
+
+        function getFileIcon(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            switch (ext) {
+                case 'pdf': return '📄';
+                case 'doc':
+                case 'docx': return '📝';
+                case 'jpg':
+                case 'jpeg':
+                case 'png': return '🖼️';
+                default: return '📁';
+            }
+        }
+
+        function removeFile(id) {
+            uploadedFiles.splice(id, 1);
+            document.getElementById('previewGrid').children[id].remove();
+        }
+
+        function submitCourse() {
+            const newCourse = {
+                id: courses.length + 1,
+                name: "New Course " + (courses.length + 1),
+                code: "NEW-" + (courses.length + 1),
+                program: "Sample Program",
+                semester: "Semester 1",
+                instructor: "New Instructor",
+                difficulty: "medium",
+                icon: "📚",
+                status: "Active",
+                students: 0
+            };
+
+            courses.unshift(newCourse);
+            document.getElementById('totalCourses').textContent = courses.length;
+
+            closeUploadModal();
+            renderCourses();
+            showToast('Success!', 'Course has been uploaded and is now visible in the directory', '✅');
+        }
+
+        function viewCourse(id) {
+            showToast('Course Opened', `Viewing course #${id}`, '👁️');
+        }
+
+        function editCourse(id) {
+            showToast('Edit Mode', `Editing course #${id}`, '✏️');
+        }
+
+        function downloadSyllabus(id) {
+            showToast('Download Started', `Downloading syllabus for course #${id}`, '📥');
+        }
+
+        function showToast(title, message, icon = '✨') {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `
+                <div class="toast-icon">${icon}</div>
+                <div class="toast-content">
+                    <div class="toast-title">${title}</div>
+                    <div class="toast-message">${message}</div>
+                </div>
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', () => {
+            renderCourses(getCurrentFilter());
+        });
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderCourses(this.dataset.filter);
+            });
+        });
+
+        function getCurrentFilter() {
+            return document.querySelector('.filter-btn.active').dataset.filter;
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCourses();
+            setupFileUpload();
+            setTimeout(() => {
+                showToast('Welcome!', 'Click "INITIALIZE COURSE" to upload a new course. All courses appear in this directory.', '👋');
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>

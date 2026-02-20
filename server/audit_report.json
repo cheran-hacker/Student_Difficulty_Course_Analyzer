@@ -1,0 +1,118 @@
+{
+  "counts": {
+    "users": 3,
+    "courses": 75,
+    "students": 1
+  },
+  "targetUser": {
+    "streak": {
+      "current": 1,
+      "lastLogin": "2026-02-05T08:36:54.831Z"
+    },
+    "enrolledCourses": [
+      "69845aa34c24382a7c9d6f08",
+      "69845aa34c24382a7c9d6f09",
+      "69845aa34c24382a7c9d6f0a",
+      "69845aa34c24382a7c9d6f0b",
+      "69845aa34c24382a7c9d6f0c",
+      "69845aa34c24382a7c9d6f0d",
+      "69845aa34c24382a7c9d6f0e",
+      "69845aa34c24382a7c9d6f0f",
+      "69845aa34c24382a7c9d6f10",
+      "69845aa34c24382a7c9d6f11"
+    ],
+    "_id": "698453f00770f012134075e9",
+    "name": "CHERAN S",
+    "email": "cheran.it23@bitsathy.ac.in",
+    "password": "$2a$10$YgfVawBVVMLVUl5TIIBtq.bRLhW47vh9nArVlBrx9suiQFvgtWMPa",
+    "role": "student",
+    "studentId": "7376231IT001",
+    "department": "Information Technology",
+    "year": "II",
+    "xp": 5,
+    "level": 1,
+    "badges": [],
+    "createdAt": "2026-02-05T08:25:20.291Z",
+    "updatedAt": "2026-02-05T08:54:33.413Z",
+    "__v": 1
+  },
+  "sampleDepts": [
+    "Aerospace Engineering",
+    "Biotechnology",
+    "Chemical Engineering",
+    "Civil Engineering",
+    "Computer Science & Engineering",
+    "Electrical & Electronics Engineering",
+    "Electronics & Communication Engineering",
+    "Information Technology",
+    "Mechanical Engineering"
+  ],
+  "itCourses": [
+    {
+      "_id": "69845aa34c24382a7c9d6f08",
+      "code": "IT101",
+      "name": "Intro to IT",
+      "department": "Information Technology",
+      "semester": "Semester 1",
+      "instructors": [
+        "Bill Gates"
+      ],
+      "__v": 0,
+      "createdAt": "2026-02-05T08:53:55.806Z",
+      "updatedAt": "2026-02-05T08:53:55.806Z"
+    },
+    {
+      "_id": "69845aa34c24382a7c9d6f09",
+      "code": "IT201",
+      "name": "Information Theory",
+      "department": "Information Technology",
+      "semester": "Semester 3",
+      "instructors": [
+        "Claude Shannon"
+      ],
+      "__v": 0,
+      "createdAt": "2026-02-05T08:53:55.807Z",
+      "updatedAt": "2026-02-05T08:53:55.807Z"
+    },
+    {
+      "_id": "69845aa34c24382a7c9d6f0a",
+      "code": "IT202",
+      "name": "Data Communication",
+      "department": "Information Technology",
+      "semester": "Semester 3",
+      "instructors": [
+        "Bob Kahn"
+      ],
+      "__v": 0,
+      "createdAt": "2026-02-05T08:53:55.807Z",
+      "updatedAt": "2026-02-05T08:53:55.807Z"
+    },
+    {
+      "_id": "69845aa34c24382a7c9d6f0b",
+      "code": "IT301",
+      "name": "Cloud Computing",
+      "department": "Information Technology",
+      "semester": "Semester 5",
+      "instructors": [
+        "Satya Nadella"
+      ],
+      "__v": 0,
+      "createdAt": "2026-02-05T08:53:55.807Z",
+      "updatedAt": "2026-02-05T08:53:55.807Z"
+    },
+    {
+      "_id": "69845aa34c24382a7c9d6f0c",
+      "code": "IT302",
+      "name": "Big Data Analytics",
+      "department": "Information Technology",
+      "semester": "Semester 5",
+      "instructors": [
+        "Doug Cutting"
+      ],
+      "__v": 0,
+      "createdAt": "2026-02-05T08:53:55.807Z",
+      "updatedAt": "2026-02-05T08:53:55.807Z"
+    }
+  ],
+  "fixApplied": true
+}

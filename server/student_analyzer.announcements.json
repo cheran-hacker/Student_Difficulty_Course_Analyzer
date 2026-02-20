@@ -1,0 +1,44 @@
+[{
+  "_id": {
+    "$oid": "6993556ebaf6d11120ee714d"
+  },
+  "course": {
+    "$oid": "6992df044fb810c48efac087"
+  },
+  "author": {
+    "$oid": "6992b960a23b550512e8ad71"
+  },
+  "title": "5th sem result out",
+  "content": "Tfyguhiop",
+  "priority": "normal",
+  "readBy": [],
+  "createdAt": {
+    "$date": "2026-02-16T17:35:42.102Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-16T17:35:42.102Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69935889baf6d11120ee725e"
+  },
+  "course": {
+    "$oid": "69931ad14163c802f597a363"
+  },
+  "author": {
+    "$oid": "6992b960a23b550512e8ad71"
+  },
+  "title": "18.02.2026 React mock test will be conducted",
+  "content": "React mock test conducted on 18.02.2026(wednesday) Prepare",
+  "priority": "normal",
+  "readBy": [],
+  "createdAt": {
+    "$date": "2026-02-16T17:48:57.020Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-16T17:55:37.889Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,289 @@
+[{
+  "_id": {
+    "$oid": "6982c042969ecbd795d056bf"
+  },
+  "name": "Cheran Admin",
+  "email": "cheran@123",
+  "password": "$2a$10$mURdD2mweWq7B99x1qNm2udIElJv2jssBV0nbQJJVLxNux31edj9q",
+  "role": "admin",
+  "xp": 105,
+  "level": 1,
+  "streak": {
+    "current": 2,
+    "lastLogin": {
+      "$date": "2026-02-17T05:30:21.127Z"
+    }
+  },
+  "badges": [],
+  "createdAt": {
+    "$date": "2026-02-04T03:42:58.609Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-17T05:30:21.338Z"
+  },
+  "__v": 1,
+  "courses": [],
+  "academicPerformance": "N/A",
+  "gpa": 0,
+  "cgpa": 0,
+  "semester": "1"
+},
+{
+  "_id": {
+    "$oid": "698efa65da577a477e66bb85"
+  },
+  "name": "CHERAN S",
+  "email": "cheran.it23@bitsathy.ac.in",
+  "password": "$2a$10$gCXtp4PzV90SUCEfyVnEkumgQ4Uz/VqgrNMftt3V8lrV8GHQaCYqe",
+  "role": "student",
+  "studentId": "7376232IT122",
+  "department": "Information Technology",
+  "year": "III",
+  "xp": 60,
+  "level": 1,
+  "streak": {
+    "current": 4,
+    "lastLogin": {
+      "$date": "2026-02-19T16:35:51.088Z"
+    }
+  },
+  "courses": [
+    {
+      "$oid": "6992ede8f0bbd5ed3598e96b"
+    },
+    {
+      "$oid": "69931ad14163c802f597a363"
+    },
+    {
+      "$oid": "698eb72386087799976f29c3"
+    },
+    {
+      "$oid": "698eb72386087799976f2ab2"
+    },
+    {
+      "$oid": "698ee69ccf57d143dca1b0ba"
+    },
+    {
+      "$oid": "698eb72386087799976f29c8"
+    },
+    {
+      "$oid": "698eb72386087799976f29be"
+    }
+  ],
+  "gpa": 6.5,
+  "academicPerformance": "N/A",
+  "badges": [],
+  "createdAt": {
+    "$date": "2026-02-13T10:18:13.534Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-19T16:35:51.140Z"
+  },
+  "__v": 9,
+  "cgpa": 6.7,
+  "semester": "6"
+},
+{
+  "_id": {
+    "$oid": "6992b960a23b550512e8ad71"
+  },
+  "name": "Naveena",
+  "email": "naveena.faculty@bitsathy.ac.in",
+  "password": "$2a$10$uzgz.d7PtHvKNUYSupB.XOU8vHzDxoT2XiS2TqK1iQQ7OAT.8PkAe",
+  "role": "faculty",
+  "department": "IT",
+  "xp": 20,
+  "level": 1,
+  "streak": {
+    "current": 1,
+    "lastLogin": {
+      "$date": "2026-02-20T03:21:48.533Z"
+    }
+  },
+  "courses": [
+    {
+      "$oid": "69931ad14163c802f597a363"
+    }
+  ],
+  "gpa": 0,
+  "academicPerformance": "N/A",
+  "badges": [],
+  "createdAt": {
+    "$date": "2026-02-16T06:29:52.351Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-20T03:21:48.554Z"
+  },
+  "__v": 0,
+  "cgpa": 0,
+  "semester": "1"
+},
+{
+  "_id": {
+    "$oid": "6993348e451982253a28d39a"
+  },
+  "name": "surya",
+  "email": "surya.ei23@bitsathy.ac.in",
+  "password": "$2a$10$LAJ6C5xJx.KVB9HlvrnkIuIkLG1lMjLzPDgfqmugnU32yazeDiofO",
+  "role": "student",
+  "studentId": "7376231EI221",
+  "department": "Electronics and Instrumentation Engineering",
+  "year": "III",
+  "xp": 0,
+  "level": 1,
+  "streak": {
+    "current": 0
+  },
+  "courses": [
+    {
+      "$oid": "698eb72386087799976f2ab2"
+    }
+  ],
+  "gpa": 0,
+  "academicPerformance": "N/A",
+  "badges": [],
+  "createdAt": {
+    "$date": "2026-02-16T15:15:26.984Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-19T13:30:19.098Z"
+  },
+  "__v": 0,
+  "cgpa": 0,
+  "semester": "1"
+},
+{
+  "_id": {
+    "$oid": "6996c73177df9ff3cc12fd0e"
+  },
+  "name": "Gokul",
+  "email": "gokul.cs23@bitsathy.ac.in",
+  "password": "$2a$10$.eaady1GsZlGcA2iqOmso.Onuyzc8pAxzM6MtNjScuMVQuPL2GDc.",
+  "role": "student",
+  "studentId": "7376231CS101",
+  "department": "Computer Science and Engineering",
+  "year": "III",
+  "xp": 5,
+  "level": 1,
+  "streak": {
+    "current": 1,
+    "lastLogin": {
+      "$date": "2026-02-19T09:25:56.154Z"
+    }
+  },
+  "courses": [
+    {
+      "$oid": "698eb72386087799976f29b6"
+    },
+    {
+      "$oid": "698eb72386087799976f29b7"
+    }
+  ],
+  "gpa": 0,
+  "academicPerformance": "N/A",
+  "cgpa": 0,
+  "semester": "6",
+  "badges": [],
+  "createdAt": {
+    "$date": "2026-02-19T08:17:53.962Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-19T10:43:14.003Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6996e23238ab642678528b35"
+  },
+  "name": "Prof One",
+  "email": "one@bitsathy.ac.in",
+  "password": "$2a$10$L54oYTmE0M9GbNL/52MhMuNhV/S.u.dnFpxEqAyhPUp8hN3V09dHW",
+  "role": "faculty",
+  "department": "CSE",
+  "xp": 5,
+  "level": 1,
+  "streak": {
+    "current": 1,
+    "lastLogin": {
+      "$date": "2026-02-19T10:44:29.939Z"
+    }
+  },
+  "courses": [],
+  "gpa": 0,
+  "academicPerformance": "N/A",
+  "cgpa": 0,
+  "semester": "1",
+  "badges": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-02-19T10:13:06.474Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-19T10:44:29.969Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6997d4dcfa05443a96a1bd72"
+  },
+  "name": "r7tg",
+  "email": "cyigu@bitsathy.ac.in",
+  "password": "$2a$10$CJmP1WOoXZjT8VjopfV5VOsymnHVKpbt1kB5Q7g0QP7T8Uyvt3Spm",
+  "role": "student",
+  "studentId": "7376232IT67",
+  "department": "Aerospace Engineering",
+  "year": "I",
+  "xp": 0,
+  "level": 1,
+  "streak": {
+    "current": 0
+  },
+  "courses": [],
+  "gpa": 0,
+  "academicPerformance": "N/A",
+  "cgpa": 0,
+  "semester": "1",
+  "badges": [],
+  "createdAt": {
+    "$date": "2026-02-20T03:28:28.436Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-20T03:28:28.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6997d9c72169dd22668b9732"
+  },
+  "name": "Gokul K",
+  "email": "gokulk.it23@bitsathy.ac.in",
+  "password": "$2a$10$vsu6EWiRH6JNUG.Um.Aod.g3t07f3bhnvCIsUmgZ1Mj55L5TeCtYW",
+  "role": "student",
+  "studentId": "7376232IT145",
+  "department": "Information Technology",
+  "year": "III",
+  "xp": 0,
+  "level": 1,
+  "streak": {
+    "current": 0
+  },
+  "courses": [
+    {
+      "$oid": "6997da3c2169dd22668b977a"
+    }
+  ],
+  "gpa": 0,
+  "academicPerformance": "N/A",
+  "cgpa": 0,
+  "semester": "6",
+  "badges": [],
+  "createdAt": {
+    "$date": "2026-02-20T03:49:27.280Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-20T03:51:25.043Z"
+  },
+  "__v": 0
+}]

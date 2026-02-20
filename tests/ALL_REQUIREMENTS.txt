@@ -1,0 +1,85 @@
+=============================================
+      STUDENT ANALYZER - MASTER REQUIREMENTS
+=============================================
+
+This file contains the consolidated requirements for all advanced modules for the "Master Application" upgrade.
+
+--------------------------------------------------------------------------------
+MODULE 1: AI PREDICTIVE ENGINE
+--------------------------------------------------------------------------------
+Goal: Transform the app from "Descriptive Analytics" to "Predictive Analytics".
+
+1. Workload Forecaster
+   - Input: Historical feedback "Hours/Week", Syllabus topic count.
+   - Output: A graph showing expected workload intensity week-by-week.
+   - Prediction: "Expect a Heavy workload in Week 8 (Midterms)."
+
+2. Difficulty Predictor
+   - Algorithm: Compare Student GPA vs Course Difficulty Rating.
+   - Output: Personal Difficulty Score (1-10).
+   - Insight: "Based on your grades in Math 101, this course will be HARD (8/10)."
+
+3. Sentiment Analysis
+   - Tech: Natural Language Processing (NLP).
+   - Function: Scan reviews for keywords (Stress, Easy, Boring, Inspiring).
+   - Output: "70% of students feel 'Inspired' by this course."
+
+--------------------------------------------------------------------------------
+MODULE 2: GAMIFICATION & REWARDS
+--------------------------------------------------------------------------------
+Goal: Incentivize students to provide high-quality feedback.
+
+1. XP (Experience Points) System
+   - +10 XP: Rate a course.
+   - +50 XP: Write a detailed review (>50 words).
+   - +5 XP: Daily Login.
+
+2. Levels & Titles
+   - Level 1 (0 XP): "Fresher"
+   - Level 5 (1000 XP): "Scholar"
+   - Level 10 (5000 XP): "Dean's List"
+
+3. Badges
+   - "Early Bird": First to review in a semester.
+   - "Helper": Your review got 10 upvotes.
+   - "Critic": Wrote 10 detailed reviews.
+
+--------------------------------------------------------------------------------
+MODULE 3: SOCIAL LEARNING HUB
+--------------------------------------------------------------------------------
+Goal: Create a community around courses.
+
+1. Real-Time Chat (Socket.io)
+   - Live chat room for every active course.
+   - "Who's Online" counter.
+
+2. Study Buddy Finder
+   - Status Toggle: "Looking for Group".
+   - Filters: "Library", "Cafe", "Remote".
+   - Privacy: Only show to verified students in the same course.
+
+3. Review Upvoting
+   - Students can mark reviews as "Helpful".
+   - Most helpful reviews appear at the top.
+
+--------------------------------------------------------------------------------
+MODULE 4: ENTERPRISE SECURITY
+--------------------------------------------------------------------------------
+Goal: Secure the platform for 10,000+ users.
+
+1. RBAC 2.0 (Role-Based Access Control)
+   - Admin: Full Access.
+   - Moderator: Can delete comments, cannot delete courses.
+   - Student: Read/Write own data only.
+
+2. Audit Logs
+   - Record every admin action: "Admin X deleted Course Y at 10:00 AM".
+   - Immutable record for compliance.
+
+3. Anti-Bot / Anti-Spam
+   - Rate limiting: Max 2 reviews per hour.
+   - Honeypot fields in registration form.
+
+=============================================
+END OF REQUIREMENTS
+=============================================

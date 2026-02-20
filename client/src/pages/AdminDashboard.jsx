@@ -1,0 +1,556 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom'; // Added useSearchParams
+import { motion, AnimatePresence } from 'framer-motion';
+import { API_ENDPOINTS, getApiUrl } from '../config/api';
+import {
+    PlusIcon, ChartPieIcon, AcademicCapIcon, UserGroupIcon,
+    InboxStackIcon, MagnifyingGlassIcon, ExclamationTriangleIcon, CheckBadgeIcon, CpuChipIcon,
+    BoltIcon, ChatBubbleLeftRightIcon, BookOpenIcon, FunnelIcon
+} from '@heroicons/react/24/solid';
+import SyllabusUpload from '../components/SyllabusUpload';
+import AdminRequests from '../components/AdminRequests';
+import StudentList from '../components/StudentList';
+import FacultyList from '../components/FacultyList';
+import DashboardAnalytics from '../components/DashboardAnalytics';
+import ThemeToggle from '../components/ThemeToggle';
+import RequirementsDocs from '../components/RequirementsDocs';
+import SyllabusManager from '../components/SyllabusManager';
+import FacultyRequestList from '../components/FacultyRequestList';
+import AdminProfileCard from '../components/AdminProfileCard';
+import { DEPARTMENTS } from '../config/departments';
+import { UserCircleIcon } from '@heroicons/react/24/solid';
+
+const AdminDashboard = () => {
+    const [courses, setCourses] = useState([]);
+    const [students, setStudents] = useState([]);
+    const [facultyList, setFacultyList] = useState([]); // For Course Modal
+    const [requests, setRequests] = useState([]); // For Stats
+    const [showModal, setShowModal] = useState(false);
+
+    // Tab Persistence via URL
+    const [searchParams, setSearchParams] = useSearchParams();
+    const activeTab = searchParams.get('tab') || 'overview';
+    const setActiveTab = (tab) => setSearchParams({ tab });
+
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filterDept, setFilterDept] = useState('');
+    const [filterSemester, setFilterSemester] = useState('');
+    const navigate = useNavigate(); // For redirect
+
+    const [newCourse, setNewCourse] = useState({
+        code: '', name: '', department: '', semester: '', instructors: []
+    });
+
+    const [userInfo, setUserInfo] = useState(null); // Local state for safety
+    const [maintenance, setMaintenance] = useState(false);
+
+    // Auth Check & Initialization
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem('userInfo'));
+        if (!storedUser || !storedUser.token || storedUser.role !== 'admin') {
+            navigate('/admin/login');
+        } else {
+            setUserInfo(storedUser);
+        }
+    }, [navigate]);
+
+    // Derived State for Search and Filter
+    const filteredCourses = courses.filter(course => {
+        const matchesSearch =
+            course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            course.code.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesDept = !filterDept || course.department === filterDept;
+        const matchesSem = !filterSemester || course.semester === filterSemester;
+        return matchesSearch && matchesDept && matchesSem;
+    });
+
+    const departments = DEPARTMENTS;
+    const semesters = [...new Set(courses.map(c => c.semester))].filter(Boolean).sort();
+
+    const fetchCourses = async (token) => {
+        try {
+            const config = { headers: { Authorization: `Bearer ${token}` } };
+            const { data } = await axios.get(`${API_ENDPOINTS.COURSES}?limit=1000`, config);
+            setCourses(data.courses || []);
+        } catch (error) { console.error(error); }
+    };
+
+    const fetchSettings = async () => {
+        try {
+            const { data } = await axios.get(API_ENDPOINTS.SETTINGS);
+            setMaintenance(data.isMaintenanceMode);
+        } catch (error) { console.error(error); }
+    };
+
+    const fetchStudents = async (token) => {
+        try {
+            const config = { headers: { Authorization: `Bearer ${token}` } };
+            const { data } = await axios.get(getApiUrl('/api/auth/users'), config);
+            setStudents(data);
+        } catch (error) { console.error(error); }
+    };
+
+    const fetchFacultyForModal = async (token) => {
+        try {
+            const config = { headers: { Authorization: `Bearer ${token}` } };
+            const { data } = await axios.get(getApiUrl('/api/auth/users?role=faculty'), config);
+            setFacultyList(data);
+        } catch (error) { console.error(error); }
+    };
+
+    const fetchRequests = async (token) => {
+        try {
+            const config = { headers: { Authorization: `Bearer ${token}` } };
+            const { data } = await axios.get(API_ENDPOINTS.REQUESTS, config);
+            setRequests(data);
+        } catch (error) { console.error(error); }
+    };
+
+    // Load Data once User is Verified
+    useEffect(() => {
+        if (userInfo) {
+            fetchCourses(userInfo.token);
+            fetchSettings();
+            fetchStudents(userInfo.token);
+            fetchRequests(userInfo.token);
+            fetchFacultyForModal(userInfo.token);
+        }
+    }, [userInfo]);
+
+    // Refetch faculty when modal opens to ensure up-to-date list
+    useEffect(() => {
+        if (showModal && userInfo) {
+            fetchFacultyForModal(userInfo.token);
+        }
+    }, [showModal, userInfo]);
+
+    const toggleMaintenance = async () => {
+        if (!userInfo) return;
+        try {
+            const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
+            const { data } = await axios.put(API_ENDPOINTS.MAINTENANCE, {
+                isMaintenanceMode: !maintenance
+            }, config);
+            setMaintenance(data.isMaintenanceMode);
+        } catch (error) { console.error('Maintenance Toggle Error:', error); }
+    };
+
+    const handleCreateCourse = async (e) => {
+        e.preventDefault();
+        try {
+            const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
+            await axios.post(API_ENDPOINTS.COURSES, {
+                ...newCourse,
+                // Instructors are now selected from list, assume array of emails or IDs. 
+                // Backend expects array of strings (emails presumably, based on previous manual entry).
+                // Let's ensure newCourse.instructors is an array of emails.
+            }, config);
+            setShowModal(false);
+            setNewCourse({ code: '', name: '', department: '', semester: '', instructors: [] });
+            fetchCourses(userInfo.token);
+        } catch (error) { console.error(error); }
+    };
+
+    const navItems = [
+        { id: 'overview', label: 'Mission Control', icon: <ChartPieIcon className="w-5 h-5" /> },
+        { id: 'courses', label: 'Course Grid', icon: <AcademicCapIcon className="w-5 h-5" /> },
+        { id: 'faculty', label: 'Faculty', icon: <UserGroupIcon className="w-5 h-5" /> },
+        { id: 'students', label: 'Student Corps', icon: <UserGroupIcon className="w-5 h-5" /> },
+        { id: 'requests', label: 'Inbox', icon: <InboxStackIcon className="w-5 h-5" /> },
+        { id: 'syllabus', label: 'Vault', icon: <BookOpenIcon className="w-5 h-5" /> },
+        { id: 'modules', label: 'System Kernel', icon: <CpuChipIcon className="w-5 h-5" /> },
+        { id: 'profile', label: 'Admin Profile', icon: <UserCircleIcon className="w-5 h-5" /> },
+    ];
+
+    if (!userInfo) return null; // Prevent render until auth check
+
+    return (
+        <div className="min-h-screen pt-24 px-4 pb-12 bg-gray-50 dark:bg-[#0f1014] text-gray-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
+            {/* Background Effects - Dynamic for Light/Dark */}
+            <div className="absolute top-0 left-0 w-full h-[600px] bg-blue-100/50 dark:bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none transition-colors duration-500"></div>
+            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-100/50 dark:bg-purple-900/10 rounded-full blur-[120px] pointer-events-none transition-colors duration-500"></div>
+
+            {/* Noise Overlay */}
+            <div className="absolute inset-0 opacity-10 dark:opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none"></div>
+
+            <div className="max-w-[1600px] mx-auto relative z-10">
+                {/* Header Section */}
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+                    <div>
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="p-2 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-lg shadow-lg shadow-blue-600/20">
+                                <BoltIcon className="w-6 h-6 text-white" />
+                            </div>
+                            <h1 className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
+                                System Overview
+                            </h1>
+                        </div>
+                        <p className="text-gray-500 dark:text-gray-400 font-medium flex items-center gap-2 text-sm">
+                            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+                            Secure Uplink Active • Officer {userInfo?.name.split(' ')[0]}
+                        </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-4 items-center">
+                        <ThemeToggle />
+
+                        {/* Quick Access Management Links */}
+                        <div className="flex gap-2">
+                            <Link
+                                to="/admin/course-management"
+                                className="px-4 py-2 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-600 dark:text-blue-400 rounded-lg text-xs font-bold transition-all flex items-center gap-2"
+                            >
+                                <AcademicCapIcon className="w-4 h-4" />
+                                <span className="hidden md:inline">Courses</span>
+                            </Link>
+                            <Link
+                                to="/admin/feedback-management"
+                                className="px-4 py-2 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-purple-600 dark:text-purple-400 rounded-lg text-xs font-bold transition-all flex items-center gap-2"
+                            >
+                                <ChatBubbleLeftRightIcon className="w-4 h-4" />
+                                <span className="hidden md:inline">Feedback</span>
+                            </Link>
+                            <Link
+                                to="/admin/request-management"
+                                className="px-4 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-indigo-600 dark:text-indigo-400 rounded-lg text-xs font-bold transition-all flex items-center gap-2"
+                            >
+                                <InboxStackIcon className="w-4 h-4" />
+                                <span className="hidden md:inline">Requests</span>
+                            </Link>
+                        </div>
+
+                        {/* Search Bar */}
+                        <div className="relative group">
+                            <MagnifyingGlassIcon className="absolute left-3 top-3 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition" />
+                            <input
+                                type="text"
+                                placeholder="Search Database..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="pl-10 pr-4 py-2.5 bg-white dark:bg-gray-800/80 backdrop-blur-md border border-gray-200 dark:border-gray-700/50 rounded-xl outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition w-72 text-sm font-mono text-gray-900 dark:text-white placeholder:text-gray-400 shadow-sm"
+                            />
+                        </div>
+
+                        <button
+                            onClick={toggleMaintenance}
+                            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider transition shadow-lg ${maintenance
+                                ? 'bg-red-50 dark:bg-red-500/10 border-red-200 dark:border-red-500/30 text-red-600 dark:text-red-400 animate-pulse'
+                                : 'bg-green-50 dark:bg-green-500/10 border-green-200 dark:border-green-500/30 text-green-600 dark:text-green-400'
+                                }`}
+                        >
+                            {maintenance ? <ExclamationTriangleIcon className="w-4 h-4" /> : <CheckBadgeIcon className="w-4 h-4" />}
+                            {maintenance ? 'Lockdown Mode' : 'Systems Normal'}
+                        </button>
+                    </div>
+                </div>
+
+                {/* Glass Navigation Dock */}
+                <div className="flex overflow-x-auto gap-2 mb-10 p-2 bg-white/60 dark:bg-gray-800/40 backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-gray-700/50 w-full md:w-fit mx-auto md:mx-0 shadow-sm">
+                    {navItems.map((item) => (
+                        <button
+                            key={item.id}
+                            onClick={() => setActiveTab(item.id)}
+                            className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all whitespace-nowrap relative overflow-hidden ${activeTab === item.id
+                                ? 'text-white shadow-lg bg-gradient-to-r from-blue-600 to-indigo-600'
+                                : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/50 hover:text-gray-900 dark:hover:text-white'
+                                }`}
+                        >
+                            {item.icon}
+                            {item.label}
+                            {activeTab === item.id && <div className="absolute inset-0 bg-white/20 animate-pulse-slow pointer-events-none"></div>}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Content Area with Transitions */}
+                <AnimatePresence mode="wait">
+                    {activeTab === 'overview' && (
+                        <motion.div
+                            key="overview"
+                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                            className="space-y-8"
+                        >
+                            <DashboardAnalytics students={students} courses={courses} />
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                <AdminRequests />
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {activeTab === 'profile' && (
+                        <motion.div
+                            key="profile"
+                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                            className="space-y-8"
+                        >
+                            <AdminProfileCard
+                                user={userInfo}
+                                stats={{
+                                    totalCourses: courses.length,
+                                    totalStudents: students.length,
+                                    totalFaculty: facultyList.length,
+                                    pendingRequests: requests.filter(r => r.status === 'pending').length
+                                }}
+                            />
+                        </motion.div>
+                    )}
+
+                    {activeTab === 'courses' && (
+                        <motion.div
+                            key="courses"
+                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                        >
+                            <div className="flex justify-between items-center mb-6">
+                                <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 flex items-center gap-2">
+                                    <AcademicCapIcon className="w-7 h-7 text-blue-500" />
+                                    Course Directory
+                                </h2>
+                                <button
+                                    onClick={() => setShowModal(true)}
+                                    className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105 transition transform font-bold text-sm uppercase tracking-wide"
+                                >
+                                    <PlusIcon className="w-5 h-5" /> Initialize Course
+                                </button>
+                            </div>
+
+                            {/* Filter Bar */}
+                            <div className="flex flex-wrap gap-4 mb-8 p-4 bg-white/40 dark:bg-gray-800/20 backdrop-blur-md rounded-2xl border border-gray-100 dark:border-gray-700/50">
+                                <div className="flex items-center gap-3 text-gray-500 dark:text-gray-400 px-2">
+                                    <FunnelIcon className="w-5 h-5" />
+                                    <span className="text-xs font-black uppercase tracking-widest">Filter Matrix</span>
+                                </div>
+
+                                <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                    <select
+                                        value={filterDept}
+                                        onChange={(e) => setFilterDept(e.target.value)}
+                                        className="px-4 py-2.5 bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition text-sm font-bold text-gray-700 dark:text-gray-200"
+                                    >
+                                        <option value="">All Departments</option>
+                                        {departments.map(dept => (
+                                            <option key={dept} value={dept}>{dept}</option>
+                                        ))}
+                                    </select>
+
+                                    <select
+                                        value={filterSemester}
+                                        onChange={(e) => setFilterSemester(e.target.value)}
+                                        className="px-4 py-2.5 bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition text-sm font-bold text-gray-700 dark:text-gray-200"
+                                    >
+                                        <option value="">All Semesters</option>
+                                        {semesters.map(sem => (
+                                            <option key={sem} value={sem}>{sem}</option>
+                                        ))}
+                                    </select>
+
+                                    {(filterDept || filterSemester || searchTerm) && (
+                                        <button
+                                            onClick={() => {
+                                                setFilterDept('');
+                                                setFilterSemester('');
+                                                setSearchTerm('');
+                                            }}
+                                            className="px-4 py-2.5 text-blue-600 dark:text-blue-400 text-xs font-black uppercase tracking-widest hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-xl transition"
+                                        >
+                                            Clear All Filters
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 gap-4">
+                                {filteredCourses.length > 0 ? (
+                                    filteredCourses.map(course => (
+                                        <motion.div
+                                            key={course._id}
+                                            layout
+                                            className="bg-white dark:bg-gray-800/40 backdrop-blur-md p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700/50 hover:border-blue-500/50 hover:shadow-lg transition group"
+                                        >
+                                            <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
+                                                <div className="flex items-center gap-5">
+                                                    <div className="w-14 h-14 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center font-black font-mono text-sm border border-blue-100 dark:border-blue-500/20 shadow-inner group-hover:scale-110 transition-transform">
+                                                        {course.code.substring(0, 3)}
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-500 transition-colors">{course.name}</h3>
+                                                        <div className="flex gap-3 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mt-1.5 font-mono">
+                                                            <span className="text-gray-500 dark:text-blue-300/70">{course.department}</span>
+                                                            <span className="w-px h-3 bg-gray-300 dark:bg-gray-600 my-auto"></span>
+                                                            <span>{course.semester}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex items-center gap-3">
+                                                    <SyllabusUpload courseId={course._id} />
+                                                    <Link
+                                                        to={`/analysis/${course._id}`}
+                                                        className="px-5 py-2.5 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-black hover:shadow-md transition border border-transparent dark:border-gray-600 dark:hover:border-white"
+                                                    >
+                                                        Analytics
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    ))
+                                ) : (
+                                    <div className="text-center py-20 text-gray-500 bg-white dark:bg-gray-800/20 rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-700">
+                                        No courses found matching "{searchTerm}"
+                                    </div>
+                                )}
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {activeTab === 'faculty' && (
+                        <motion.div
+                            key="faculty"
+                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                        >
+                            <FacultyList />
+                        </motion.div>
+                    )}
+
+                    {activeTab === 'students' && (
+                        <motion.div
+                            key="students"
+                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                        >
+                            <StudentList externalSearchTerm={searchTerm} />
+                        </motion.div>
+                    )}
+
+                    {activeTab === 'requests' && (
+                        <motion.div
+                            key="requests"
+                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                            className="space-y-12"
+                        >
+                            <AdminRequests />
+                            <div className="pt-8 border-t border-gray-200 dark:border-white/10">
+                                <FacultyRequestList />
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {activeTab === 'modules' && (
+                        <motion.div
+                            key="modules"
+                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                        >
+                            <RequirementsDocs />
+                        </motion.div>
+                    )}
+
+                    {activeTab === 'syllabus' && (
+                        <motion.div
+                            key="syllabus"
+                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                        >
+                            <SyllabusManager />
+                        </motion.div>
+                    )}
+
+                </AnimatePresence>
+
+                {/* Add Course Modal */}
+                {showModal && (
+                    <div className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            className="bg-white dark:bg-gray-800 rounded-3xl p-8 max-w-lg w-full shadow-2xl border border-gray-100 dark:border-gray-700 relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"></div>
+
+                            <div className="flex justify-between items-center mb-8">
+                                <h2 className="text-2xl font-black text-gray-900 dark:text-white">Initialize New Course</h2>
+                                <button onClick={() => setShowModal(false)} className="bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition">
+                                    <PlusIcon className="w-5 h-5 transform rotate-45 text-gray-500 dark:text-gray-400" />
+                                </button>
+                            </div>
+
+                            <form onSubmit={handleCreateCourse} className="space-y-5">
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] font-bold uppercase text-gray-500 dark:text-blue-400 tracking-wider ml-1">Code</label>
+                                        <input type="text" placeholder="CS101" required
+                                            className="w-full p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:border-blue-500 text-gray-900 dark:text-white font-mono placeholder:text-gray-400 dark:placeholder:text-gray-600"
+                                            value={newCourse.code} onChange={e => setNewCourse({ ...newCourse, code: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] font-bold uppercase text-gray-500 dark:text-blue-400 tracking-wider ml-1">Semester</label>
+                                        <input type="text" placeholder="Semester 3" required
+                                            className="w-full p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:border-blue-500 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600"
+                                            value={newCourse.semester} onChange={e => setNewCourse({ ...newCourse, semester: e.target.value })}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="space-y-1">
+                                    <label className="text-[10px] font-bold uppercase text-gray-500 dark:text-blue-400 tracking-wider ml-1">Course Name</label>
+                                    <input type="text" placeholder="Data Structures" required
+                                        className="w-full p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:border-blue-500 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600"
+                                        value={newCourse.name} onChange={e => setNewCourse({ ...newCourse, name: e.target.value })}
+                                    />
+                                </div>
+                                <div className="space-y-1">
+                                    <label className="text-[10px] font-bold uppercase text-gray-500 dark:text-blue-400 tracking-wider ml-1">Department</label>
+                                    <select
+                                        required
+                                        className="w-full p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:border-blue-500 text-gray-900 dark:text-white"
+                                        value={newCourse.department}
+                                        onChange={e => setNewCourse({ ...newCourse, department: e.target.value })}
+                                    >
+                                        <option value="">Select Department</option>
+                                        {DEPARTMENTS.map(dept => (
+                                            <option key={dept} value={dept}>{dept}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="space-y-1">
+                                    <label className="text-[10px] font-bold uppercase text-gray-500 dark:text-blue-400 tracking-wider ml-1">Instructors</label>
+                                    <div className="flex flex-wrap gap-2 mb-2">
+                                        {newCourse.instructors.map(email => (
+                                            <span key={email} className="px-2 py-1 rounded-md bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center gap-1">
+                                                {email}
+                                                <button type="button" onClick={() => setNewCourse({
+                                                    ...newCourse,
+                                                    instructors: newCourse.instructors.filter(i => i !== email)
+                                                })}>&times;</button>
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <select
+                                        className="w-full p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:border-blue-500 text-gray-900 dark:text-white"
+                                        onChange={(e) => {
+                                            if (e.target.value && !newCourse.instructors.includes(e.target.value)) {
+                                                setNewCourse({
+                                                    ...newCourse,
+                                                    instructors: [...newCourse.instructors, e.target.value]
+                                                });
+                                            }
+                                            e.target.value = '';
+                                        }}
+                                    >
+                                        <option value="">+ Add Instructor</option>
+                                        {facultyList.map(f => (
+                                            <option key={f._id} value={f.email}>{f.name} ({f.email})</option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                <button type="submit" className="w-full py-4 mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 transition transform hover:scale-[1.01] uppercase tracking-wider text-sm">
+                                    Confirm Creation
+                                </button>
+                            </form>
+                        </motion.div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default AdminDashboard;

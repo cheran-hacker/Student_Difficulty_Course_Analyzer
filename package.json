@@ -1,0 +1,18 @@
+{
+    "name": "student-difficulty-course-analyzer",
+    "version": "1.0.0",
+    "description": "Root package.json for Student Difficulty Course Analyzer",
+    "scripts": {
+        "start": "npm start --prefix server",
+        "server": "npm run dev --prefix server",
+        "client": "npm run dev --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "build": "node render-build.js"
+    },
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    }
+}
