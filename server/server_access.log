@@ -50784,3 +50784,7 @@
 [2026-02-20T10:32:28.098Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/resources
 [2026-02-20T10:32:28.145Z] GET /api/faculty/analytics/course/6992ede8f0bbd5ed3598e96b
 [2026-02-20T10:32:52.438Z] GET /api/settings
+[2026-02-20T10:33:22.748Z] GET /api/settings
+[2026-02-20T10:33:52.749Z] GET /api/settings
+[2026-02-20T10:33:59.416Z] 🚀 SERVER RESTART: 20756 - UNIQUE_ID: 1771583639417
+[2026-02-20T10:34:22.743Z] GET /api/settings
