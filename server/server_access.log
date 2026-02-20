@@ -50679,3 +50679,38 @@
 [2026-02-20T10:00:38.774Z] GET /api/settings
 [2026-02-20T10:01:38.773Z] GET /api/settings
 [2026-02-20T10:01:57.146Z] 🚀 SERVER RESTART: 24804 - UNIQUE_ID: 1771581717147
+[2026-02-20T10:08:26.597Z] 🚀 SERVER RESTART: 25524 - UNIQUE_ID: 1771582106598
+[2026-02-20T10:08:42.272Z] GET /api/settings
+[2026-02-20T10:08:43.112Z] POST /api/auth/login
+[2026-02-20T10:08:43.271Z] [AuthRouter] POST /api/auth/login
+[2026-02-20T10:09:03.611Z] GET /api/settings
+[2026-02-20T10:09:03.693Z] GET /api/settings
+[2026-02-20T10:09:10.220Z] POST /api/auth/login
+[2026-02-20T10:09:10.226Z] [AuthRouter] POST /api/auth/login
+[2026-02-20T10:09:10.897Z] GET /api/courses/departments
+[2026-02-20T10:09:10.908Z] GET /api/courses?limit=1000
+[2026-02-20T10:09:11.010Z] GET /api/courses/departments
+[2026-02-20T10:09:11.581Z] GET /api/courses?limit=1000
+[2026-02-20T10:09:11.601Z] GET /api/student/dashboard
+[2026-02-20T10:09:11.702Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-20T10:09:11.726Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-20T10:09:12.174Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-20T10:09:12.181Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-20T10:09:12.192Z] GET /api/student/dashboard
+[2026-02-20T10:09:12.313Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-20T10:09:12.325Z] GET /api/courses/698eb72386087799976f29c1/resources
+[2026-02-20T10:09:12.544Z] GET /api/courses/698eb72386087799976f29c1/resources
+[2026-02-20T10:09:12.611Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-20T10:09:33.621Z] GET /api/settings
+[2026-02-20T10:10:03.750Z] GET /api/settings
+[2026-02-20T10:10:33.748Z] GET /api/settings
+[2026-02-20T10:11:03.744Z] GET /api/settings
+[2026-02-20T10:11:33.735Z] GET /api/settings
+[2026-02-20T10:12:03.745Z] GET /api/settings
+[2026-02-20T10:12:38.743Z] GET /api/settings
+[2026-02-20T10:13:03.741Z] GET /api/settings
+[2026-02-20T10:13:33.746Z] GET /api/settings
+[2026-02-20T10:14:38.740Z] GET /api/settings
+[2026-02-20T10:15:38.738Z] GET /api/settings
+[2026-02-20T10:16:37.785Z] 🚀 SERVER RESTART: 14188 - UNIQUE_ID: 1771582597786
+[2026-02-20T10:16:38.746Z] GET /api/settings
