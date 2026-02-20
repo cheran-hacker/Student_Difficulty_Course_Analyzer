@@ -25,7 +25,19 @@ app.use(helmet({
     contentSecurityPolicy: false, // Disable for dev flexibility
 }));
 app.use(express.json());
-app.use(cors());
+
+// Enhanced CORS configuration
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'http://localhost:5174',
+        'https://student-difficulty-course-analyzer-2.onrender.com', // Frontend/Backend link provided
+        'https://student-difficulty-course-analyzer.onrender.com'
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token']
+}));
 
 // Removed redundant uploadsPath here, using the one closer to the asset vault
 
@@ -212,8 +224,14 @@ const server = app.listen(PORT, () => {
 // --- SOCAL HUB: Real-Time Communication ---
 const io = socketIO(server, {
     cors: {
-        origin: "*", // Allow all origins for dev simplicity
-        methods: ["GET", "POST"]
+        origin: [
+            'http://localhost:5173',
+            'http://localhost:5174',
+            'https://student-difficulty-course-analyzer-2.onrender.com',
+            'https://student-difficulty-course-analyzer.onrender.com'
+        ],
+        methods: ["GET", "POST"],
+        credentials: true
     }
 });
 

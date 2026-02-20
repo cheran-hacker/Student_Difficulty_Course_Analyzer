@@ -3,7 +3,7 @@
 // In production, use the Render backend URL.
 // In dev, use localhost:5000.
 // VITE_API_URL can still be used to override this behavior.
-const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.MODE === 'development' ? 'http://localhost:5000' : 'https://student-difficulty-course-analyzer.onrender.com');
+const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.MODE === 'development' ? 'http://localhost:5000' : 'https://student-difficulty-course-analyzer-2.onrender.com');
 
 export const API_ENDPOINTS = {
     // Auth
