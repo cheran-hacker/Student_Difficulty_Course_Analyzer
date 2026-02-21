@@ -37,7 +37,7 @@ const BadgeIcons = {
 };
 
 // --- Helper Components ---
-const StatCard = ({ title, value, icon: Icon, color, delay }) => {
+const StatCard = ({ title, value, icon: Icon, color, delay, trend }) => {
     const isRating = title === "Avg Rating";
     return (
         <motion.div
@@ -53,10 +53,12 @@ const StatCard = ({ title, value, icon: Icon, color, delay }) => {
                     <div className={`p-3 rounded-2xl bg-${color}-50 dark:bg-${color}-500/10 text-${color}-600 dark:text-${color}-500 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-sm icon-glow`}>
                         <Icon className="w-6 h-6" />
                     </div>
-                    <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/50 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-[10px] uppercase font-black text-slate-500 dark:text-gray-400 tracking-widest">
-                        <ArrowTrendingUpIcon className="w-3 h-3 text-emerald-500" />
-                        <span>+12%</span>
-                    </div>
+                    {trend && (
+                        <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/50 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-[10px] uppercase font-black text-slate-500 dark:text-gray-400 tracking-widest">
+                            <ArrowTrendingUpIcon className="w-3 h-3 text-emerald-500" />
+                            <span>{trend}</span>
+                        </div>
+                    )}
                 </div>
 
                 <div className="flex items-baseline gap-2 mt-2">

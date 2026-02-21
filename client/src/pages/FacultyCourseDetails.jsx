@@ -700,9 +700,19 @@ const FacultyCourseDetails = () => {
                                                 <option value="high" className="bg-white dark:bg-[#0f1014] text-slate-900 dark:text-white">High Priority</option>
                                                 <option value="urgent" className="bg-white dark:bg-[#0f1014] text-slate-900 dark:text-white">Urgent</option>
                                             </select>
-                                            <button type="submit" className="px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40 hover:-translate-y-0.5 border border-white/10">
-                                                Post Update
-                                            </button>
+                                            <div className="flex gap-4">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => { setShowAnnouncementForm(false); setEditingAnnouncementId(null); }}
+                                                    className="px-8 py-3.5 bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-gray-400 rounded-xl font-bold text-sm transition-all border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white flex items-center gap-2"
+                                                >
+                                                    <XMarkIcon className="w-4 h-4" />
+                                                    Cancel
+                                                </button>
+                                                <button type="submit" className="flex-1 px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40 hover:-translate-y-0.5 border border-white/10">
+                                                    Post Update
+                                                </button>
+                                            </div>
                                         </div>
                                     </form>
                                 </motion.div>
@@ -853,9 +863,19 @@ const FacultyCourseDetails = () => {
                                                 <option value="pdf" className="bg-white dark:bg-[#0f1014] text-slate-900 dark:text-white">PDF Document</option>
                                                 <option value="video" className="bg-white dark:bg-[#0f1014] text-slate-900 dark:text-white">Video Lecture</option>
                                             </select>
-                                            <button type="submit" className="px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40 hover:-translate-y-0.5 border border-white/10">
-                                                {editingResourceId ? 'Update Asset' : 'Share Resource'}
-                                            </button>
+                                            <div className="flex gap-4">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => { setShowResourceForm(false); setEditingResourceId(null); }}
+                                                    className="px-8 py-3.5 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-gray-400 rounded-xl font-bold text-sm transition-all border border-slate-200 dark:border-white/10 hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white flex items-center gap-2"
+                                                >
+                                                    <XMarkIcon className="w-4 h-4" />
+                                                    Cancel
+                                                </button>
+                                                <button type="submit" className="flex-1 px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40 hover:-translate-y-0.5 border border-white/10">
+                                                    {editingResourceId ? 'Update Asset' : 'Share Resource'}
+                                                </button>
+                                            </div>
                                         </div>
                                     </form>
                                 </motion.div>
