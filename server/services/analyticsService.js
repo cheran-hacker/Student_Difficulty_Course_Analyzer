@@ -67,7 +67,11 @@ const aggregateCourseData = async (courseId) => {
             timeCommitment: f.timeCommitment,
             sentimentScore: f.sentimentScore,
             createdAt: f.createdAt,
-            comments: f.comments // Added comments as it's useful
+            comments: f.comments,
+            // Calculate and add aggregated rating
+            rating: f.ratings ?
+                (Object.values(f.ratings).filter(v => typeof v === 'number').reduce((a, b) => a + b, 0) /
+                    Object.values(f.ratings).filter(v => typeof v === 'number').length).toFixed(1) : 'N/A'
         }))
     };
 };

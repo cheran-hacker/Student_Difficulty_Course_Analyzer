@@ -166,6 +166,20 @@ const getCourseFeedbacks = async (req, res) => {
             if (f.comments) {
                 fObj.categories = categorizeFeedback(f.comments);
             }
+
+            // Normalize sentimentScore to 0-100 scale for UI consistency (faculty dashboard expects 0-100)
+            if (f.sentimentScore !== undefined) {
+                fObj.sentimentScore = (f.sentimentScore + 1) * 50;
+            }
+
+            // Calculate overall rating from categories if available, else look for any rating info
+            if (f.ratings) {
+                const values = Object.values(f.ratings).filter(v => typeof v === 'number');
+                if (values.length > 0) {
+                    fObj.rating = (values.reduce((a, b) => a + b, 0) / values.length).toFixed(1);
+                }
+            }
+
             return fObj;
         });
 
