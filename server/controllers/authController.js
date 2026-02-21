@@ -208,6 +208,9 @@ const registerUser = async (req, res) => {
                 cgpa: user.cgpa,
                 courses: user.courses || [],
                 token: generateToken(user._id),
+                xp: user.xp || 0,
+                level: user.level || 1,
+                badges: user.badges || []
             });
         } else {
             res.status(400).json({ message: 'Invalid user data' });

@@ -1,6 +1,6 @@
 import AdminLogin from './pages/AdminLogin.jsx';
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import MaintenanceGuard from './components/MaintenanceGuard';
 import Navbar from './components/Navbar';
@@ -27,8 +27,30 @@ import AdminProfile from './pages/AdminProfile';
 
 function AppContent() {
     const location = useLocation();
+    const navigate = useNavigate();
     const isRegistrationPage = location.pathname === '/admin/register-student';
-    // const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
+    // Global Auth Interceptor to handle session expiration/invalid users
+    useEffect(() => {
+        const interceptor = axios.interceptors.response.use(
+            (response) => response,
+            (error) => {
+                if (error.response && error.response.status === 401) {
+                    // Avoid redirecting if we are already on a login/landing page 
+                    // and the 401 comes from an actual login attempt failure.
+                    const publicPages = ['/', '/login', '/admin/login', '/register'];
+                    if (!publicPages.includes(window.location.pathname)) {
+                        console.warn('[Global Auth] 401 Detected - User not found or session expired. Logging out.');
+                        localStorage.removeItem('userInfo');
+                        navigate('/login');
+                    }
+                }
+                return Promise.reject(error);
+            }
+        );
+
+        return () => axios.interceptors.response.eject(interceptor);
+    }, [navigate]);
 
     return (
         <MaintenanceGuard>

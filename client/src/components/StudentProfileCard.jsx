@@ -124,6 +124,14 @@ const StatItem = ({ icon: Icon, label, value, delay = 0, accent = "indigo" }) =>
     );
 };
 
+const getStatusInfo = (level) => {
+    if (level >= 20) return { text: 'TITAN TIER', color: 'text-amber-500' };
+    if (level >= 15) return { text: 'ELITE TIER', color: 'text-indigo-500' };
+    if (level >= 10) return { text: 'DEAN\'S LIST', color: 'text-blue-500' };
+    if (level >= 5) return { text: 'SCHOLAR TIER', color: 'text-emerald-500' };
+    return { text: 'NOVICE TIER', color: 'text-slate-500' };
+};
+
 const StudentProfileCard = ({ user }) => {
     const cardRef = useRef(null);
     const x = useMotionValue(0);
@@ -241,8 +249,8 @@ const StudentProfileCard = ({ user }) => {
 
                                     <div className={`inline-flex items-center gap-5 px-8 py-5 rounded-xl ${user?.role === 'faculty' ? 'bg-emerald-500/5 border-emerald-500/40' : 'bg-indigo-500/5 border-indigo-500/40'} border shadow-2xl w-full sm:w-auto`}>
                                         <div className={`w-3.5 h-3.5 rounded-full ${user?.role === 'faculty' ? 'bg-emerald-500' : 'bg-indigo-500'} animate-pulse`} />
-                                        <span className={`text-[14px] font-black ${user?.role === 'faculty' ? 'text-emerald-500' : 'text-indigo-500'} uppercase tracking-[0.6em]`}>
-                                            {user?.role === 'faculty' ? 'STATUS: DISTINGUISHED' : 'STATUS: ELITE TIER'}
+                                        <span className={`text-[14px] font-black ${user?.role === 'faculty' ? 'text-emerald-500' : getStatusInfo(user?.level || 1).color} uppercase tracking-[0.6em]`}>
+                                            {user?.role === 'faculty' ? 'STATUS: DISTINGUISHED' : `STATUS: ${getStatusInfo(user?.level || 1).text}`}
                                         </span>
                                     </div>
                                 </div>

@@ -35,6 +35,19 @@ const BADGES = {
 };
 
 /**
+ * Get XP Multiplier based on Level/Tier
+ * @param {number} level 
+ * @returns {number} multiplier
+ */
+const getMultiplier = (level) => {
+    if (level >= 20) return 5.0; // Titan
+    if (level >= 15) return 4.0; // Elite
+    if (level >= 10) return 3.0; // Dean's List
+    if (level >= 5) return 2.0; // Scholar
+    return 1.0;                  // Novice
+};
+
+/**
  * Add XP to a user and check for level up
  * @param {string} userId
  * @param {number} amount
@@ -45,7 +58,11 @@ const addXP = async (userId, amount, reason) => {
         const user = await User.findById(userId);
         if (!user) return null;
 
-        user.xp += amount;
+        // Apply Tier Multiplier
+        const multiplier = getMultiplier(user.level || 1);
+        const adjustedAmount = Math.round(amount * multiplier);
+
+        user.xp += adjustedAmount;
 
         // Check for Level Up
         let newLevel = user.level;
