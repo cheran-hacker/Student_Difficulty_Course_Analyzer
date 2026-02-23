@@ -121,7 +121,8 @@ const authUser = async (req, res) => {
                     logDebug(`[Auth Debug] Streak updated and saved. AwardXP: ${awardXP}`);
 
                     if (awardXP) {
-                        gamificationStats = await addXP(user._id, 5, 'DAILY_LOGIN');
+                        const xpAmount = isStreakExtended ? 10 : 5;
+                        gamificationStats = await addXP(user._id, xpAmount, 'DAILY_LOGIN');
                         if (isStreakExtended) {
                             try {
                                 await checkBadges(user._id, 'LOGIN');
@@ -149,7 +150,7 @@ const authUser = async (req, res) => {
                 xp: gamificationStats ? gamificationStats.newXP : user.xp,
                 level: gamificationStats ? gamificationStats.newLevel : user.level,
                 badges: user.badges,
-                streak: gamificationStats ? gamificationStats.streak : (user.streak?.current || 0),
+                streak: user.streak,
                 department: user.department,
                 semester: user.semester,
                 year: user.year,
@@ -210,7 +211,8 @@ const registerUser = async (req, res) => {
                 token: generateToken(user._id),
                 xp: user.xp || 0,
                 level: user.level || 1,
-                badges: user.badges || []
+                badges: user.badges || [],
+                streak: user.streak || { current: 0, lastLogin: null }
             });
         } else {
             res.status(400).json({ message: 'Invalid user data' });
@@ -293,6 +295,10 @@ const updateUser = async (req, res) => {
                 name: updatedUser.name,
                 email: updatedUser.email,
                 role: updatedUser.role,
+                xp: updatedUser.xp,
+                level: updatedUser.level,
+                streak: updatedUser.streak,
+                badges: updatedUser.badges,
                 token: generateToken(updatedUser._id),
             });
         } else {
