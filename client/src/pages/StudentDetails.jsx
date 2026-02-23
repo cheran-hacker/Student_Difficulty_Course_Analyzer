@@ -19,7 +19,7 @@ import { DEPARTMENTS } from '../config/departments';
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
         return (
-            <div className="bg-[#0f1014]/98 p-4 rounded-2xl border border-gray-700/50 shadow-2xl ring-1 ring-white/10">
+            <div className="bg-[#0f1014]/95 backdrop-blur-xl p-4 rounded-2xl border border-gray-700/50 shadow-2xl ring-1 ring-white/10">
                 <p className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">{label}</p>
                 {payload.map((entry, index) => (
                     <div key={index} className="flex items-center gap-3 my-1">
@@ -314,10 +314,10 @@ const StudentDetails = () => {
                                                             <m.icon className="w-6 h-6" />
                                                         </div>
                                                         <div className="flex flex-col min-w-0 flex-1">
-                                                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">
+                                                            <span className="text-[10px] font-black text-slate-400 dark:text-slate-300 uppercase tracking-[0.2em] mb-1">
                                                                 {m.label}
                                                             </span>
-                                                            <span className="text-[14px] font-black text-slate-800 dark:text-slate-200 selection:bg-indigo-500 leading-tight break-all">
+                                                            <span className="text-[14px] font-black text-slate-800 dark:text-white selection:bg-indigo-500 leading-tight break-all">
                                                                 {m.value}
                                                             </span>
                                                         </div>
@@ -334,10 +334,10 @@ const StudentDetails = () => {
                                                             <m.icon className="w-5 h-5" />
                                                         </div>
                                                         <div className="flex flex-col gap-1 min-w-0 w-full text-center md:text-left">
-                                                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                                                            <span className="text-[10px] font-black text-slate-400 dark:text-slate-300 uppercase tracking-[0.2em]">
                                                                 {m.label}
                                                             </span>
-                                                            <span className="text-[13px] font-black text-slate-800 dark:text-slate-200 selection:bg-indigo-500 leading-tight">
+                                                            <span className="text-[13px] font-black text-slate-800 dark:text-white selection:bg-indigo-500 leading-tight">
                                                                 {m.value}
                                                             </span>
                                                         </div>
@@ -396,7 +396,7 @@ const StudentDetails = () => {
                         <div className="w-full h-72 relative z-10 flex items-center justify-center">
                             <ResponsiveContainer width="100%" height="100%">
                                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dnaData}>
-                                    <PolarGrid stroke="#88888820" />
+                                    <PolarGrid stroke="#88888840" />
                                     <PolarAngleAxis dataKey="subject" tick={{ fill: '#9ca3af', fontSize: 9, fontWeight: '900', letterSpacing: '0.1em' }} />
                                     <PolarRadiusAxis stroke="#88888820" tick={false} axisLine={false} />
                                     <Radar name="Cadet" dataKey="A" stroke="#6366f1" strokeWidth={3} fill="url(#dnaGradient)" fillOpacity={0.6} />
@@ -473,8 +473,8 @@ const StudentDetails = () => {
 
                                 <div className="bg-slate-50 dark:bg-black/40 p-6 rounded-3xl mb-8 relative border border-slate-100 dark:border-white/5">
                                     <div className="flex items-center gap-3 text-indigo-500 mb-2">
-                                        <ChatBubbleLeftRightIcon className="w-5 h-5 opacity-30" />
-                                        <span className="text-[9px] font-black uppercase tracking-[0.2em] opacity-40">Intelligence Log</span>
+                                        <ChatBubbleLeftRightIcon className="w-5 h-5 opacity-40 dark:opacity-60" />
+                                        <span className="text-[9px] font-black uppercase tracking-[0.2em] opacity-50 dark:opacity-80">Intelligence Log</span>
                                     </div>
                                     {item.comments ? (
                                         <p className="text-sm text-slate-600 dark:text-slate-300 italic font-medium leading-relaxed">"{item.comments}"</p>
@@ -533,7 +533,7 @@ const StudentDetails = () => {
 
                 {/* Footer Intelligence Accent */}
                 <div className="mt-12 flex justify-center py-10 border-t border-slate-100 dark:border-white/5">
-                    <div className="flex items-center gap-6 opacity-30 text-[8px] font-black uppercase tracking-[0.8em] text-slate-400">
+                    <div className="flex items-center gap-6 opacity-50 dark:opacity-70 text-[8px] font-black uppercase tracking-[0.8em] text-slate-400 dark:text-slate-300">
                         <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
                         Intelligence Engine Version 6.0 Stable
                         <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />

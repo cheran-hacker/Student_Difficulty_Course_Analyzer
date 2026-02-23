@@ -231,7 +231,7 @@ const FacultyCourseDetails = () => {
             onClick={() => setActiveTab(id)}
             className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-black transition-all relative overflow-hidden text-[10px] uppercase tracking-[0.2em] shadow-lg ${activeTab === id
                 ? 'text-white'
-                : 'text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-white/5'
+                : 'text-slate-500 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-white/5'
                 }`}
         >
             {activeTab === id && (
@@ -280,7 +280,7 @@ const FacultyCourseDetails = () => {
                     <h2 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter leading-tight drop-shadow-sm">
                         {course?.name} <span className="text-indigo-600 dark:text-indigo-400">{course?.code}</span>
                     </h2>
-                    <p className="mt-4 text-[10px] font-black text-slate-500 dark:text-indigo-400/70 uppercase tracking-[0.4em] opacity-80 backdrop-blur-sm">
+                    <p className="mt-4 text-[10px] font-black text-slate-500 dark:text-indigo-300 uppercase tracking-[0.4em] backdrop-blur-sm">
                         Curriculum Meta-Analysis + Student Voice Mining + Resource Engineering
                     </p>
                 </div>
@@ -317,7 +317,7 @@ const FacultyCourseDetails = () => {
                                                 </div>
                                                 Risk Intelligence
                                             </h3>
-                                            <p className="text-[10px] text-slate-500 dark:text-indigo-400 font-black uppercase tracking-[0.2em] mt-2 opacity-60">Predictive Neural Dropout Analysis</p>
+                                            <p className="text-[10px] text-slate-500 dark:text-indigo-300 font-black uppercase tracking-[0.2em] mt-2">Predictive Neural Dropout Analysis</p>
                                         </div>
                                         <div className="text-right">
                                             <div className="text-4xl font-black text-indigo-600 dark:text-indigo-400 specular-glow">
@@ -335,8 +335,8 @@ const FacultyCourseDetails = () => {
                                         ].map((risk, idx) => (
                                             <div key={idx} className="space-y-2">
                                                 <div className="flex justify-between items-end px-1">
-                                                    <span className="text-xs font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                                                        <risk.icon className={`w-3.5 h-3.5 ${risk.label === 'High Risk' ? 'text-rose-500' : 'text-slate-400'}`} />
+                                                    <span className="text-xs font-black text-slate-600 dark:text-gray-300 uppercase tracking-widest flex items-center gap-2">
+                                                        <risk.icon className={`w-3.5 h-3.5 ${risk.label === 'High Risk' ? 'text-rose-500' : 'text-slate-400 dark:text-gray-400'}`} />
                                                         {risk.label}
                                                     </span>
                                                     <span className="text-sm font-black text-slate-900 dark:text-white">{risk.count} Students</span>
@@ -362,7 +362,7 @@ const FacultyCourseDetails = () => {
                                                 <SparklesIcon className="w-6 h-6 text-white" />
                                             </div>
                                             <h4 className="text-2xl font-black leading-tight mb-2">AI Retention Strategy</h4>
-                                            <p className="text-indigo-100/80 text-sm font-medium leading-relaxed">
+                                            <p className="text-indigo-50 text-sm font-medium leading-relaxed">
                                                 Based on recent activity peaks, sending an announcement regarding "Week 4 Resources" could reduce moderate risk by ~12%.
                                             </p>
                                         </div>
@@ -376,12 +376,12 @@ const FacultyCourseDetails = () => {
                                 </div>
                             </div>
 
-                            <div className="bg-white/60 dark:bg-gradient-to-r dark:from-indigo-500/10 dark:to-purple-500/10 border border-slate-200 dark:border-indigo-500/20 rounded-3xl p-8 flex justify-between items-center backdrop-blur-xl shadow-sm dark:shadow-none">
+                            <div className="bg-white/40 dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 rounded-[2.5rem] p-8 flex justify-between items-center backdrop-blur-2xl transition-all hover:bg-white/60 dark:hover:bg-slate-900/60 shadow-sm">
                                 <div>
                                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
                                         <SparklesIcon className="w-6 h-6 text-amber-500 dark:text-amber-400" /> Student Voices
                                     </h3>
-                                    <p className="text-slate-500 dark:text-indigo-300 font-medium mt-1">Real-time feedback collected from students.</p>
+                                    <p className="text-slate-600 dark:text-indigo-200 font-medium mt-1">Real-time feedback collected from students.</p>
                                 </div>
                             </div>
 
@@ -402,7 +402,7 @@ const FacultyCourseDetails = () => {
                                                     </div>
                                                     <div>
                                                         <p className="font-bold text-slate-900 dark:text-white text-sm">{item.student?.name || 'Anonymous'}</p>
-                                                        <p className="text-xs text-slate-500 dark:text-gray-500">{new Date(item.createdAt).toLocaleDateString()}</p>
+                                                        <p className="text-xs text-slate-500 dark:text-gray-400">{new Date(item.createdAt).toLocaleDateString()}</p>
                                                     </div>
                                                 </div>
                                                 {item.sentimentScore !== undefined && (
@@ -460,7 +460,7 @@ const FacultyCourseDetails = () => {
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white flex items-center gap-3">
                                         <BookOpenIcon className="w-8 h-8 text-indigo-500" /> Syllabus Management
                                     </h3>
-                                    <p className="text-slate-500 dark:text-gray-400 mt-2 text-lg">Manage the course syllabus and automated topic extraction.</p>
+                                    <p className="text-slate-500 dark:text-gray-300 mt-2 text-lg">Manage the course syllabus and automated topic extraction.</p>
                                 </div>
                             </div>
 
@@ -579,7 +579,7 @@ const FacultyCourseDetails = () => {
                                                         )}
                                                     </div>
                                                     <div className="flex items-center justify-between">
-                                                        <p className="text-[10px] text-slate-400 font-black font-mono tracking-widest opacity-60">{student.studentId || 'NO_ID'}</p>
+                                                        <p className="text-[10px] text-slate-400 dark:text-indigo-300 font-black font-mono tracking-widest">{student.studentId || 'NO_ID'}</p>
                                                         {student.riskData && (
                                                             <span className="text-[10px] font-black text-indigo-500 specular-glow">
                                                                 {Math.round(student.riskData.probability * 100)}% RISK
@@ -670,7 +670,7 @@ const FacultyCourseDetails = () => {
                                     </div>
                                     <form onSubmit={handlePostAnnouncement} className="space-y-6 relative z-10">
                                         <div className="space-y-2">
-                                            <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-500 ml-1">Title</label>
+                                            <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-300 ml-1">Title</label>
                                             <input
                                                 type="text"
                                                 placeholder="e.g., Midterm Exam Schedule"
@@ -681,12 +681,12 @@ const FacultyCourseDetails = () => {
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-500 ml-1">Message</label>
+                                            <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-300 ml-1">Message</label>
                                             <textarea
                                                 placeholder="Write your message to the class..."
                                                 value={newAnnouncement.content}
                                                 onChange={e => setNewAnnouncement({ ...newAnnouncement, content: e.target.value })}
-                                                className="w-full bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/5 rounded-2xl px-5 py-4 text-slate-900 dark:text-white focus:border-indigo-500/50 outline-none transition-all focus:bg-white dark:focus:bg-black/40 min-h-[150px] placeholder:text-slate-400 dark:placeholder:text-gray-600 text-sm leading-relaxed custom-scrollbar shadow-inner"
+                                                className="w-full bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/5 rounded-2xl px-5 py-4 text-slate-900 dark:text-white focus:border-indigo-500/50 outline-none transition-all focus:bg-white dark:focus:bg-black/40 min-h-[150px] placeholder:text-slate-400 dark:placeholder:text-gray-400 text-sm leading-relaxed custom-scrollbar shadow-inner"
                                                 required
                                             />
                                         </div>
@@ -766,9 +766,9 @@ const FacultyCourseDetails = () => {
                                                     </div>
                                                 </div>
                                                 <p className="text-slate-600 dark:text-indigo-300 leading-relaxed text-sm whitespace-pre-wrap relative z-10 font-medium">{ann.content}</p>
-                                                <div className="mt-8 pt-8 border-t border-slate-100 dark:border-white/5 text-[10px] text-slate-400 font-black uppercase tracking-widest flex justify-between items-center relative z-10">
+                                                <div className="mt-8 pt-8 border-t border-slate-100 dark:border-white/5 text-[10px] text-slate-400 dark:text-gray-400 font-black uppercase tracking-widest flex justify-between items-center relative z-10">
                                                     <div className="flex items-center gap-3">
-                                                        <ClockIcon className="w-4 h-4 opacity-40" />
+                                                        <ClockIcon className="w-4 h-4 text-slate-400 dark:text-gray-400" />
                                                         <span>{new Date(ann.createdAt).toLocaleDateString()} • {new Date(ann.createdAt).toLocaleTimeString()}</span>
                                                     </div>
                                                     <div className="flex items-center gap-3 bg-slate-100 dark:bg-white/5 px-4 py-2 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm">
@@ -917,7 +917,7 @@ const FacultyCourseDetails = () => {
                                                     </button>
                                                 </div>
                                             </div>
-                                            <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest mt-1 line-clamp-2 leading-relaxed opacity-60">{res.description || 'No specialized metadata provided.'}</p>
+                                            <p className="text-[10px] text-slate-400 dark:text-gray-300 font-black uppercase tracking-widest mt-1 line-clamp-2 leading-relaxed">{res.description || 'No specialized metadata provided.'}</p>
                                             <a
                                                 href={res.fileUrl}
                                                 target="_blank"

@@ -203,12 +203,12 @@ const AdminDashboard = () => {
 
     const navItems = [
         { id: 'overview', label: 'Mission Control', icon: <ChartPieIcon className="w-5 h-5" /> },
-        { id: 'courses', label: 'Course Grid', icon: <AcademicCapIcon className="w-5 h-5" /> },
-        { id: 'faculty', label: 'Faculty', icon: <UserGroupIcon className="w-5 h-5" /> },
+        { id: 'courses', label: 'Syllabus HQ', icon: <AcademicCapIcon className="w-5 h-5" /> },
+        { id: 'faculty', label: 'Faculty Intelligence', icon: <UserGroupIcon className="w-5 h-5" /> },
         { id: 'students', label: 'Student Corps', icon: <UserGroupIcon className="w-5 h-5" /> },
-        { id: 'requests', label: 'Inbox', icon: <InboxStackIcon className="w-5 h-5" /> },
-        { id: 'syllabus', label: 'Vault', icon: <BookOpenIcon className="w-5 h-5" /> },
-        { id: 'settings', label: 'Settings', icon: <CpuChipIcon className="w-5 h-5" /> },
+        { id: 'requests', label: 'System Uplink', icon: <InboxStackIcon className="w-5 h-5" /> },
+        { id: 'syllabus', label: 'Syllabus Archives', icon: <BookOpenIcon className="w-5 h-5" /> },
+        { id: 'settings', label: 'Intelligence Ops', icon: <CpuChipIcon className="w-5 h-5" /> },
         { id: 'profile', label: 'Admin Profile', icon: <UserCircleIcon className="w-5 h-5" /> },
     ];
 
@@ -232,7 +232,7 @@ const AdminDashboard = () => {
                                 <BoltIcon className="w-6 h-6 text-white" />
                             </div>
                             <h1 className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
-                                System Overview
+                                Command Center
                             </h1>
                         </div>
                         <p className="text-gray-500 dark:text-gray-400 font-medium flex items-center gap-2 text-sm">
@@ -289,7 +289,7 @@ const AdminDashboard = () => {
                                 }`}
                         >
                             {maintenance ? <ExclamationTriangleIcon className="w-4 h-4" /> : <CheckBadgeIcon className="w-4 h-4" />}
-                            {maintenance ? 'Lockdown Mode' : 'Systems Normal'}
+                            {maintenance ? 'Protocol Offline' : 'Operational Status'}
                         </button>
                     </div>
                 </div>

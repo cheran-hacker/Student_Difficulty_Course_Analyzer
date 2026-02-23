@@ -24,6 +24,7 @@ import FacultyDashboard from './pages/FacultyDashboard';
 import FacultyCourseDetails from './pages/FacultyCourseDetails';
 import Profile from './pages/Profile';
 import AdminProfile from './pages/AdminProfile';
+import FacultyBroadcasts from './pages/FacultyBroadcasts';
 
 function AppContent() {
     const location = useLocation();
@@ -91,6 +92,7 @@ function AppContent() {
                 <Route element={<PrivateRoute allowedRoles={['faculty', 'admin']} />}>
                     <Route path="/faculty/dashboard" element={<FacultyDashboard />} />
                     <Route path="/faculty/course/:courseId" element={<FacultyCourseDetails />} />
+                    <Route path="/faculty/broadcasts" element={<FacultyBroadcasts />} />
                 </Route>
 
                 {/* Catch All - Redirect to Home */}

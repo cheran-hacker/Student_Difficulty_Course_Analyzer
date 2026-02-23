@@ -54518,3 +54518,1122 @@
 [2026-02-23T08:03:11.552Z] GET /api/settings
 [2026-02-23T08:03:24.428Z] GET /api/settings
 [2026-02-23T08:03:39.551Z] GET /api/settings
+[2026-02-23T08:04:04.547Z] GET /api/settings
+[2026-02-23T08:04:09.403Z] GET /api/settings
+[2026-02-23T08:04:39.552Z] GET /api/settings
+[2026-02-23T08:05:04.560Z] GET /api/settings
+[2026-02-23T08:05:09.548Z] GET /api/settings
+[2026-02-23T08:06:04.551Z] GET /api/settings
+[2026-02-23T08:06:04.555Z] GET /api/settings
+[2026-02-23T08:07:04.555Z] GET /api/settings
+[2026-02-23T08:07:04.564Z] GET /api/settings
+[2026-02-23T08:08:04.956Z] GET /api/settings
+[2026-02-23T08:08:05.354Z] GET /api/settings
+[2026-02-23T08:09:04.562Z] GET /api/settings
+[2026-02-23T08:09:04.571Z] GET /api/settings
+[2026-02-23T08:10:04.566Z] GET /api/settings
+[2026-02-23T08:10:04.590Z] GET /api/settings
+[2026-02-23T08:11:04.583Z] GET /api/settings
+[2026-02-23T08:11:04.597Z] GET /api/settings
+[2026-02-23T08:11:52.133Z] GET /api/courses?limit=1000
+[2026-02-23T08:11:52.163Z] GET /api/settings
+[2026-02-23T08:11:52.207Z] GET /api/auth/users
+[2026-02-23T08:11:52.211Z] GET /api/requests
+[2026-02-23T08:11:52.216Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:11:52.853Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:11:52.864Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:11:53.089Z] GET /api/courses?limit=1000
+[2026-02-23T08:11:53.097Z] GET /api/settings
+[2026-02-23T08:11:53.110Z] GET /api/auth/users
+[2026-02-23T08:11:53.121Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:11:53.152Z] GET /api/requests
+[2026-02-23T08:11:53.223Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:11:53.230Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:12:04.561Z] GET /api/settings
+[2026-02-23T08:12:04.615Z] GET /api/settings
+[2026-02-23T08:13:04.551Z] GET /api/settings
+[2026-02-23T08:13:04.579Z] GET /api/settings
+[2026-02-23T08:13:13.913Z] GET /api/settings
+[2026-02-23T08:13:13.969Z] GET /api/settings
+[2026-02-23T08:13:44.564Z] GET /api/settings
+[2026-02-23T08:14:04.554Z] GET /api/settings
+[2026-02-23T08:14:10.300Z] GET /api/settings
+[2026-02-23T08:14:12.935Z] GET /api/settings
+[2026-02-23T08:14:12.996Z] GET /api/settings
+[2026-02-23T08:14:14.549Z] GET /api/settings
+[2026-02-23T08:14:35.710Z] POST /api/auth/login
+[2026-02-23T08:14:35.715Z] [AuthRouter] POST /api/auth/login
+[2026-02-23T08:14:36.238Z] GET /api/settings
+[2026-02-23T08:14:36.249Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:14:36.253Z] GET /api/requests
+[2026-02-23T08:14:36.260Z] GET /api/courses?limit=1000
+[2026-02-23T08:14:36.271Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:14:36.296Z] GET /api/auth/users
+[2026-02-23T08:14:36.300Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:14:36.449Z] GET /api/requests
+[2026-02-23T08:14:36.748Z] GET /api/requests
+[2026-02-23T08:14:39.496Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:14:39.500Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:14:39.676Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:14:39.683Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:14:40.905Z] GET /api/auth/users
+[2026-02-23T08:14:40.910Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:14:41.105Z] GET /api/auth/users
+[2026-02-23T08:14:41.108Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:14:43.615Z] GET /api/settings
+[2026-02-23T08:14:43.807Z] GET /api/requests
+[2026-02-23T08:14:43.815Z] GET /api/admin/faculty-requests
+[2026-02-23T08:14:43.948Z] GET /api/settings
+[2026-02-23T08:14:44.277Z] GET /api/admin/faculty-requests
+[2026-02-23T08:14:44.285Z] GET /api/requests
+[2026-02-23T08:14:44.887Z] GET /api/courses?limit=1000
+[2026-02-23T08:14:45.876Z] GET /api/courses?limit=1000
+[2026-02-23T08:14:55.649Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:14:55.656Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:14:55.861Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:14:55.865Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:14:58.053Z] GET /api/auth/users
+[2026-02-23T08:14:58.058Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:14:58.244Z] GET /api/auth/users
+[2026-02-23T08:14:58.248Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:15:04.384Z] POST /api/auth/login
+[2026-02-23T08:15:04.388Z] [AuthRouter] POST /api/auth/login
+[2026-02-23T08:15:04.985Z] GET /api/courses/departments
+[2026-02-23T08:15:04.988Z] GET /api/courses?limit=1000
+[2026-02-23T08:15:05.067Z] GET /api/courses/departments
+[2026-02-23T08:15:05.662Z] GET /api/courses?limit=1000
+[2026-02-23T08:15:05.679Z] GET /api/student/dashboard
+[2026-02-23T08:15:05.719Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:15:05.740Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:15:05.747Z] GET /api/courses/698ee69ccf57d143dca1b0ba/announcements
+[2026-02-23T08:15:05.801Z] GET /api/courses/698ee24a234c75792e58ca6c/announcements
+[2026-02-23T08:15:05.863Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:15:05.892Z] GET /api/courses/698eb72386087799976f29c0/announcements
+[2026-02-23T08:15:05.912Z] GET /api/courses/698eb72386087799976f29bf/announcements
+[2026-02-23T08:15:05.959Z] GET /api/courses/698eb72386087799976f29be/announcements
+[2026-02-23T08:15:06.071Z] GET /api/courses/698eb72386087799976f29c8/announcements
+[2026-02-23T08:15:06.112Z] GET /api/courses/698eb72386087799976f29c2/announcements
+[2026-02-23T08:15:06.138Z] GET /api/courses/698eb72386087799976f29c3/announcements
+[2026-02-23T08:15:06.142Z] GET /api/courses/698eb72386087799976f29c4/announcements
+[2026-02-23T08:15:06.225Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:15:06.276Z] GET /api/courses/698eb72386087799976f29c5/announcements
+[2026-02-23T08:15:06.281Z] GET /api/courses/698eb72386087799976f29c6/announcements
+[2026-02-23T08:15:06.289Z] GET /api/courses/698eb72386087799976f29c7/announcements
+[2026-02-23T08:15:06.395Z] GET /api/courses/698eb72386087799976f29c9/announcements
+[2026-02-23T08:15:06.431Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:15:06.449Z] GET /api/courses/698ee69ccf57d143dca1b0ba/announcements
+[2026-02-23T08:15:06.495Z] GET /api/courses/698eb72386087799976f29c0/announcements
+[2026-02-23T08:15:06.498Z] GET /api/courses/698eb72386087799976f29bf/announcements
+[2026-02-23T08:15:06.537Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:15:06.577Z] GET /api/courses/698eb72386087799976f29be/announcements
+[2026-02-23T08:15:06.612Z] GET /api/courses/698eb72386087799976f29c8/announcements
+[2026-02-23T08:15:06.615Z] GET /api/courses/698eb72386087799976f29c2/announcements
+[2026-02-23T08:15:06.619Z] GET /api/courses/698eb72386087799976f29c3/announcements
+[2026-02-23T08:15:06.665Z] GET /api/courses/698eb72386087799976f29c4/announcements
+[2026-02-23T08:15:06.731Z] GET /api/student/dashboard
+[2026-02-23T08:15:06.754Z] GET /api/courses/698eb72386087799976f29c5/announcements
+[2026-02-23T08:15:06.782Z] GET /api/courses/698eb72386087799976f29c6/announcements
+[2026-02-23T08:15:06.785Z] GET /api/courses/69931ad14163c802f597a363/resources
+[2026-02-23T08:15:06.794Z] GET /api/courses/698eb72386087799976f29c7/announcements
+[2026-02-23T08:15:06.849Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T08:15:06.930Z] GET /api/courses/698ee69ccf57d143dca1b0ba/resources
+[2026-02-23T08:15:06.953Z] GET /api/courses/698ee24a234c75792e58ca6c/resources
+[2026-02-23T08:15:06.973Z] GET /api/courses/698eb72386087799976f29c1/resources
+[2026-02-23T08:15:07.057Z] GET /api/courses/698eb72386087799976f29c0/resources
+[2026-02-23T08:15:07.064Z] GET /api/courses/698eb72386087799976f29bf/resources
+[2026-02-23T08:15:07.108Z] GET /api/courses/698eb72386087799976f29be/resources
+[2026-02-23T08:15:07.111Z] GET /api/courses/698eb72386087799976f29c8/resources
+[2026-02-23T08:15:07.141Z] GET /api/courses/698eb72386087799976f29c2/resources
+[2026-02-23T08:15:07.217Z] GET /api/courses/698eb72386087799976f29c3/resources
+[2026-02-23T08:15:07.262Z] GET /api/courses/698eb72386087799976f29c4/resources
+[2026-02-23T08:15:07.266Z] GET /api/courses/698eb72386087799976f29c5/resources
+[2026-02-23T08:15:07.271Z] GET /api/courses/698eb72386087799976f29c6/resources
+[2026-02-23T08:15:07.278Z] GET /api/courses/698eb72386087799976f29c7/resources
+[2026-02-23T08:15:07.319Z] GET /api/courses/698eb72386087799976f29c9/resources
+[2026-02-23T08:15:07.583Z] GET /api/courses/698ee24a234c75792e58ca6c/announcements
+[2026-02-23T08:15:07.607Z] GET /api/courses/698eb72386087799976f29c9/announcements
+[2026-02-23T08:15:07.630Z] GET /api/courses/69931ad14163c802f597a363/resources
+[2026-02-23T08:15:07.728Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T08:15:07.738Z] GET /api/courses/698ee69ccf57d143dca1b0ba/resources
+[2026-02-23T08:15:07.764Z] GET /api/courses/698ee24a234c75792e58ca6c/resources
+[2026-02-23T08:15:07.841Z] GET /api/courses/698eb72386087799976f29c1/resources
+[2026-02-23T08:15:07.845Z] GET /api/courses/698eb72386087799976f29c0/resources
+[2026-02-23T08:15:07.882Z] GET /api/courses/698eb72386087799976f29bf/resources
+[2026-02-23T08:15:07.905Z] GET /api/courses/698eb72386087799976f29be/resources
+[2026-02-23T08:15:07.999Z] GET /api/courses/698eb72386087799976f29c8/resources
+[2026-02-23T08:15:08.004Z] GET /api/courses/698eb72386087799976f29c2/resources
+[2026-02-23T08:15:08.043Z] GET /api/courses/698eb72386087799976f29c3/resources
+[2026-02-23T08:15:08.064Z] GET /api/courses/698eb72386087799976f29c4/resources
+[2026-02-23T08:15:08.069Z] GET /api/courses/698eb72386087799976f29c5/resources
+[2026-02-23T08:15:08.109Z] GET /api/courses/698eb72386087799976f29c6/resources
+[2026-02-23T08:15:08.210Z] GET /api/courses/698eb72386087799976f29c7/resources
+[2026-02-23T08:15:08.214Z] GET /api/courses/698eb72386087799976f29c9/resources
+[2026-02-23T08:15:12.947Z] GET /api/settings
+[2026-02-23T08:15:14.551Z] GET /api/settings
+[2026-02-23T08:15:42.949Z] GET /api/settings
+[2026-02-23T08:15:44.689Z] GET /api/settings
+[2026-02-23T08:16:12.951Z] GET /api/settings
+[2026-02-23T08:16:14.556Z] GET /api/settings
+[2026-02-23T08:16:31.624Z] GET /api/settings
+[2026-02-23T08:16:31.627Z] GET /api/courses?limit=1000
+[2026-02-23T08:16:31.639Z] GET /api/auth/users
+[2026-02-23T08:16:31.641Z] GET /api/requests
+[2026-02-23T08:16:31.642Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:16:31.651Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:16:31.653Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:16:31.720Z] GET /api/courses/69931ad14163c802f597a363/resources
+[2026-02-23T08:16:31.727Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T08:16:31.729Z] GET /api/courses/698ee69ccf57d143dca1b0ba/resources
+[2026-02-23T08:16:31.740Z] GET /api/courses/698eb72386087799976f29c1/resources
+[2026-02-23T08:16:31.743Z] GET /api/courses/698ee24a234c75792e58ca6c/resources
+[2026-02-23T08:16:31.751Z] GET /api/courses/698eb72386087799976f29c0/resources
+[2026-02-23T08:16:31.877Z] GET /api/courses/698eb72386087799976f29bf/resources
+[2026-02-23T08:16:31.881Z] GET /api/courses/698eb72386087799976f29be/resources
+[2026-02-23T08:16:31.895Z] GET /api/settings
+[2026-02-23T08:16:31.896Z] GET /api/auth/users
+[2026-02-23T08:16:31.898Z] GET /api/requests
+[2026-02-23T08:16:31.900Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:16:31.901Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:16:31.908Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:16:31.914Z] GET /api/courses/698eb72386087799976f29c8/resources
+[2026-02-23T08:16:31.936Z] GET /api/courses/698eb72386087799976f29c2/resources
+[2026-02-23T08:16:32.021Z] GET /api/courses/698eb72386087799976f29c3/resources
+[2026-02-23T08:16:32.033Z] GET /api/courses/698eb72386087799976f29c4/resources
+[2026-02-23T08:16:32.064Z] GET /api/courses?limit=1000
+[2026-02-23T08:16:32.072Z] GET /api/courses/698eb72386087799976f29c5/resources
+[2026-02-23T08:16:32.136Z] GET /api/courses/698eb72386087799976f29c6/resources
+[2026-02-23T08:16:32.196Z] GET /api/courses/698eb72386087799976f29c7/resources
+[2026-02-23T08:16:32.198Z] GET /api/courses/698eb72386087799976f29c9/resources
+[2026-02-23T08:16:32.245Z] GET /api/courses/departments
+[2026-02-23T08:16:32.247Z] GET /api/courses?limit=1000
+[2026-02-23T08:16:32.624Z] GET /api/student/dashboard
+[2026-02-23T08:16:42.950Z] GET /api/settings
+[2026-02-23T08:16:44.550Z] GET /api/settings
+[2026-02-23T08:16:45.239Z] GET /api/settings
+[2026-02-23T08:16:45.325Z] GET /api/settings
+[2026-02-23T08:16:45.425Z] GET /api/courses/departments
+[2026-02-23T08:16:45.428Z] GET /api/courses?limit=1000
+[2026-02-23T08:16:45.492Z] GET /api/courses/departments
+[2026-02-23T08:16:46.366Z] GET /api/courses?limit=1000
+[2026-02-23T08:16:46.409Z] GET /api/student/dashboard
+[2026-02-23T08:16:46.531Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:16:46.534Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:16:46.538Z] GET /api/courses/698ee69ccf57d143dca1b0ba/announcements
+[2026-02-23T08:16:46.583Z] GET /api/courses/698ee24a234c75792e58ca6c/announcements
+[2026-02-23T08:16:46.665Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:16:46.707Z] GET /api/courses/698eb72386087799976f29c0/announcements
+[2026-02-23T08:16:46.712Z] GET /api/courses/698eb72386087799976f29bf/announcements
+[2026-02-23T08:16:46.716Z] GET /api/courses/698eb72386087799976f29be/announcements
+[2026-02-23T08:16:46.846Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:16:46.954Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:16:46.961Z] GET /api/courses/698ee69ccf57d143dca1b0ba/announcements
+[2026-02-23T08:16:46.968Z] GET /api/courses/698eb72386087799976f29c8/announcements
+[2026-02-23T08:16:46.975Z] GET /api/courses/698eb72386087799976f29c2/announcements
+[2026-02-23T08:16:47.026Z] GET /api/courses/698eb72386087799976f29c3/announcements
+[2026-02-23T08:16:47.030Z] GET /api/courses/698eb72386087799976f29c4/announcements
+[2026-02-23T08:16:47.140Z] GET /api/courses/698eb72386087799976f29c5/announcements
+[2026-02-23T08:16:47.143Z] GET /api/courses/698eb72386087799976f29c6/announcements
+[2026-02-23T08:16:47.149Z] GET /api/courses/698eb72386087799976f29c7/announcements
+[2026-02-23T08:16:47.156Z] GET /api/courses/698eb72386087799976f29c9/announcements
+[2026-02-23T08:16:47.205Z] GET /api/courses/698ee24a234c75792e58ca6c/announcements
+[2026-02-23T08:16:47.310Z] GET /api/student/dashboard
+[2026-02-23T08:16:47.314Z] GET /api/courses/698eb72386087799976f29c0/announcements
+[2026-02-23T08:16:47.320Z] GET /api/courses/698eb72386087799976f29be/announcements
+[2026-02-23T08:16:47.358Z] GET /api/courses/698eb72386087799976f29bf/announcements
+[2026-02-23T08:16:47.365Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:16:47.368Z] GET /api/courses/698eb72386087799976f29c8/announcements
+[2026-02-23T08:16:47.612Z] GET /api/courses/698eb72386087799976f29c2/announcements
+[2026-02-23T08:16:47.615Z] GET /api/courses/698eb72386087799976f29c4/announcements
+[2026-02-23T08:16:47.619Z] GET /api/courses/698eb72386087799976f29c3/announcements
+[2026-02-23T08:16:47.657Z] GET /api/courses/69931ad14163c802f597a363/resources
+[2026-02-23T08:16:47.721Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T08:16:47.726Z] GET /api/courses/698ee69ccf57d143dca1b0ba/resources
+[2026-02-23T08:16:47.807Z] GET /api/courses/698ee24a234c75792e58ca6c/resources
+[2026-02-23T08:16:47.844Z] GET /api/courses/698eb72386087799976f29c1/resources
+[2026-02-23T08:16:47.885Z] GET /api/courses/698eb72386087799976f29c0/resources
+[2026-02-23T08:16:47.892Z] GET /api/courses/698eb72386087799976f29bf/resources
+[2026-02-23T08:16:47.954Z] GET /api/courses/698eb72386087799976f29be/resources
+[2026-02-23T08:16:48.097Z] GET /api/courses/698eb72386087799976f29c8/resources
+[2026-02-23T08:16:48.101Z] GET /api/courses/698eb72386087799976f29c2/resources
+[2026-02-23T08:16:48.233Z] GET /api/courses/698eb72386087799976f29c3/resources
+[2026-02-23T08:16:48.238Z] GET /api/courses/698eb72386087799976f29c4/resources
+[2026-02-23T08:16:48.330Z] GET /api/courses/698eb72386087799976f29c5/resources
+[2026-02-23T08:16:48.334Z] GET /api/courses/698eb72386087799976f29c6/resources
+[2026-02-23T08:16:48.367Z] GET /api/courses/698eb72386087799976f29c7/resources
+[2026-02-23T08:16:48.400Z] GET /api/courses/698eb72386087799976f29c9/resources
+[2026-02-23T08:16:48.404Z] GET /api/courses/698eb72386087799976f29c5/announcements
+[2026-02-23T08:16:48.408Z] GET /api/courses/698eb72386087799976f29c6/announcements
+[2026-02-23T08:16:48.549Z] GET /api/courses/698eb72386087799976f29c9/announcements
+[2026-02-23T08:16:48.555Z] GET /api/courses/698eb72386087799976f29c7/announcements
+[2026-02-23T08:16:48.563Z] GET /api/courses/69931ad14163c802f597a363/resources
+[2026-02-23T08:16:48.617Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T08:16:48.621Z] GET /api/courses/698eb72386087799976f29c1/resources
+[2026-02-23T08:16:48.625Z] GET /api/courses/698eb72386087799976f29be/resources
+[2026-02-23T08:16:48.753Z] GET /api/courses/698ee69ccf57d143dca1b0ba/resources
+[2026-02-23T08:16:48.757Z] GET /api/courses/698eb72386087799976f29c8/resources
+[2026-02-23T08:16:48.761Z] GET /api/courses/698eb72386087799976f29c2/resources
+[2026-02-23T08:16:48.834Z] GET /api/courses/698ee24a234c75792e58ca6c/resources
+[2026-02-23T08:16:48.925Z] GET /api/courses/698eb72386087799976f29bf/resources
+[2026-02-23T08:16:48.930Z] GET /api/courses/698eb72386087799976f29c0/resources
+[2026-02-23T08:16:48.934Z] GET /api/courses/698eb72386087799976f29c3/resources
+[2026-02-23T08:16:48.940Z] GET /api/courses/698eb72386087799976f29c4/resources
+[2026-02-23T08:16:49.023Z] GET /api/courses/698eb72386087799976f29c5/resources
+[2026-02-23T08:16:49.028Z] GET /api/courses/698eb72386087799976f29c6/resources
+[2026-02-23T08:16:49.150Z] GET /api/courses/698eb72386087799976f29c7/resources
+[2026-02-23T08:16:49.153Z] GET /api/courses/698eb72386087799976f29c9/resources
+[2026-02-23T08:17:14.549Z] GET /api/settings
+[2026-02-23T08:17:15.545Z] GET /api/settings
+[2026-02-23T08:17:44.555Z] GET /api/settings
+[2026-02-23T08:17:45.553Z] GET /api/settings
+[2026-02-23T08:18:14.559Z] GET /api/settings
+[2026-02-23T08:18:15.243Z] GET /api/settings
+[2026-02-23T08:18:44.557Z] GET /api/settings
+[2026-02-23T08:18:45.553Z] GET /api/settings
+[2026-02-23T08:19:14.550Z] GET /api/settings
+[2026-02-23T08:19:15.560Z] GET /api/settings
+[2026-02-23T08:19:44.552Z] GET /api/settings
+[2026-02-23T08:19:45.556Z] GET /api/settings
+[2026-02-23T08:20:14.556Z] GET /api/settings
+[2026-02-23T08:20:44.719Z] GET /api/settings
+[2026-02-23T08:21:04.556Z] GET /api/settings
+[2026-02-23T08:21:14.554Z] GET /api/settings
+[2026-02-23T08:22:04.560Z] GET /api/settings
+[2026-02-23T08:22:04.567Z] GET /api/settings
+[2026-02-23T08:23:04.552Z] GET /api/settings
+[2026-02-23T08:23:04.557Z] GET /api/settings
+[2026-02-23T08:24:04.554Z] GET /api/settings
+[2026-02-23T08:24:04.557Z] GET /api/settings
+[2026-02-23T08:25:04.560Z] GET /api/settings
+[2026-02-23T08:25:04.576Z] GET /api/settings
+[2026-02-23T08:26:04.560Z] GET /api/settings
+[2026-02-23T08:26:04.566Z] GET /api/settings
+[2026-02-23T08:27:04.561Z] GET /api/settings
+[2026-02-23T08:27:04.569Z] GET /api/settings
+[2026-02-23T08:28:04.564Z] GET /api/settings
+[2026-02-23T08:28:04.569Z] GET /api/settings
+[2026-02-23T08:28:32.160Z] GET /api/settings
+[2026-02-23T08:28:34.931Z] GET /api/settings
+[2026-02-23T08:28:35.011Z] GET /api/settings
+[2026-02-23T08:29:04.284Z] GET /api/settings
+[2026-02-23T08:29:05.555Z] GET /api/settings
+[2026-02-23T08:29:07.653Z] GET /api/auth/users/698efa65da577a477e66bb85
+[2026-02-23T08:29:07.659Z] [AuthRouter] GET /api/auth/users/698efa65da577a477e66bb85
+[2026-02-23T08:29:07.844Z] GET /api/auth/users/698efa65da577a477e66bb85
+[2026-02-23T08:29:07.850Z] [AuthRouter] GET /api/auth/users/698efa65da577a477e66bb85
+[2026-02-23T08:29:07.870Z] GET /api/feedback/user/698efa65da577a477e66bb85
+[2026-02-23T08:29:08.166Z] GET /api/feedback/user/698efa65da577a477e66bb85
+[2026-02-23T08:29:13.959Z] GET /api/settings
+[2026-02-23T08:29:25.188Z] GET /api/settings
+[2026-02-23T08:29:25.199Z] GET /api/requests
+[2026-02-23T08:29:25.207Z] GET /api/courses?limit=1000
+[2026-02-23T08:29:25.233Z] GET /api/auth/users
+[2026-02-23T08:29:25.241Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:29:25.246Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:29:25.262Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:29:25.409Z] GET /api/requests
+[2026-02-23T08:29:25.582Z] GET /api/requests
+[2026-02-23T08:29:35.549Z] GET /api/settings
+[2026-02-23T08:29:41.952Z] GET /api/requests
+[2026-02-23T08:29:42.132Z] GET /api/requests
+[2026-02-23T08:29:43.802Z] GET /api/courses?limit=1000
+[2026-02-23T08:29:43.957Z] GET /api/settings
+[2026-02-23T08:29:44.548Z] GET /api/courses?limit=1000
+[2026-02-23T08:30:05.561Z] GET /api/settings
+[2026-02-23T08:30:13.965Z] GET /api/settings
+[2026-02-23T08:30:35.552Z] GET /api/settings
+[2026-02-23T08:30:44.558Z] GET /api/settings
+[2026-02-23T08:31:05.560Z] GET /api/settings
+[2026-02-23T08:31:14.561Z] GET /api/settings
+[2026-02-23T08:31:35.550Z] GET /api/settings
+[2026-02-23T08:31:44.555Z] GET /api/settings
+[2026-02-23T08:32:14.586Z] GET /api/settings
+[2026-02-23T08:32:44.564Z] GET /api/settings
+[2026-02-23T08:33:04.565Z] GET /api/settings
+[2026-02-23T08:33:14.550Z] GET /api/settings
+[2026-02-23T08:33:44.560Z] GET /api/settings
+[2026-02-23T08:34:04.554Z] GET /api/settings
+[2026-02-23T08:34:14.563Z] GET /api/settings
+[2026-02-23T08:34:44.561Z] GET /api/settings
+[2026-02-23T08:35:04.559Z] GET /api/settings
+[2026-02-23T08:35:14.555Z] GET /api/settings
+[2026-02-23T08:36:04.556Z] GET /api/settings
+[2026-02-23T08:36:04.560Z] GET /api/settings
+[2026-02-23T08:37:04.552Z] GET /api/settings
+[2026-02-23T08:37:04.565Z] GET /api/settings
+[2026-02-23T08:38:04.549Z] GET /api/settings
+[2026-02-23T08:38:04.557Z] GET /api/settings
+[2026-02-23T08:39:04.566Z] GET /api/settings
+[2026-02-23T08:39:04.578Z] GET /api/settings
+[2026-02-23T08:40:04.557Z] GET /api/settings
+[2026-02-23T08:40:04.568Z] GET /api/settings
+[2026-02-23T08:41:04.556Z] GET /api/settings
+[2026-02-23T08:41:04.565Z] GET /api/settings
+[2026-02-23T08:42:04.558Z] GET /api/settings
+[2026-02-23T08:42:04.566Z] GET /api/settings
+[2026-02-23T08:43:04.551Z] GET /api/settings
+[2026-02-23T08:43:04.558Z] GET /api/settings
+[2026-02-23T08:44:04.556Z] GET /api/settings
+[2026-02-23T08:44:04.591Z] GET /api/settings
+[2026-02-23T08:44:54.001Z] GET /api/settings
+[2026-02-23T08:44:54.069Z] GET /api/settings
+[2026-02-23T08:45:04.563Z] GET /api/settings
+[2026-02-23T08:45:24.562Z] GET /api/settings
+[2026-02-23T08:45:54.554Z] GET /api/settings
+[2026-02-23T08:46:04.549Z] GET /api/settings
+[2026-02-23T08:46:24.561Z] GET /api/settings
+[2026-02-23T08:46:34.936Z] GET /api/settings
+[2026-02-23T08:46:54.553Z] GET /api/settings
+[2026-02-23T08:47:05.556Z] GET /api/settings
+[2026-02-23T08:47:24.558Z] GET /api/settings
+[2026-02-23T08:47:35.560Z] GET /api/settings
+[2026-02-23T08:47:39.869Z] POST /api/auth/login
+[2026-02-23T08:47:39.874Z] [AuthRouter] POST /api/auth/login
+[2026-02-23T08:47:40.428Z] GET /api/requests
+[2026-02-23T08:47:40.448Z] GET /api/settings
+[2026-02-23T08:47:40.458Z] GET /api/courses?limit=1000
+[2026-02-23T08:47:40.465Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:47:40.473Z] GET /api/auth/users
+[2026-02-23T08:47:40.543Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:47:40.594Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:47:40.971Z] GET /api/requests
+[2026-02-23T08:47:41.473Z] GET /api/requests
+[2026-02-23T08:47:42.066Z] GET /api/auth/users
+[2026-02-23T08:47:42.070Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:47:42.260Z] GET /api/auth/users
+[2026-02-23T08:47:42.263Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:47:51.569Z] GET /api/requests
+[2026-02-23T08:47:51.586Z] GET /api/admin/faculty-requests
+[2026-02-23T08:47:51.754Z] GET /api/requests
+[2026-02-23T08:47:51.812Z] GET /api/admin/faculty-requests
+[2026-02-23T08:47:52.402Z] GET /api/auth/users
+[2026-02-23T08:47:52.410Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:47:52.668Z] GET /api/auth/users
+[2026-02-23T08:47:52.672Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:47:54.015Z] GET /api/settings
+[2026-02-23T08:47:54.416Z] GET /api/auth/users/6997ecde5c9c9ee73e4157c3
+[2026-02-23T08:47:54.419Z] [AuthRouter] GET /api/auth/users/6997ecde5c9c9ee73e4157c3
+[2026-02-23T08:47:54.625Z] GET /api/auth/users/6997ecde5c9c9ee73e4157c3
+[2026-02-23T08:47:54.639Z] [AuthRouter] GET /api/auth/users/6997ecde5c9c9ee73e4157c3
+[2026-02-23T08:47:54.660Z] GET /api/feedback/user/6997ecde5c9c9ee73e4157c3
+[2026-02-23T08:47:54.872Z] GET /api/feedback/user/6997ecde5c9c9ee73e4157c3
+[2026-02-23T08:47:57.496Z] GET /api/settings
+[2026-02-23T08:47:57.501Z] GET /api/auth/users
+[2026-02-23T08:47:57.507Z] GET /api/courses?limit=1000
+[2026-02-23T08:47:57.515Z] GET /api/requests
+[2026-02-23T08:47:57.519Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:47:57.524Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:47:57.554Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:47:57.802Z] GET /api/auth/users
+[2026-02-23T08:47:57.809Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:47:58.295Z] GET /api/auth/users
+[2026-02-23T08:47:58.331Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:47:58.937Z] GET /api/auth/users/698efa65da577a477e66bb85
+[2026-02-23T08:47:58.946Z] [AuthRouter] GET /api/auth/users/698efa65da577a477e66bb85
+[2026-02-23T08:47:59.200Z] GET /api/auth/users/698efa65da577a477e66bb85
+[2026-02-23T08:47:59.214Z] [AuthRouter] GET /api/auth/users/698efa65da577a477e66bb85
+[2026-02-23T08:47:59.247Z] GET /api/feedback/user/698efa65da577a477e66bb85
+[2026-02-23T08:47:59.581Z] GET /api/feedback/user/698efa65da577a477e66bb85
+[2026-02-23T08:48:05.554Z] GET /api/settings
+[2026-02-23T08:48:06.763Z] GET /api/settings
+[2026-02-23T08:48:06.768Z] GET /api/auth/users
+[2026-02-23T08:48:06.774Z] GET /api/courses?limit=1000
+[2026-02-23T08:48:06.785Z] GET /api/requests
+[2026-02-23T08:48:06.797Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:48:06.822Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:48:06.833Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:48:07.058Z] GET /api/auth/users
+[2026-02-23T08:48:07.076Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:48:07.924Z] GET /api/auth/users
+[2026-02-23T08:48:07.928Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:48:09.071Z] GET /api/courses?limit=1000
+[2026-02-23T08:48:09.773Z] GET /api/courses?limit=1000
+[2026-02-23T08:48:24.016Z] GET /api/settings
+[2026-02-23T08:48:54.560Z] GET /api/settings
+[2026-02-23T08:49:03.865Z] GET /api/settings
+[2026-02-23T08:49:24.553Z] GET /api/settings
+[2026-02-23T08:49:34.937Z] GET /api/settings
+[2026-02-23T08:49:54.557Z] GET /api/settings
+[2026-02-23T08:50:04.946Z] GET /api/settings
+[2026-02-23T08:50:24.546Z] GET /api/settings
+[2026-02-23T08:50:34.943Z] GET /api/settings
+[2026-02-23T08:50:54.557Z] GET /api/settings
+[2026-02-23T08:51:05.561Z] GET /api/settings
+[2026-02-23T08:51:24.555Z] GET /api/settings
+[2026-02-23T08:51:34.936Z] GET /api/settings
+[2026-02-23T08:51:54.554Z] GET /api/settings
+[2026-02-23T08:52:04.944Z] GET /api/settings
+[2026-02-23T08:52:10.719Z] GET /api/settings
+[2026-02-23T08:52:10.812Z] GET /api/settings
+[2026-02-23T08:52:24.558Z] GET /api/settings
+[2026-02-23T08:52:29.679Z] POST /api/auth/login
+[2026-02-23T08:52:29.683Z] [AuthRouter] POST /api/auth/login
+[2026-02-23T08:52:30.482Z] GET /api/faculty/dashboard
+[2026-02-23T08:52:30.490Z] GET /api/faculty/at-risk
+[2026-02-23T08:52:30.501Z] GET /api/faculty/my-requests
+[2026-02-23T08:52:30.760Z] GET /api/faculty/my-requests
+[2026-02-23T08:52:30.963Z] GET /api/faculty/at-risk
+[2026-02-23T08:52:31.072Z] GET /api/faculty/dashboard
+[2026-02-23T08:52:31.158Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:52:31.180Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:52:31.197Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:52:31.365Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:52:31.408Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:52:31.470Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:52:35.556Z] GET /api/settings
+[2026-02-23T08:52:40.732Z] GET /api/settings
+[2026-02-23T08:52:41.310Z] GET /api/courses/698eb72386087799976f29c1
+[2026-02-23T08:52:41.323Z] GET /api/courses/698eb72386087799976f29c1/students
+[2026-02-23T08:52:41.332Z] GET /api/faculty/course/698eb72386087799976f29c1/feedbacks
+[2026-02-23T08:52:41.366Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:52:41.373Z] GET /api/faculty/course/698eb72386087799976f29c1/resources
+[2026-02-23T08:52:41.378Z] GET /api/faculty/analytics/course/698eb72386087799976f29c1
+[2026-02-23T08:52:41.426Z] GET /api/courses/698eb72386087799976f29c1
+[2026-02-23T08:52:41.602Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:52:41.614Z] GET /api/faculty/course/698eb72386087799976f29c1/feedbacks
+[2026-02-23T08:52:41.629Z] GET /api/courses/698eb72386087799976f29c1/students
+[2026-02-23T08:52:41.718Z] GET /api/faculty/analytics/course/698eb72386087799976f29c1
+[2026-02-23T08:52:41.970Z] GET /api/faculty/course/698eb72386087799976f29c1/resources
+[2026-02-23T08:52:43.695Z] GET /api/faculty/dashboard
+[2026-02-23T08:52:43.700Z] GET /api/faculty/at-risk
+[2026-02-23T08:52:43.707Z] GET /api/faculty/my-requests
+[2026-02-23T08:52:44.042Z] GET /api/faculty/my-requests
+[2026-02-23T08:52:44.281Z] GET /api/faculty/at-risk
+[2026-02-23T08:52:44.452Z] GET /api/faculty/dashboard
+[2026-02-23T08:52:44.472Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:52:44.474Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:52:44.477Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:52:44.685Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:52:44.691Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:52:44.759Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:52:47.088Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:52:47.092Z] GET /api/courses/6992ede8f0bbd5ed3598e96b
+[2026-02-23T08:52:47.101Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/students
+[2026-02-23T08:52:47.104Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/feedbacks
+[2026-02-23T08:52:47.163Z] GET /api/faculty/analytics/course/6992ede8f0bbd5ed3598e96b
+[2026-02-23T08:52:47.172Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T08:52:47.337Z] GET /api/courses/6992ede8f0bbd5ed3598e96b
+[2026-02-23T08:52:47.461Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:52:47.529Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/students
+[2026-02-23T08:52:47.532Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T08:52:47.535Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/feedbacks
+[2026-02-23T08:52:47.542Z] GET /api/faculty/analytics/course/6992ede8f0bbd5ed3598e96b
+[2026-02-23T08:52:55.231Z] GET /api/settings
+[2026-02-23T08:52:55.352Z] GET /api/faculty/dashboard
+[2026-02-23T08:52:55.360Z] GET /api/faculty/at-risk
+[2026-02-23T08:52:55.377Z] GET /api/faculty/my-requests
+[2026-02-23T08:52:55.642Z] GET /api/faculty/my-requests
+[2026-02-23T08:52:55.821Z] GET /api/faculty/at-risk
+[2026-02-23T08:52:55.870Z] GET /api/faculty/dashboard
+[2026-02-23T08:52:55.931Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:52:55.963Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:52:55.973Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:52:56.019Z] GET /api/faculty/my-requests
+[2026-02-23T08:52:56.203Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:52:56.211Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:52:56.283Z] GET /api/faculty/at-risk
+[2026-02-23T08:52:56.289Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:52:56.790Z] GET /api/faculty/dashboard
+[2026-02-23T08:52:58.832Z] GET /api/faculty/dashboard
+[2026-02-23T08:52:58.837Z] GET /api/faculty/at-risk
+[2026-02-23T08:52:58.843Z] GET /api/faculty/my-requests
+[2026-02-23T08:53:05.563Z] GET /api/settings
+[2026-02-23T08:53:10.725Z] GET /api/settings
+[2026-02-23T08:53:24.548Z] GET /api/settings
+[2026-02-23T08:53:41.563Z] GET /api/settings
+[2026-02-23T08:53:49.491Z] GET /api/courses/698eb72386087799976f29c1
+[2026-02-23T08:53:49.495Z] GET /api/courses/698eb72386087799976f29c1/students
+[2026-02-23T08:53:49.500Z] GET /api/faculty/course/698eb72386087799976f29c1/feedbacks
+[2026-02-23T08:53:49.517Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:53:49.520Z] GET /api/faculty/course/698eb72386087799976f29c1/resources
+[2026-02-23T08:53:49.569Z] GET /api/faculty/analytics/course/698eb72386087799976f29c1
+[2026-02-23T08:53:49.590Z] GET /api/courses/698eb72386087799976f29c1
+[2026-02-23T08:53:49.786Z] GET /api/courses/698eb72386087799976f29c1/students
+[2026-02-23T08:53:49.789Z] GET /api/faculty/course/698eb72386087799976f29c1/resources
+[2026-02-23T08:53:49.792Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:53:49.795Z] GET /api/faculty/course/698eb72386087799976f29c1/feedbacks
+[2026-02-23T08:53:49.862Z] GET /api/faculty/analytics/course/698eb72386087799976f29c1
+[2026-02-23T08:54:03.523Z] GET /api/courses/698eb72386087799976f29c1
+[2026-02-23T08:54:03.556Z] GET /api/courses/698eb72386087799976f29c1/students
+[2026-02-23T08:54:03.596Z] GET /api/faculty/course/698eb72386087799976f29c1/feedbacks
+[2026-02-23T08:54:03.832Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:54:03.864Z] GET /api/faculty/course/698eb72386087799976f29c1/resources
+[2026-02-23T08:54:03.887Z] GET /api/faculty/analytics/course/698eb72386087799976f29c1
+[2026-02-23T08:54:06.419Z] GET /api/settings
+[2026-02-23T08:54:06.441Z] GET /api/settings
+[2026-02-23T08:54:10.723Z] GET /api/settings
+[2026-02-23T08:54:21.515Z] GET /api/courses/698eb72386087799976f29c1
+[2026-02-23T08:54:21.535Z] GET /api/faculty/analytics/course/698eb72386087799976f29c1
+[2026-02-23T08:54:21.540Z] GET /api/faculty/course/698eb72386087799976f29c1/resources
+[2026-02-23T08:54:21.551Z] GET /api/courses/698eb72386087799976f29c1/students
+[2026-02-23T08:54:21.557Z] GET /api/faculty/course/698eb72386087799976f29c1/feedbacks
+[2026-02-23T08:54:21.571Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:54:41.548Z] GET /api/settings
+[2026-02-23T08:55:04.560Z] GET /api/settings
+[2026-02-23T08:55:04.563Z] GET /api/settings
+[2026-02-23T08:55:11.556Z] GET /api/settings
+[2026-02-23T08:56:04.554Z] GET /api/settings
+[2026-02-23T08:56:04.560Z] GET /api/settings
+[2026-02-23T08:56:04.564Z] GET /api/settings
+[2026-02-23T08:56:10.726Z] GET /api/settings
+[2026-02-23T08:56:24.519Z] GET /api/settings
+[2026-02-23T08:56:34.343Z] GET /api/courses/departments
+[2026-02-23T08:56:34.349Z] GET /api/courses?limit=1000
+[2026-02-23T08:56:34.440Z] GET /api/courses/departments
+[2026-02-23T08:56:35.576Z] GET /api/settings
+[2026-02-23T08:56:35.737Z] GET /api/courses?limit=1000
+[2026-02-23T08:56:35.762Z] GET /api/student/dashboard
+[2026-02-23T08:56:36.427Z] GET /api/student/dashboard
+[2026-02-23T08:56:40.738Z] GET /api/settings
+[2026-02-23T08:56:47.116Z] GET /api/faculty/dashboard
+[2026-02-23T08:56:47.123Z] GET /api/faculty/at-risk
+[2026-02-23T08:56:47.128Z] GET /api/faculty/my-requests
+[2026-02-23T08:56:47.321Z] GET /api/faculty/my-requests
+[2026-02-23T08:56:47.493Z] GET /api/faculty/at-risk
+[2026-02-23T08:56:47.644Z] GET /api/faculty/dashboard
+[2026-02-23T08:56:47.680Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:56:47.684Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:56:47.689Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:56:47.958Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:56:47.964Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:56:47.971Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:56:48.584Z] GET /api/faculty/dashboard
+[2026-02-23T08:56:49.060Z] GET /api/faculty/dashboard
+[2026-02-23T08:56:54.546Z] GET /api/settings
+[2026-02-23T08:57:05.601Z] GET /api/settings
+[2026-02-23T08:57:11.104Z] GET /api/settings
+[2026-02-23T08:57:24.032Z] GET /api/settings
+[2026-02-23T08:57:24.397Z] GET /api/auth/users
+[2026-02-23T08:57:24.403Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:57:24.594Z] GET /api/auth/users
+[2026-02-23T08:57:24.604Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T08:57:25.673Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:57:25.677Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:57:25.974Z] GET /api/auth/users?role=faculty
+[2026-02-23T08:57:25.993Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T08:57:41.548Z] GET /api/settings
+[2026-02-23T08:57:54.014Z] GET /api/settings
+[2026-02-23T08:58:04.556Z] GET /api/settings
+[2026-02-23T08:58:11.551Z] GET /api/settings
+[2026-02-23T08:58:24.030Z] GET /api/settings
+[2026-02-23T08:58:54.015Z] GET /api/settings
+[2026-02-23T08:59:04.558Z] GET /api/settings
+[2026-02-23T08:59:04.572Z] GET /api/settings
+[2026-02-23T08:59:12.002Z] GET /api/settings
+[2026-02-23T08:59:24.552Z] GET /api/settings
+[2026-02-23T08:59:41.549Z] GET /api/settings
+[2026-02-23T08:59:45.226Z] GET /api/faculty/dashboard
+[2026-02-23T08:59:45.235Z] GET /api/faculty/at-risk
+[2026-02-23T08:59:45.241Z] GET /api/faculty/my-requests
+[2026-02-23T08:59:45.424Z] GET /api/faculty/my-requests
+[2026-02-23T08:59:45.578Z] GET /api/faculty/at-risk
+[2026-02-23T08:59:45.737Z] GET /api/faculty/dashboard
+[2026-02-23T08:59:45.812Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:59:45.821Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:59:45.884Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:59:46.202Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:59:46.478Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:59:46.488Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:59:52.041Z] GET /api/faculty/dashboard
+[2026-02-23T08:59:52.062Z] GET /api/faculty/at-risk
+[2026-02-23T08:59:52.102Z] GET /api/faculty/my-requests
+[2026-02-23T08:59:52.359Z] GET /api/faculty/my-requests
+[2026-02-23T08:59:52.901Z] GET /api/faculty/at-risk
+[2026-02-23T08:59:53.160Z] GET /api/faculty/dashboard
+[2026-02-23T08:59:53.256Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:59:53.267Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:59:53.286Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:59:53.595Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:59:53.605Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T08:59:53.665Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T08:59:54.626Z] GET /api/settings
+[2026-02-23T08:59:59.709Z] GET /api/courses/6992ede8f0bbd5ed3598e96b
+[2026-02-23T08:59:59.715Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/students
+[2026-02-23T08:59:59.723Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/feedbacks
+[2026-02-23T08:59:59.728Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:59:59.737Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T08:59:59.773Z] GET /api/faculty/analytics/course/6992ede8f0bbd5ed3598e96b
+[2026-02-23T08:59:59.850Z] GET /api/courses/6992ede8f0bbd5ed3598e96b
+[2026-02-23T08:59:59.906Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T08:59:59.964Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/students
+[2026-02-23T08:59:59.970Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T09:00:00.071Z] GET /api/faculty/analytics/course/6992ede8f0bbd5ed3598e96b
+[2026-02-23T09:00:00.115Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/feedbacks
+[2026-02-23T09:00:03.469Z] GET /api/faculty/dashboard
+[2026-02-23T09:00:03.475Z] GET /api/faculty/at-risk
+[2026-02-23T09:00:03.481Z] GET /api/faculty/my-requests
+[2026-02-23T09:00:03.654Z] GET /api/faculty/my-requests
+[2026-02-23T09:00:03.828Z] GET /api/faculty/at-risk
+[2026-02-23T09:00:03.901Z] GET /api/faculty/dashboard
+[2026-02-23T09:00:03.943Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:00:03.952Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:00:03.955Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:00:04.165Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:00:04.171Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:00:04.213Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:00:04.556Z] GET /api/settings
+[2026-02-23T09:00:10.738Z] GET /api/settings
+[2026-02-23T09:00:24.562Z] GET /api/settings
+[2026-02-23T09:00:41.551Z] GET /api/settings
+[2026-02-23T09:00:54.554Z] GET /api/settings
+[2026-02-23T09:01:04.567Z] GET /api/settings
+[2026-02-23T09:01:11.555Z] GET /api/settings
+[2026-02-23T09:01:24.557Z] GET /api/settings
+[2026-02-23T09:01:41.551Z] GET /api/settings
+[2026-02-23T09:01:54.547Z] GET /api/settings
+[2026-02-23T09:02:04.554Z] GET /api/settings
+[2026-02-23T09:02:24.550Z] GET /api/settings
+[2026-02-23T09:02:25.857Z] GET /api/settings
+[2026-02-23T09:02:28.942Z] GET /api/faculty/dashboard
+[2026-02-23T09:02:28.955Z] GET /api/faculty/at-risk
+[2026-02-23T09:02:28.985Z] GET /api/faculty/my-requests
+[2026-02-23T09:02:29.238Z] GET /api/faculty/my-requests
+[2026-02-23T09:02:29.383Z] GET /api/faculty/at-risk
+[2026-02-23T09:02:29.555Z] GET /api/faculty/dashboard
+[2026-02-23T09:02:29.622Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:02:29.633Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:02:29.636Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:02:29.860Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:02:29.865Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:02:29.944Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:02:32.547Z] GET /api/courses/6992ede8f0bbd5ed3598e96b
+[2026-02-23T09:02:32.565Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/students
+[2026-02-23T09:02:32.590Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:02:32.607Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T09:02:32.615Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/feedbacks
+[2026-02-23T09:02:32.657Z] GET /api/faculty/analytics/course/6992ede8f0bbd5ed3598e96b
+[2026-02-23T09:02:32.697Z] GET /api/courses/6992ede8f0bbd5ed3598e96b
+[2026-02-23T09:02:32.871Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:02:32.952Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/students
+[2026-02-23T09:02:32.957Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T09:02:32.963Z] GET /api/faculty/analytics/course/6992ede8f0bbd5ed3598e96b
+[2026-02-23T09:02:33.025Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/feedbacks
+[2026-02-23T09:02:40.731Z] GET /api/settings
+[2026-02-23T09:02:55.072Z] GET /api/settings
+[2026-02-23T09:03:04.553Z] GET /api/settings
+[2026-02-23T09:03:11.546Z] GET /api/settings
+[2026-02-23T09:03:24.576Z] GET /api/settings
+[2026-02-23T09:03:41.559Z] GET /api/settings
+[2026-02-23T09:03:54.548Z] GET /api/settings
+[2026-02-23T09:04:05.301Z] 🚀 SERVER RESTART: 24076 - UNIQUE_ID: 1771837445303
+[2026-02-23T09:04:05.402Z] GET /api/settings
+[2026-02-23T09:04:24.562Z] GET /api/settings
+[2026-02-23T09:04:34.941Z] GET /api/settings
+[2026-02-23T09:04:54.567Z] GET /api/settings
+[2026-02-23T09:05:04.562Z] GET /api/settings
+[2026-02-23T09:05:05.551Z] GET /api/settings
+[2026-02-23T09:05:35.595Z] GET /api/settings
+[2026-02-23T09:05:40.564Z] GET /api/settings
+[2026-02-23T09:05:40.697Z] GET /api/settings
+[2026-02-23T09:05:40.879Z] GET /api/settings
+[2026-02-23T09:05:40.885Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:05:40.887Z] GET /api/auth/users
+[2026-02-23T09:05:40.889Z] GET /api/requests
+[2026-02-23T09:05:40.890Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:05:40.900Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:05:40.912Z] GET /api/courses?limit=1000
+[2026-02-23T09:05:41.243Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:05:41.248Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:05:41.598Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:05:41.602Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:05:45.760Z] GET /api/settings
+[2026-02-23T09:05:49.024Z] GET /api/faculty/dashboard
+[2026-02-23T09:05:49.115Z] GET /api/faculty/at-risk
+[2026-02-23T09:05:49.154Z] GET /api/faculty/my-requests
+[2026-02-23T09:05:49.767Z] GET /api/faculty/my-requests
+[2026-02-23T09:05:50.177Z] GET /api/faculty/at-risk
+[2026-02-23T09:05:50.353Z] GET /api/faculty/dashboard
+[2026-02-23T09:05:50.433Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:05:50.455Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:05:50.499Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:05:51.052Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:05:51.061Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:05:51.117Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:05:53.131Z] GET /api/faculty/dashboard
+[2026-02-23T09:05:53.138Z] GET /api/faculty/at-risk
+[2026-02-23T09:05:53.148Z] GET /api/faculty/my-requests
+[2026-02-23T09:05:53.374Z] GET /api/faculty/my-requests
+[2026-02-23T09:05:53.485Z] GET /api/faculty/at-risk
+[2026-02-23T09:05:53.675Z] GET /api/faculty/dashboard
+[2026-02-23T09:05:53.707Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:05:53.718Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:05:53.742Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:05:53.928Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:05:53.935Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:05:53.990Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:06:05.556Z] GET /api/settings
+[2026-02-23T09:06:11.561Z] GET /api/settings
+[2026-02-23T09:06:33.661Z] GET /api/settings
+[2026-02-23T09:06:33.746Z] GET /api/faculty/dashboard
+[2026-02-23T09:06:33.748Z] GET /api/faculty/at-risk
+[2026-02-23T09:06:33.750Z] GET /api/faculty/my-requests
+[2026-02-23T09:06:33.860Z] GET /api/settings
+[2026-02-23T09:06:33.983Z] GET /api/settings
+[2026-02-23T09:06:33.996Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:06:33.998Z] GET /api/courses?limit=1000
+[2026-02-23T09:06:33.999Z] GET /api/auth/users
+[2026-02-23T09:06:34.001Z] GET /api/requests
+[2026-02-23T09:06:34.002Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:06:34.007Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:06:34.692Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:06:34.702Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:06:35.282Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:06:35.286Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:06:35.558Z] GET /api/settings
+[2026-02-23T09:06:41.557Z] GET /api/settings
+[2026-02-23T09:06:52.941Z] GET /api/faculty/dashboard
+[2026-02-23T09:06:52.945Z] GET /api/faculty/at-risk
+[2026-02-23T09:06:52.952Z] GET /api/faculty/my-requests
+[2026-02-23T09:06:53.119Z] GET /api/faculty/my-requests
+[2026-02-23T09:06:53.288Z] GET /api/faculty/at-risk
+[2026-02-23T09:06:53.423Z] GET /api/faculty/dashboard
+[2026-02-23T09:06:53.449Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:06:53.456Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:06:53.467Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:06:53.666Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:06:53.675Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:06:53.684Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:07:06.779Z] GET /api/faculty/dashboard
+[2026-02-23T09:07:06.789Z] GET /api/faculty/at-risk
+[2026-02-23T09:07:06.827Z] GET /api/faculty/my-requests
+[2026-02-23T09:07:07.307Z] GET /api/faculty/my-requests
+[2026-02-23T09:07:07.503Z] GET /api/faculty/at-risk
+[2026-02-23T09:07:07.696Z] GET /api/faculty/dashboard
+[2026-02-23T09:07:07.798Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:07:07.820Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:07:07.831Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:07:08.133Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:07:08.176Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:07:08.184Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:07:10.729Z] GET /api/settings
+[2026-02-23T09:07:19.659Z] GET /api/settings
+[2026-02-23T09:07:19.780Z] GET /api/settings
+[2026-02-23T09:07:19.857Z] GET /api/faculty/dashboard
+[2026-02-23T09:07:19.885Z] GET /api/faculty/at-risk
+[2026-02-23T09:07:19.891Z] GET /api/faculty/my-requests
+[2026-02-23T09:07:20.143Z] GET /api/faculty/my-requests
+[2026-02-23T09:07:20.390Z] GET /api/faculty/at-risk
+[2026-02-23T09:07:20.521Z] GET /api/faculty/dashboard
+[2026-02-23T09:07:20.616Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:07:20.633Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:07:20.636Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:07:21.054Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:07:21.062Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:07:21.183Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:07:23.510Z] GET /api/faculty/dashboard
+[2026-02-23T09:07:23.515Z] GET /api/faculty/at-risk
+[2026-02-23T09:07:23.537Z] GET /api/faculty/my-requests
+[2026-02-23T09:07:23.831Z] GET /api/faculty/my-requests
+[2026-02-23T09:07:24.605Z] GET /api/faculty/at-risk
+[2026-02-23T09:07:25.529Z] GET /api/faculty/dashboard
+[2026-02-23T09:07:25.593Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:07:25.614Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:07:25.621Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:07:26.519Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:07:26.527Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:07:26.936Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:07:50.552Z] GET /api/settings
+[2026-02-23T09:08:01.584Z] 🚀 SERVER RESTART: 24636 - UNIQUE_ID: 1771837681585
+[2026-02-23T09:08:04.245Z] GET /api/settings
+[2026-02-23T09:08:04.346Z] GET /api/settings
+[2026-02-23T09:08:04.419Z] GET /api/faculty/dashboard
+[2026-02-23T09:08:04.428Z] GET /api/faculty/at-risk
+[2026-02-23T09:08:04.446Z] GET /api/faculty/my-requests
+[2026-02-23T09:08:04.551Z] GET /api/settings
+[2026-02-23T09:08:04.774Z] GET /api/faculty/my-requests
+[2026-02-23T09:08:05.098Z] GET /api/faculty/at-risk
+[2026-02-23T09:08:05.161Z] GET /api/faculty/dashboard
+[2026-02-23T09:08:05.231Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:08:05.250Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:08:05.258Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:08:05.499Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:08:05.510Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:08:05.665Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:08:08.489Z] GET /api/faculty/dashboard
+[2026-02-23T09:08:08.493Z] GET /api/faculty/at-risk
+[2026-02-23T09:08:08.559Z] GET /api/faculty/my-requests
+[2026-02-23T09:08:08.850Z] GET /api/faculty/my-requests
+[2026-02-23T09:08:08.981Z] GET /api/faculty/at-risk
+[2026-02-23T09:08:09.179Z] GET /api/faculty/dashboard
+[2026-02-23T09:08:09.228Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:08:09.232Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:08:09.241Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:08:09.691Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:08:09.696Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:08:09.781Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:08:22.386Z] GET /api/faculty/dashboard
+[2026-02-23T09:08:22.390Z] GET /api/faculty/at-risk
+[2026-02-23T09:08:22.393Z] GET /api/faculty/my-requests
+[2026-02-23T09:08:23.105Z] GET /api/faculty/my-requests
+[2026-02-23T09:08:23.356Z] GET /api/faculty/at-risk
+[2026-02-23T09:08:23.753Z] GET /api/faculty/dashboard
+[2026-02-23T09:08:23.977Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:08:24.002Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:08:24.198Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:08:24.452Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:08:24.638Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:08:24.688Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:08:28.552Z] GET /api/settings
+[2026-02-23T09:08:28.596Z] GET /api/faculty/dashboard
+[2026-02-23T09:08:28.600Z] GET /api/faculty/at-risk
+[2026-02-23T09:08:28.604Z] GET /api/faculty/my-requests
+[2026-02-23T09:08:29.017Z] GET /api/settings
+[2026-02-23T09:08:29.248Z] GET /api/settings
+[2026-02-23T09:08:29.263Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:08:29.272Z] GET /api/courses?limit=1000
+[2026-02-23T09:08:29.274Z] GET /api/auth/users
+[2026-02-23T09:08:29.276Z] GET /api/requests
+[2026-02-23T09:08:29.278Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:08:29.293Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:08:29.497Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:08:29.499Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:08:29.832Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:08:29.834Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:08:34.547Z] GET /api/settings
+[2026-02-23T09:08:42.295Z] GET /api/courses/6992ede8f0bbd5ed3598e96b
+[2026-02-23T09:08:42.301Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/students
+[2026-02-23T09:08:42.306Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/feedbacks
+[2026-02-23T09:08:42.317Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:08:42.325Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T09:08:42.480Z] GET /api/faculty/analytics/course/6992ede8f0bbd5ed3598e96b
+[2026-02-23T09:08:42.742Z] GET /api/courses/6992ede8f0bbd5ed3598e96b
+[2026-02-23T09:08:42.956Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:08:43.164Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/resources
+[2026-02-23T09:08:43.269Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/students
+[2026-02-23T09:08:43.348Z] GET /api/faculty/analytics/course/6992ede8f0bbd5ed3598e96b
+[2026-02-23T09:08:43.355Z] GET /api/faculty/course/6992ede8f0bbd5ed3598e96b/feedbacks
+[2026-02-23T09:08:54.749Z] GET /api/faculty/dashboard
+[2026-02-23T09:08:54.755Z] GET /api/faculty/at-risk
+[2026-02-23T09:08:54.761Z] GET /api/faculty/my-requests
+[2026-02-23T09:08:54.972Z] GET /api/faculty/my-requests
+[2026-02-23T09:08:55.091Z] GET /api/faculty/at-risk
+[2026-02-23T09:08:55.189Z] GET /api/faculty/dashboard
+[2026-02-23T09:08:55.238Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:08:55.255Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:08:55.259Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:08:55.421Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:08:55.425Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:08:55.465Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:09:02.378Z] GET /api/faculty/dashboard
+[2026-02-23T09:09:02.788Z] GET /api/faculty/dashboard
+[2026-02-23T09:09:02.899Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:09:02.915Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:09:02.930Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:09:02.945Z] GET /api/courses/6997da3c2169dd22668b977a/announcements
+[2026-02-23T09:09:03.327Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:09:03.341Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:09:03.359Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:09:03.414Z] GET /api/courses/6997da3c2169dd22668b977a/announcements
+[2026-02-23T09:09:04.253Z] GET /api/settings
+[2026-02-23T09:09:04.565Z] GET /api/settings
+[2026-02-23T09:09:08.443Z] GET /api/courses/698eb72386087799976f29c1
+[2026-02-23T09:09:08.452Z] GET /api/courses/698eb72386087799976f29c1/students
+[2026-02-23T09:09:08.457Z] GET /api/faculty/course/698eb72386087799976f29c1/feedbacks
+[2026-02-23T09:09:08.473Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:09:08.538Z] GET /api/faculty/course/698eb72386087799976f29c1/resources
+[2026-02-23T09:09:08.545Z] GET /api/faculty/analytics/course/698eb72386087799976f29c1
+[2026-02-23T09:09:08.606Z] GET /api/courses/698eb72386087799976f29c1
+[2026-02-23T09:09:08.835Z] GET /api/faculty/course/698eb72386087799976f29c1/feedbacks
+[2026-02-23T09:09:08.847Z] GET /api/courses/698eb72386087799976f29c1/students
+[2026-02-23T09:09:08.974Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:09:09.137Z] GET /api/faculty/analytics/course/698eb72386087799976f29c1
+[2026-02-23T09:09:09.166Z] GET /api/faculty/course/698eb72386087799976f29c1/resources
+[2026-02-23T09:09:11.002Z] GET /api/faculty/dashboard
+[2026-02-23T09:09:11.521Z] GET /api/faculty/dashboard
+[2026-02-23T09:09:11.542Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:09:11.557Z] GET /api/courses/6997da3c2169dd22668b977a/announcements
+[2026-02-23T09:09:11.640Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:09:11.654Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:09:12.456Z] GET /api/courses/698eb72386087799976f29c1/announcements
+[2026-02-23T09:09:12.465Z] GET /api/courses/6992ede8f0bbd5ed3598e96b/announcements
+[2026-02-23T09:09:12.471Z] GET /api/courses/69931ad14163c802f597a363/announcements
+[2026-02-23T09:09:12.490Z] GET /api/courses/6997da3c2169dd22668b977a/announcements
+[2026-02-23T09:29:20.010Z] 🚀 SERVER RESTART: 16592 - UNIQUE_ID: 1771838960011
+[2026-02-23T09:29:35.467Z] GET /api/settings
+[2026-02-23T09:29:35.571Z] GET /api/settings
+[2026-02-23T09:29:50.755Z] POST /api/auth/login
+[2026-02-23T09:29:50.758Z] [AuthRouter] POST /api/auth/login
+[2026-02-23T09:29:51.329Z] GET /api/requests
+[2026-02-23T09:29:51.337Z] GET /api/settings
+[2026-02-23T09:29:51.358Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:29:51.375Z] GET /api/courses?limit=1000
+[2026-02-23T09:29:51.379Z] GET /api/auth/users
+[2026-02-23T09:29:51.409Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:29:51.432Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:29:51.801Z] GET /api/requests
+[2026-02-23T09:29:52.412Z] GET /api/requests
+[2026-02-23T09:29:53.807Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:29:53.815Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:29:54.103Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:29:54.117Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:20.909Z] GET /api/settings
+[2026-02-23T09:31:21.037Z] GET /api/settings
+[2026-02-23T09:31:21.126Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:21.163Z] GET /api/requests
+[2026-02-23T09:31:21.177Z] GET /api/courses?limit=1000
+[2026-02-23T09:31:21.185Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:21.258Z] GET /api/auth/users
+[2026-02-23T09:31:21.285Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:31:21.405Z] GET /api/settings
+[2026-02-23T09:31:21.962Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:21.987Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:22.653Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:22.659Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:22.916Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:22.924Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:26.263Z] GET /api/settings
+[2026-02-23T09:31:26.322Z] GET /api/settings
+[2026-02-23T09:31:26.608Z] GET /api/settings
+[2026-02-23T09:31:26.617Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:26.632Z] GET /api/courses?limit=1000
+[2026-02-23T09:31:26.639Z] GET /api/auth/users
+[2026-02-23T09:31:26.654Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:26.673Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:31:26.691Z] GET /api/requests
+[2026-02-23T09:31:26.925Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:26.932Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:27.241Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:27.244Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:43.191Z] GET /api/auth/users
+[2026-02-23T09:31:43.196Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:31:43.522Z] GET /api/auth/users
+[2026-02-23T09:31:43.526Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:31:44.331Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:44.340Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:44.614Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:44.621Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:49.983Z] GET /api/settings
+[2026-02-23T09:31:49.998Z] GET /api/auth/users
+[2026-02-23T09:31:50.031Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:31:50.073Z] GET /api/courses?limit=1000
+[2026-02-23T09:31:50.082Z] GET /api/requests
+[2026-02-23T09:31:50.091Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:50.137Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:50.183Z] GET /api/settings
+[2026-02-23T09:31:50.490Z] GET /api/auth/users
+[2026-02-23T09:31:50.495Z] GET /api/requests
+[2026-02-23T09:31:50.500Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:31:50.676Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:50.681Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:50.906Z] GET /api/courses?limit=1000
+[2026-02-23T09:31:51.752Z] GET /api/auth/users
+[2026-02-23T09:31:51.756Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:31:51.990Z] GET /api/auth/users
+[2026-02-23T09:31:51.996Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:31:53.489Z] GET /api/requests
+[2026-02-23T09:31:53.493Z] GET /api/admin/faculty-requests
+[2026-02-23T09:31:53.689Z] GET /api/requests
+[2026-02-23T09:31:53.763Z] GET /api/admin/faculty-requests
+[2026-02-23T09:31:56.270Z] GET /api/settings
+[2026-02-23T09:31:57.058Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:57.063Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:57.312Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:31:57.316Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:32:05.121Z] GET /api/auth/users
+[2026-02-23T09:32:05.128Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:32:05.407Z] GET /api/auth/users
+[2026-02-23T09:32:05.413Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:32:07.891Z] GET /api/requests
+[2026-02-23T09:32:07.897Z] GET /api/admin/faculty-requests
+[2026-02-23T09:32:08.207Z] GET /api/requests
+[2026-02-23T09:32:08.245Z] GET /api/admin/faculty-requests
+[2026-02-23T09:32:09.150Z] GET /api/auth/users
+[2026-02-23T09:32:09.155Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:32:09.529Z] GET /api/auth/users
+[2026-02-23T09:32:09.531Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:32:11.415Z] GET /api/auth/users/69996e5b11419b4daaaff8e7
+[2026-02-23T09:32:11.419Z] [AuthRouter] GET /api/auth/users/69996e5b11419b4daaaff8e7
+[2026-02-23T09:32:11.676Z] GET /api/auth/users/69996e5b11419b4daaaff8e7
+[2026-02-23T09:32:11.682Z] [AuthRouter] GET /api/auth/users/69996e5b11419b4daaaff8e7
+[2026-02-23T09:32:11.695Z] GET /api/feedback/user/69996e5b11419b4daaaff8e7
+[2026-02-23T09:32:12.016Z] GET /api/feedback/user/69996e5b11419b4daaaff8e7
+[2026-02-23T09:32:18.623Z] PUT /api/auth/users/69996e5b11419b4daaaff8e7
+[2026-02-23T09:32:18.627Z] [AuthRouter] PUT /api/auth/users/69996e5b11419b4daaaff8e7
+[2026-02-23T09:32:26.268Z] GET /api/settings
+[2026-02-23T09:32:28.820Z] PUT /api/auth/users/69996e5b11419b4daaaff8e7
+[2026-02-23T09:32:28.824Z] [AuthRouter] PUT /api/auth/users/69996e5b11419b4daaaff8e7
+[2026-02-23T09:32:32.474Z] GET /api/settings
+[2026-02-23T09:32:32.480Z] GET /api/auth/users
+[2026-02-23T09:32:32.486Z] GET /api/requests
+[2026-02-23T09:32:32.491Z] GET /api/courses?limit=1000
+[2026-02-23T09:32:32.495Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:32:32.512Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:32:32.519Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:32:32.812Z] GET /api/requests
+[2026-02-23T09:32:33.237Z] GET /api/requests
+[2026-02-23T09:32:35.310Z] GET /api/auth/users
+[2026-02-23T09:32:35.314Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:32:35.780Z] GET /api/auth/users
+[2026-02-23T09:32:35.784Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:32:41.690Z] GET /api/requests
+[2026-02-23T09:32:41.695Z] GET /api/admin/faculty-requests
+[2026-02-23T09:32:42.134Z] GET /api/admin/faculty-requests
+[2026-02-23T09:32:42.328Z] GET /api/requests
+[2026-02-23T09:32:42.919Z] GET /api/courses?limit=1000
+[2026-02-23T09:32:43.553Z] GET /api/courses?limit=1000
+[2026-02-23T09:32:44.053Z] GET /api/requests
+[2026-02-23T09:32:44.070Z] GET /api/admin/faculty-requests
+[2026-02-23T09:32:44.472Z] GET /api/requests
+[2026-02-23T09:32:44.477Z] GET /api/admin/faculty-requests
+[2026-02-23T09:32:45.319Z] GET /api/courses?limit=1000
+[2026-02-23T09:32:46.183Z] GET /api/courses?limit=1000
+[2026-02-23T09:32:56.273Z] GET /api/settings
+[2026-02-23T09:33:03.308Z] GET /api/requests
+[2026-02-23T09:33:03.313Z] GET /api/admin/faculty-requests
+[2026-02-23T09:33:03.771Z] GET /api/admin/faculty-requests
+[2026-02-23T09:33:03.776Z] GET /api/requests
+[2026-02-23T09:33:07.169Z] GET /api/auth/users
+[2026-02-23T09:33:07.173Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:33:07.414Z] GET /api/auth/users
+[2026-02-23T09:33:07.418Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:33:09.355Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:09.359Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:09.679Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:09.684Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:15.254Z] GET /api/requests
+[2026-02-23T09:33:15.875Z] GET /api/requests
+[2026-02-23T09:33:16.367Z] GET /api/requests
+[2026-02-23T09:33:16.370Z] GET /api/courses?limit=1
+[2026-02-23T09:33:16.373Z] GET /api/auth/users?role=student
+[2026-02-23T09:33:16.375Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:16.391Z] [AuthRouter] GET /api/auth/users?role=student
+[2026-02-23T09:33:16.404Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:16.731Z] GET /api/courses?limit=1
+[2026-02-23T09:33:16.848Z] GET /api/auth/users?role=student
+[2026-02-23T09:33:16.852Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:16.858Z] GET /api/requests
+[2026-02-23T09:33:16.862Z] [AuthRouter] GET /api/auth/users?role=student
+[2026-02-23T09:33:16.876Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:18.959Z] GET /api/requests
+[2026-02-23T09:33:18.965Z] GET /api/settings
+[2026-02-23T09:33:18.969Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:18.978Z] GET /api/courses?limit=1000
+[2026-02-23T09:33:18.981Z] GET /api/auth/users
+[2026-02-23T09:33:18.995Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:19.012Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:33:19.459Z] GET /api/requests
+[2026-02-23T09:33:19.800Z] GET /api/requests
+[2026-02-23T09:33:20.611Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:20.615Z] GET /api/courses?sortBy=createdAt&order=desc&limit=1000
+[2026-02-23T09:33:20.619Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:20.876Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:20.881Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:21.426Z] GET /api/courses?sortBy=createdAt&order=desc&limit=1000
+[2026-02-23T09:33:25.074Z] GET /api/settings
+[2026-02-23T09:33:25.080Z] GET /api/requests
+[2026-02-23T09:33:25.092Z] GET /api/courses?limit=1000
+[2026-02-23T09:33:25.095Z] GET /api/auth/users
+[2026-02-23T09:33:25.113Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:25.120Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:33:25.128Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:25.428Z] GET /api/requests
+[2026-02-23T09:33:25.812Z] GET /api/requests
+[2026-02-23T09:33:26.267Z] GET /api/settings
+[2026-02-23T09:33:26.683Z] GET /api/requests
+[2026-02-23T09:33:26.686Z] GET /api/courses?limit=1000
+[2026-02-23T09:33:26.689Z] GET /api/settings
+[2026-02-23T09:33:26.691Z] GET /api/auth/users
+[2026-02-23T09:33:26.700Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:26.711Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:33:26.726Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:33:27.082Z] GET /api/requests
+[2026-02-23T09:33:27.317Z] GET /api/requests

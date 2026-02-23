@@ -47,7 +47,7 @@ const Navbar = () => {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className={`fixed top-0 w-full z-50 transition-all duration-500 theme-transition ${scrolled || !isAuthPage ? 'bg-white/95 dark:bg-[#030712]/95 shadow-lg shadow-indigo-500/5 border-b border-slate-200/50 dark:border-white/5' : 'bg-transparent border-transparent'}`}
+            className={`fixed top-0 w-full z-50 transition-all duration-500 theme-transition ${scrolled || !isAuthPage ? 'bg-white/80 dark:bg-[#030712]/80 backdrop-blur-2xl shadow-lg shadow-indigo-500/5 border-b border-slate-200/50 dark:border-white/5' : 'bg-transparent border-transparent'}`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
@@ -60,7 +60,7 @@ const Navbar = () => {
                             <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white leading-none">
                                 Student<span className="text-indigo-500">IQ</span>
                             </span>
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-gray-500 group-hover:text-indigo-500 transition-colors">
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-400 group-hover:text-indigo-500 transition-colors">
                                 Analytics OS
                             </span>
                         </div>
@@ -107,7 +107,7 @@ const Navbar = () => {
                                 <div className="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-gray-800">
                                     <div className="text-right hidden lg:block">
                                         <p className="text-xs font-bold text-slate-900 dark:text-white leading-none mb-1">{userInfo.name.split(' ')[0]}</p>
-                                        <span className="inline-block px-1.5 py-0.5 rounded bg-slate-100 dark:bg-gray-700 text-[9px] font-bold text-slate-400 uppercase tracking-wider">{userInfo.role}</span>
+                                        <span className="inline-block px-1.5 py-0.5 rounded bg-slate-100 dark:bg-gray-700 text-[9px] font-bold text-slate-400 dark:text-slate-300 uppercase tracking-wider">{userInfo.role}</span>
                                     </div>
                                     <motion.div
                                         whileHover={{ scale: 1.1, rotate: 5 }}
@@ -127,7 +127,7 @@ const Navbar = () => {
                                     </motion.div>
                                     <button
                                         onClick={logoutHandler}
-                                        className="p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
+                                        className="p-2 rounded-xl text-slate-400 dark:text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
                                         title="Disconnect"
                                     >
                                         <ArrowRightOnRectangleIcon className="w-5 h-5" />

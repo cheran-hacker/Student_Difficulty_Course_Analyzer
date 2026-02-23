@@ -312,7 +312,7 @@ const StudentProfileCard = ({ user }) => {
                                 <StatItem
                                     icon={IdentificationIcon}
                                     label="REGISTRY"
-                                    value={user?.studentId || (user?.role === 'faculty' ? 'ST-7376-FAC' : '7376232IT122')}
+                                    value={user?.role === 'faculty' ? (user?.facultyId || 'N/A') : (user?.studentId || 'N/A')}
                                     accent={user?.role === 'faculty' ? "emerald" : "indigo"}
                                     delay={0.6}
                                 />

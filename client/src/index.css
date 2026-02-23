@@ -29,7 +29,7 @@
 
 @layer components {
     .glass-effect {
-        @apply bg-white/90 dark:bg-black/95 border border-white/20 dark:border-white/5 shadow-2xl transition-all duration-500;
+        @apply backdrop-blur-xl bg-white/70 dark:bg-black/60 border border-white/20 dark:border-white/5 shadow-2xl transition-all duration-500;
     }
 
     .custom-scrollbar::-webkit-scrollbar {
@@ -154,9 +154,9 @@ button {
     animation: light-leak 15s ease-in-out infinite;
 }
 
-/* Optimized Glass v2 - removed blur for performance and clarity */
+/* Optimized Glass v2 - reduced blur for performance */
 .glass-ultra {
-    @apply bg-white/95 dark:bg-black/90 border border-white/20 dark:border-white/10;
+    @apply backdrop-blur-[12px] bg-white/60 dark:bg-black/40 border border-white/20 dark:border-white/10;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
 }
 

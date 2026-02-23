@@ -66,10 +66,10 @@ const StatCard = ({ title, value, icon: Icon, color, delay, trend }) => {
                         {typeof value === 'number' ? value.toLocaleString() : value}
                     </h3>
                     {isRating && (
-                        <span className="text-lg font-bold text-slate-400 dark:text-gray-500">/ 10</span>
+                        <span className="text-lg font-bold text-slate-400 dark:text-gray-400">/ 10</span>
                     )}
                 </div>
-                <p className="text-[10px] font-black text-slate-500 dark:text-indigo-400/70 mt-1 uppercase tracking-[0.2em] opacity-80">{title}</p>
+                <p className="text-[10px] font-black text-slate-500 dark:text-indigo-300 mt-1 uppercase tracking-[0.2em]">{title}</p>
             </div>
         </motion.div>
     );
@@ -239,12 +239,12 @@ const RequestAccessModal = ({ onClose, onSubmit, departments }) => {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">Justification</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-gray-200 mb-1">Justification</label>
                             <textarea
                                 placeholder="Why do you need access to this course?"
                                 value={formData.justification}
                                 onChange={(e) => setFormData({ ...formData, justification: e.target.value })}
-                                className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all text-slate-900 dark:text-white h-24 resize-none"
+                                className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all text-slate-900 dark:text-white h-24 resize-none placeholder:text-slate-400 dark:placeholder:text-gray-500"
                                 required
                             />
                         </div>
@@ -318,7 +318,7 @@ const EditRequestModal = ({ request, onClose, onSubmit, departments }) => {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase text-slate-400 dark:text-indigo-400/70 tracking-[0.2em] ml-1">Code</label>
+                                <label className="text-[10px] font-black uppercase text-slate-400 dark:text-indigo-300 tracking-[0.2em] ml-1">Code</label>
                                 <input
                                     type="text"
                                     value={formData.courseCode}
@@ -328,7 +328,7 @@ const EditRequestModal = ({ request, onClose, onSubmit, departments }) => {
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase text-slate-400 dark:text-indigo-400/70 tracking-[0.2em] ml-1">Department</label>
+                                <label className="text-[10px] font-black uppercase text-slate-400 dark:text-indigo-300 tracking-[0.2em] ml-1">Department</label>
                                 <select
                                     value={formData.department}
                                     onChange={(e) => setFormData({ ...formData, department: e.target.value })}
@@ -342,7 +342,7 @@ const EditRequestModal = ({ request, onClose, onSubmit, departments }) => {
                             </div>
                         </div>
                         <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase text-slate-400 dark:text-indigo-400/70 tracking-[0.2em] ml-1">Course Title</label>
+                            <label className="text-[10px] font-black uppercase text-slate-400 dark:text-indigo-300 tracking-[0.2em] ml-1">Course Title</label>
                             <input
                                 type="text"
                                 value={formData.courseName}
@@ -352,7 +352,7 @@ const EditRequestModal = ({ request, onClose, onSubmit, departments }) => {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase text-slate-400 dark:text-indigo-400/70 tracking-[0.2em] ml-1">Justification</label>
+                            <label className="text-[10px] font-black uppercase text-slate-400 dark:text-indigo-300 tracking-[0.2em] ml-1">Justification</label>
                             <textarea
                                 value={formData.justification}
                                 onChange={(e) => setFormData({ ...formData, justification: e.target.value })}
@@ -753,10 +753,10 @@ const FacultyDashboard = () => {
                                 </div>
                                 Recent Communications
                             </h2>
-                            <p className="text-slate-500 dark:text-gray-400 mt-2 font-medium">Broadcasts across your active courses.</p>
+                            <p className="text-slate-500 dark:text-gray-300 mt-2 font-medium">Broadcasts across your active courses.</p>
                         </div>
                         <button
-                            onClick={() => navigate('/faculty/announcements')}
+                            onClick={() => navigate('/faculty/broadcasts')}
                             className="px-6 py-2.5 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold text-sm border border-indigo-500/20 hover:bg-indigo-500 hover:text-white transition-all shadow-sm"
                         >
                             View All Broadcasts
@@ -958,7 +958,7 @@ const FacultyDashboard = () => {
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={sentimentData} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                                     <XAxis type="number" hide />
-                                    <YAxis dataKey="subject" type="category" width={100} tick={{ fill: 'currentColor', fontSize: 11, fontWeight: 900, className: 'text-slate-500 dark:text-indigo-400/60 uppercase tracking-widest' }} axisLine={false} tickLine={false} />
+                                    <YAxis dataKey="subject" type="category" width={100} tick={{ fill: 'currentColor', fontSize: 11, fontWeight: 900, className: 'text-slate-500 dark:text-indigo-300 uppercase tracking-widest' }} axisLine={false} tickLine={false} />
                                     <Tooltip
                                         contentStyle={{ backgroundColor: 'rgba(15, 16, 20, 0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px', color: '#fff', boxShadow: '0 20px 50px -10px rgba(0,0,0,0.5)', backdropFilter: 'blur(20px)' }}
                                         cursor={{ fill: 'rgba(99, 102, 241, 0.05)', radius: 12 }}
@@ -996,8 +996,8 @@ const FacultyDashboard = () => {
                                 <div className="text-center py-16 text-slate-500 dark:text-gray-500 bg-white/50 dark:bg-white/5 rounded-[2rem] border border-slate-200 dark:border-white/5 relative group overflow-hidden">
                                     <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                     <span className="block text-5xl mb-4 group-hover:scale-125 transition-transform">✨</span>
-                                    <p className="font-black text-slate-400 dark:text-gray-400 uppercase tracking-widest text-xs">All Students Optimized</p>
-                                    <p className="text-[10px] mt-2 text-slate-500 dark:text-indigo-400/40 font-bold uppercase tracking-widest">Efficiency 100%</p>
+                                    <p className="font-black text-slate-400 dark:text-gray-300 uppercase tracking-widest text-xs">All Students Optimized</p>
+                                    <p className="text-[10px] mt-2 text-slate-500 dark:text-indigo-300 font-bold uppercase tracking-widest">Efficiency 100%</p>
                                 </div>
                             ) : (
                                 atRiskStudents.map(student => (

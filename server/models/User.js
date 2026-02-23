@@ -25,6 +25,11 @@ const userSchema = mongoose.Schema({
         unique: true,
         sparse: true // Allows null/undefined for admins
     },
+    facultyId: {
+        type: String,
+        unique: true,
+        sparse: true
+    },
     department: {
         type: String,
     },

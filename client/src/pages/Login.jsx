@@ -39,12 +39,12 @@ const Login = () => {
             button: 'bg-[#0D9488] hover:bg-[#0F766E] shadow-teal-500/20'
         },
         faculty: {
-            primary: '#4F46E5', // Indigo 600
+            primary: '#6366F1', // Indigo 500 (Brighter)
             bg: 'from-indigo-500/10 to-purple-500/10',
             glow: 'shadow-indigo-500/30',
-            border: 'group-focus-within:border-indigo-500/30',
-            icon: 'text-indigo-600',
-            button: 'bg-[#4F46E5] hover:bg-[#4338CA] shadow-indigo-500/20'
+            border: 'group-focus-within:border-indigo-500/40',
+            icon: 'text-indigo-400',
+            button: 'bg-indigo-600 hover:bg-indigo-500 shadow-indigo-600/30'
         }
     };
 
@@ -99,7 +99,7 @@ const Login = () => {
                         animate={{ opacity: 0.4 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 1.5 }}
-                        className={`absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-gradient-to-br ${currentStyle.bg} rounded-full`}
+                        className={`absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-gradient-to-br ${currentStyle.bg} rounded-full blur-[140px]`}
                     />
                 </AnimatePresence>
 
@@ -116,7 +116,7 @@ const Login = () => {
                 {/* Main Card */}
                 <div className="w-full relative group">
                     {/* Animated Border Beam - Only visible in dark mode or on hover to add depth */}
-                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-teal-500/50 to-transparent rounded-[3rem] opacity-0 dark:opacity-20 group-hover:opacity-100 transition-opacity duration-1000 animate-border-beam pointer-events-none"></div>
+                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-teal-500/50 to-transparent rounded-[3rem] opacity-0 dark:opacity-20 group-hover:opacity-100 blur-[2px] transition-opacity duration-1000 animate-border-beam pointer-events-none"></div>
 
                     <div className="bg-white/90 dark:bg-[#0A0F1E] rounded-[3rem] p-8 sm:p-10 md:p-12 overflow-hidden relative border border-white dark:border-white/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.04)] dark:shadow-[0_0_50px_-12px_rgba(13,148,136,0.1)] interaction-card transition-all duration-700">
                         {/* Inner Depth Glow */}
@@ -164,9 +164,9 @@ const Login = () => {
                                     </motion.h1>
                                 </AnimatePresence>
                                 <div className="flex items-center gap-4 py-1">
-                                    <div className="h-[1px] flex-1 bg-slate-100 dark:bg-white/10"></div>
-                                    <span className="text-[10px] font-black tracking-[0.4em] text-slate-400 dark:text-white/60 uppercase whitespace-nowrap">Academic Network Node</span>
-                                    <div className="h-[1px] flex-1 bg-slate-100 dark:bg-white/10"></div>
+                                    <div className="h-[1px] flex-1 bg-slate-100 dark:bg-white/20"></div>
+                                    <span className={`text-[10px] font-black tracking-[0.4em] uppercase whitespace-nowrap transition-colors ${role === 'faculty' ? 'text-indigo-300' : 'text-slate-400 dark:text-slate-300'}`}>Academic Network Node</span>
+                                    <div className="h-[1px] flex-1 bg-slate-100 dark:bg-white/20"></div>
                                 </div>
                             </div>
                         </div>
@@ -185,13 +185,13 @@ const Login = () => {
                             />
                             <button
                                 onClick={() => setRole('student')}
-                                className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-[10px] font-black tracking-widest transition-all duration-500 relative z-10 ${role === 'student' ? 'text-white' : 'text-slate-400 dark:text-white/20'}`}
+                                className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-[10px] font-black tracking-widest transition-all duration-500 relative z-10 ${role === 'student' ? 'text-white' : 'text-slate-400 dark:text-gray-400'}`}
                             >
                                 <UserIcon className="w-4 h-4" /> STUDENT
                             </button>
                             <button
                                 onClick={() => setRole('faculty')}
-                                className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-[10px] font-black tracking-widest transition-all duration-500 relative z-10 ${role === 'faculty' ? 'text-white' : 'text-slate-400 dark:text-white/20'}`}
+                                className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-[10px] font-black tracking-widest transition-all duration-500 relative z-10 ${role === 'faculty' ? 'text-white' : 'text-slate-400 dark:text-gray-400'}`}
                             >
                                 <BuildingLibraryIcon className="w-4 h-4" /> FACULTY
                             </button>
@@ -200,7 +200,7 @@ const Login = () => {
                         {/* Form */}
                         <form onSubmit={submitHandler} className="space-y-8">
                             <div className="space-y-3 group">
-                                <label className="text-[10px] font-black tracking-widest text-[#64748B] dark:text-white/90 uppercase ml-1 flex justify-between">
+                                <label className={`text-[10px] font-black tracking-widest uppercase ml-1 flex justify-between transition-colors ${role === 'faculty' ? 'text-indigo-300' : 'text-[#64748B] dark:text-white/90'}`}>
                                     {role === 'student' ? 'Register Number / Email' : 'Professional Identifer'}
                                     <span className="opacity-60">{loading ? 'VERIFYING...' : 'REQUIRED'}</span>
                                 </label>
@@ -213,14 +213,14 @@ const Login = () => {
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className={`block w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/[0.1] border-2 border-slate-100 dark:border-white/20 ${currentStyle.border} rounded-2xl text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-white/60 transition-all outline-none font-bold text-sm`}
+                                        className={`block w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/[0.1] border-2 border-slate-100 dark:border-white/20 ${currentStyle.border} rounded-2xl text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-white/70 transition-all outline-none font-bold text-sm`}
                                         placeholder={role === 'student' ? "yourbox@bitsathy.ac.in" : "faculty.name@bitsathy.ac.in"}
                                     />
                                 </div>
                             </div>
 
                             <div className="space-y-3 group">
-                                <label className="text-[10px] font-black tracking-widest text-[#64748B] dark:text-white/90 uppercase ml-1 flex justify-between">
+                                <label className={`text-[10px] font-black tracking-widest uppercase ml-1 flex justify-between transition-colors ${role === 'faculty' ? 'text-indigo-300' : 'text-[#64748B] dark:text-white/90'}`}>
                                     Security Portal Key
                                     <LockClosedIcon className="w-3 h-3 opacity-20" />
                                 </label>
@@ -258,12 +258,12 @@ const Login = () => {
                                         onChange={(e) => setRememberMe(e.target.checked)}
                                         className="hidden"
                                     />
-                                    <div className={`w-5 h-5 rounded-lg border-2 flex items-center justify-center transition-all ${rememberMe ? `${currentStyle.button} border-transparent` : 'bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 group-hover:border-slate-300'}`}>
+                                    <div className={`w-5 h-5 rounded-lg border-2 flex items-center justify-center transition-all ${rememberMe ? `${currentStyle.button} border-transparent` : 'bg-slate-50 dark:bg-white/10 border-slate-200 dark:border-white/20 group-hover:border-slate-300'}`}>
                                         {rememberMe && <div className="w-1.5 h-1.5 bg-white rounded-full" />}
                                     </div>
-                                    <span className="text-[10px] font-black text-slate-500 dark:text-white/70 uppercase tracking-[0.15em] group-hover:text-slate-700 dark:group-hover:text-white transition-colors">Session Lock</span>
+                                    <span className={`text-[10px] font-black uppercase tracking-[0.15em] transition-colors ${role === 'faculty' ? 'text-indigo-300/90 group-hover:text-white' : 'text-slate-500 dark:text-slate-300 group-hover:text-slate-700 dark:group-hover:text-white'}`}>Session Lock</span>
                                 </label>
-                                <Link to="/recovery" className="text-[10px] font-black text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 uppercase tracking-widest transition-colors">Recovery</Link>
+                                <Link to="/recovery" className={`text-[10px] font-black uppercase tracking-widest transition-colors ${role === 'faculty' ? 'text-indigo-300/80 hover:text-white' : 'text-slate-400 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-teal-400'}`}>Recovery</Link>
                             </div>
 
                             <AnimatePresence mode="wait">
@@ -272,7 +272,7 @@ const Login = () => {
                                         initial={{ opacity: 0, y: -10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, scale: 0.95 }}
-                                        className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3"
+                                        className="p-4 bg-red-500/5 border border-red-500/20 rounded-2xl flex items-center gap-3 backdrop-blur-md"
                                     >
                                         <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>
                                         <span className="text-[10px] font-black text-red-500 uppercase tracking-widest">{error}</span>
@@ -300,7 +300,7 @@ const Login = () => {
                         <div className="mt-10 flex flex-col items-center gap-8">
                             {/* Registration Link: Consolidated for professional layout */}
                             <Link to="/register" className="group flex flex-col items-center gap-2">
-                                <span className="text-[10px] font-black text-slate-400 dark:text-white/80 uppercase tracking-[0.3em] opacity-90">Non-Enrolled Entity?</span>
+                                <span className={`text-[10px] font-black uppercase tracking-[0.3em] transition-colors ${role === 'faculty' ? 'text-indigo-300/60 group-hover:text-white' : 'text-slate-400 dark:text-slate-400 group-hover:dark:text-white'}`}>Non-Enrolled Entity?</span>
                                 <div className="px-8 py-3 rounded-2xl border border-slate-100 dark:border-white/10 group-hover:border-teal-500/50 group-hover:bg-teal-500/5 transition-all duration-500">
                                     <span className="text-[11px] font-black uppercase tracking-widest text-[#1E293B] dark:text-white/90 flex items-center gap-3 group-hover:dark:text-white">
                                         CREATE ACCOUNT <SparklesIcon className="w-4 h-4 text-amber-500 group-hover:rotate-12 transition-transform" />
@@ -312,8 +312,8 @@ const Login = () => {
                                 to="/admin/login"
                                 className="flex items-center gap-3 group transition-all duration-500"
                             >
-                                <ShieldCheckIcon className="w-4 h-4 text-slate-400 dark:text-white/60 group-hover:text-amber-500 transition-colors" />
-                                <span className="text-[9px] font-black tracking-[0.4em] text-slate-400 dark:text-white/80 uppercase group-hover:text-slate-800 dark:group-hover:text-white transition-colors">Secure Admin Override</span>
+                                <ShieldCheckIcon className={`w-4 h-4 transition-colors ${role === 'faculty' ? 'text-indigo-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-amber-500'}`} />
+                                <span className={`text-[9px] font-black tracking-[0.4em] uppercase transition-colors ${role === 'faculty' ? 'text-indigo-300/70 group-hover:text-white' : 'text-slate-400 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-white'}`}>Secure Admin Override</span>
                             </Link>
                         </div>
                     </div>
