@@ -47,7 +47,7 @@ const Navbar = () => {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className={`fixed top-0 w-full z-50 transition-all duration-500 theme-transition ${scrolled || !isAuthPage ? 'bg-white/80 dark:bg-[#030712]/80 backdrop-blur-2xl shadow-lg shadow-indigo-500/5 border-b border-slate-200/50 dark:border-white/5' : 'bg-transparent border-transparent'}`}
+            className={`fixed top-0 w-full z-50 transition-all duration-500 theme-transition ${scrolled || !isAuthPage ? 'bg-white/95 dark:bg-[#030712]/95 shadow-lg shadow-indigo-500/5 border-b border-slate-200/50 dark:border-white/5' : 'bg-transparent border-transparent'}`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">

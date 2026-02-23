@@ -54465,3 +54465,56 @@
 [2026-02-23T07:52:30.026Z] GET /api/feedback/user/698efa65da577a477e66bb85
 [2026-02-23T07:52:30.249Z] GET /api/feedback/user/698efa65da577a477e66bb85
 [2026-02-23T07:52:32.806Z] GET /api/settings
+[2026-02-23T07:53:02.552Z] GET /api/settings
+[2026-02-23T07:54:04.559Z] GET /api/settings
+[2026-02-23T07:55:04.552Z] GET /api/settings
+[2026-02-23T07:55:48.848Z] GET /api/settings
+[2026-02-23T07:55:51.292Z] GET /api/settings
+[2026-02-23T07:55:51.302Z] GET /api/courses?limit=1000
+[2026-02-23T07:55:51.316Z] GET /api/requests
+[2026-02-23T07:55:51.328Z] GET /api/auth/users
+[2026-02-23T07:55:51.333Z] GET /api/auth/users?role=faculty
+[2026-02-23T07:55:51.352Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T07:55:51.371Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T07:55:51.506Z] GET /api/requests
+[2026-02-23T07:55:51.728Z] GET /api/requests
+[2026-02-23T07:56:02.556Z] GET /api/settings
+[2026-02-23T07:56:32.559Z] GET /api/settings
+[2026-02-23T07:57:04.620Z] GET /api/settings
+[2026-02-23T07:57:35.387Z] GET /api/settings
+[2026-02-23T07:57:35.446Z] GET /api/settings
+[2026-02-23T07:58:04.551Z] GET /api/settings
+[2026-02-23T07:58:05.556Z] GET /api/settings
+[2026-02-23T07:58:09.399Z] GET /api/settings
+[2026-02-23T07:58:09.455Z] GET /api/settings
+[2026-02-23T07:58:10.832Z] GET /api/settings
+[2026-02-23T07:58:10.876Z] GET /api/settings
+[2026-02-23T07:58:11.436Z] GET /api/settings
+[2026-02-23T07:58:11.438Z] GET /api/requests
+[2026-02-23T07:58:11.443Z] GET /api/courses?limit=1000
+[2026-02-23T07:58:11.445Z] GET /api/auth/users
+[2026-02-23T07:58:11.447Z] GET /api/auth/users?role=faculty
+[2026-02-23T07:58:11.448Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T07:58:11.450Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T07:58:11.588Z] GET /api/requests
+[2026-02-23T07:58:11.734Z] GET /api/requests
+[2026-02-23T07:58:39.549Z] GET /api/settings
+[2026-02-23T07:58:41.561Z] GET /api/settings
+[2026-02-23T07:59:09.558Z] GET /api/settings
+[2026-02-23T07:59:11.753Z] GET /api/settings
+[2026-02-23T07:59:39.557Z] GET /api/settings
+[2026-02-23T07:59:41.552Z] GET /api/settings
+[2026-02-23T08:00:09.567Z] GET /api/settings
+[2026-02-23T08:00:11.555Z] GET /api/settings
+[2026-02-23T08:00:39.558Z] GET /api/settings
+[2026-02-23T08:00:41.550Z] GET /api/settings
+[2026-02-23T08:01:09.554Z] GET /api/settings
+[2026-02-23T08:01:11.564Z] GET /api/settings
+[2026-02-23T08:01:41.551Z] GET /api/settings
+[2026-02-23T08:02:04.559Z] GET /api/settings
+[2026-02-23T08:02:11.553Z] GET /api/settings
+[2026-02-23T08:02:43.853Z] GET /api/settings
+[2026-02-23T08:03:04.561Z] GET /api/settings
+[2026-02-23T08:03:11.552Z] GET /api/settings
+[2026-02-23T08:03:24.428Z] GET /api/settings
+[2026-02-23T08:03:39.551Z] GET /api/settings

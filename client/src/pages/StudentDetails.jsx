@@ -19,7 +19,7 @@ import { DEPARTMENTS } from '../config/departments';
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
         return (
-            <div className="bg-[#0f1014]/95 backdrop-blur-xl p-4 rounded-2xl border border-gray-700/50 shadow-2xl ring-1 ring-white/10">
+            <div className="bg-[#0f1014]/98 p-4 rounded-2xl border border-gray-700/50 shadow-2xl ring-1 ring-white/10">
                 <p className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">{label}</p>
                 {payload.map((entry, index) => (
                     <div key={index} className="flex items-center gap-3 my-1">

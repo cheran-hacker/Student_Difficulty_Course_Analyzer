@@ -99,7 +99,7 @@ const Login = () => {
                         animate={{ opacity: 0.4 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 1.5 }}
-                        className={`absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-gradient-to-br ${currentStyle.bg} rounded-full blur-[140px]`}
+                        className={`absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-gradient-to-br ${currentStyle.bg} rounded-full`}
                     />
                 </AnimatePresence>
 
@@ -116,7 +116,7 @@ const Login = () => {
                 {/* Main Card */}
                 <div className="w-full relative group">
                     {/* Animated Border Beam - Only visible in dark mode or on hover to add depth */}
-                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-teal-500/50 to-transparent rounded-[3rem] opacity-0 dark:opacity-20 group-hover:opacity-100 blur-[2px] transition-opacity duration-1000 animate-border-beam pointer-events-none"></div>
+                    <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-teal-500/50 to-transparent rounded-[3rem] opacity-0 dark:opacity-20 group-hover:opacity-100 transition-opacity duration-1000 animate-border-beam pointer-events-none"></div>
 
                     <div className="bg-white/90 dark:bg-[#0A0F1E] rounded-[3rem] p-8 sm:p-10 md:p-12 overflow-hidden relative border border-white dark:border-white/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.04)] dark:shadow-[0_0_50px_-12px_rgba(13,148,136,0.1)] interaction-card transition-all duration-700">
                         {/* Inner Depth Glow */}
@@ -272,7 +272,7 @@ const Login = () => {
                                         initial={{ opacity: 0, y: -10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, scale: 0.95 }}
-                                        className="p-4 bg-red-500/5 border border-red-500/20 rounded-2xl flex items-center gap-3 backdrop-blur-md"
+                                        className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3"
                                     >
                                         <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>
                                         <span className="text-[10px] font-black text-red-500 uppercase tracking-widest">{error}</span>
