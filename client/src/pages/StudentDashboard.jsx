@@ -406,11 +406,12 @@ const StudentDashboard = () => {
             const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
             await axios.post(getApiUrl('/api/student/enroll'), { courseId: course._id }, config);
 
-            setUserCoursesIds(prev => [...prev, course._id]);
+            const newCourses = [...userCoursesIds, course._id];
+            setUserCoursesIds(newCourses);
             addToast(`Successfully enrolled in ${course.code}`, 'success');
 
             // Update Local Storage
-            const updatedUser = { ...userInfo, courses: [...userCoursesIds, course._id] };
+            const updatedUser = { ...userInfo, courses: newCourses };
             localStorage.setItem('userInfo', JSON.stringify(updatedUser));
         } catch (error) {
             addToast(error.response?.data?.message || 'Enrollment failed', 'error');
@@ -424,11 +425,12 @@ const StudentDashboard = () => {
             const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
             await axios.post(getApiUrl('/api/student/drop'), { courseId: course._id }, config);
 
-            setUserCoursesIds(prev => prev.filter(id => id !== course._id));
+            const newCourses = userCoursesIds.filter(id => id !== course._id);
+            setUserCoursesIds(newCourses);
             addToast(`Dropped ${course.code}`, 'info');
 
             // Update Local Storage
-            const updatedUser = { ...userInfo, courses: userCoursesIds.filter(id => id !== course._id) };
+            const updatedUser = { ...userInfo, courses: newCourses };
             localStorage.setItem('userInfo', JSON.stringify(updatedUser));
         } catch (error) {
             addToast(error.response?.data?.message || 'Drop failed', 'error');
@@ -565,7 +567,7 @@ const StudentDashboard = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
                             {userCoursesIds.length > 0 ? (
-                                courses.filter(c => userCoursesIds.includes(c._id)).slice(0, 3).map((course, idx) => (
+                                courses.filter(c => userCoursesIds.includes(c._id)).map((course, idx) => (
                                     <div key={course._id} className="bg-white/40 dark:bg-white/5 rounded-[2.5rem] p-8 border border-slate-100 dark:border-white/10 hover:border-indigo-500/30 transition-all hover:bg-white dark:hover:bg-white/10 group/item">
                                         <div className="flex items-center gap-3 mb-6">
                                             <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em] whitespace-nowrap">{course.code}</span>
