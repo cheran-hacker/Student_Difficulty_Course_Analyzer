@@ -64,6 +64,12 @@ const authUser = async (req, res) => {
         }
 
         if (user && user.role !== 'admin') {
+            // Check if login is allowed
+            if (user.isLoginAllowed === false) {
+                logDebug(`[Auth Debug] Login restricted for: ${email}`);
+                return res.status(403).json({ message: 'Your account has been restricted. Please contact the administrator.' });
+            }
+
             // Institutional Email Enforcement
             if (!email.toLowerCase().endsWith('@bitsathy.ac.in')) {
                 logDebug(`[Auth Debug] Domain check failed for: ${email}`);
@@ -596,6 +602,36 @@ const getAllFaculty = async (req, res) => {
     }
 };
 
+// @desc    Toggle user login status
+// @route   PATCH /api/admin/users/:id/toggle-login
+// @access  Private/Admin
+const toggleUserLoginStatus = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (user) {
+            user.isLoginAllowed = user.isLoginAllowed === false ? true : false;
+            await user.save();
+
+            // Emit socket event for real-time logout
+            const io = req.app.get('io');
+            if (io && user.isLoginAllowed === false) {
+                console.log(`[Socket] Emitting restriction event for candidate: ${user._id}`);
+                // Emit to a room named after the userId
+                io.to(user._id.toString()).emit('user_restricted', {
+                    message: 'Your account has been restricted. Please contact the administrator.'
+                });
+            }
+
+            res.json({ message: `Login status for ${user.name} toggled to ${user.isLoginAllowed}`, isLoginAllowed: user.isLoginAllowed });
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
 module.exports = {
     authUser,
     registerUser,
@@ -608,5 +644,6 @@ module.exports = {
     getLeaderboard,
     getUserAssignedCourses,
     getAllFaculty,
-    bulkCreateUsers
+    bulkCreateUsers,
+    toggleUserLoginStatus
 };

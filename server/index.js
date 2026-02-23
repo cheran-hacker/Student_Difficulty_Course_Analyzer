@@ -35,7 +35,7 @@ app.use(cors({
         'https://student-difficulty-course-analyzer.onrender.com'
     ],
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token']
 }));
 
@@ -131,7 +131,7 @@ app.use('/api/admin/requests', require('./routes/adminRequestRoutes'));
 app.use('/api/admin/faculty-requests', require('./routes/adminFacultyRequestRoutes'));
 app.use('/api/admin/feedback', require('./routes/adminFeedbackRoutes'));
 app.use('/api/admin/courses', require('./routes/adminCourseRoutes'));
-app.use('/api/admin/students', require('./routes/adminRoutes'));
+app.use('/api/admin', require('./routes/adminRoutes'));
 app.use('/api/faculty', require('./routes/facultyRoutes'));
 
 // General Requests
@@ -235,6 +235,8 @@ const io = socketIO(server, {
     }
 });
 
+app.set('io', io);
+
 io.on('connection', (socket) => {
     console.log('New client connected:', socket.id);
 
@@ -243,6 +245,12 @@ io.on('connection', (socket) => {
         socket.join(courseId);
         console.log(`User ${socket.id} joined room: ${courseId}`);
         socket.to(courseId).emit('user_joined', { userId: socket.id, message: 'A new student has joined the chat' });
+    });
+
+    // Join personal room for system notifications (e.g. restriction)
+    socket.on('join_user_room', (userId) => {
+        socket.join(userId);
+        console.log(`User ${socket.id} joined personal room: ${userId}`);
     });
 
     // Handle sending messages

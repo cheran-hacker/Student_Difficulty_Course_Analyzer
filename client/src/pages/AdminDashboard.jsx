@@ -34,6 +34,7 @@ const AdminDashboard = () => {
     const setActiveTab = (tab) => setSearchParams({ tab });
 
     const [searchTerm, setSearchTerm] = useState('');
+    const [userSearch, setUserSearch] = useState('');
     const [filterDept, setFilterDept] = useState('');
     const [filterSemester, setFilterSemester] = useState('');
     const navigate = useNavigate(); // For redirect
@@ -136,6 +137,34 @@ const AdminDashboard = () => {
         } catch (error) { console.error('Maintenance Toggle Error:', error); }
     };
 
+    const handleToggleStatus = async (userId, currentStatus) => {
+        // Optimistic update
+        const updateList = (list) => list.map(u =>
+            u._id === userId ? { ...u, isLoginAllowed: !currentStatus, isToggling: true } : u
+        );
+
+        setStudents(prev => updateList(prev));
+        setFacultyList(prev => updateList(prev));
+
+        try {
+            const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
+            await axios.patch(getApiUrl(`/api/admin/users/${userId}/toggle-login`), {}, config);
+
+            // Clean up toggling state
+            const finishToggle = (list) => list.map(u => u._id === userId ? { ...u, isToggling: false } : u);
+            setStudents(prev => finishToggle(prev));
+            setFacultyList(prev => finishToggle(prev));
+        } catch (err) {
+            console.error('Toggle failed:', err);
+            // Revert on error
+            const revert = (list) => list.map(u =>
+                u._id === userId ? { ...u, isLoginAllowed: currentStatus, isToggling: false } : u
+            );
+            setStudents(prev => revert(prev));
+            setFacultyList(prev => revert(prev));
+        }
+    };
+
     const handleCreateCourse = async (e) => {
         e.preventDefault();
         try {
@@ -159,7 +188,7 @@ const AdminDashboard = () => {
         { id: 'students', label: 'Student Corps', icon: <UserGroupIcon className="w-5 h-5" /> },
         { id: 'requests', label: 'Inbox', icon: <InboxStackIcon className="w-5 h-5" /> },
         { id: 'syllabus', label: 'Vault', icon: <BookOpenIcon className="w-5 h-5" /> },
-        { id: 'modules', label: 'System Kernel', icon: <CpuChipIcon className="w-5 h-5" /> },
+        { id: 'settings', label: 'Settings', icon: <CpuChipIcon className="w-5 h-5" /> },
         { id: 'profile', label: 'Admin Profile', icon: <UserCircleIcon className="w-5 h-5" /> },
     ];
 
@@ -434,12 +463,126 @@ const AdminDashboard = () => {
                         </motion.div>
                     )}
 
-                    {activeTab === 'modules' && (
+                    {activeTab === 'settings' && (
                         <motion.div
-                            key="modules"
+                            key="settings"
+                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                            className="space-y-8"
+                        >
+                            <div className="bg-white dark:bg-gray-800/40 backdrop-blur-md p-8 rounded-3xl border border-gray-100 dark:border-gray-700/50 shadow-sm">
+                                <div className="flex justify-between items-center mb-8">
+                                    <div>
+                                        <h2 className="text-2xl font-black text-gray-900 dark:text-white">Settings</h2>
+                                        <p className="text-gray-500 dark:text-gray-400 text-sm">Configure system preferences and user access</p>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <button
+                                            onClick={toggleMaintenance}
+                                            className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition ${maintenance ? 'bg-red-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}
+                                        >
+                                            Maintenance Mode: {maintenance ? 'ON' : 'OFF'}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div className="border-b border-gray-100 dark:border-gray-700 mb-8">
+                                    <nav className="flex gap-8">
+                                        <button className="pb-4 pr-2 text-sm font-bold text-blue-600 border-b-2 border-blue-600">User Access Control</button>
+                                        <button className="pb-4 pr-2 text-sm font-bold text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition" onClick={() => setActiveTab('modules_docs')}>System Docs</button>
+                                    </nav>
+                                    <div className="relative mt-4 flex items-center gap-2">
+                                        <div className="relative flex-1">
+                                            <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                            <input
+                                                type="text"
+                                                placeholder="Search users by name or email..."
+                                                className="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-700 rounded-2xl text-sm focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
+                                                value={userSearch}
+                                                onChange={(e) => setUserSearch(e.target.value)}
+                                            />
+                                            {userSearch && (
+                                                <button
+                                                    onClick={() => setUserSearch('')}
+                                                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors"
+                                                >
+                                                    <PlusIcon className="w-3 h-3 rotate-45 text-gray-400" />
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-left">
+                                        <thead>
+                                            <tr className="text-[10px] font-black uppercase tracking-widest text-gray-400 border-b border-gray-50 dark:border-gray-700/50">
+                                                <th className="px-4 py-4">Employee / User</th>
+                                                <th className="px-4 py-4">Role</th>
+                                                <th className="px-4 py-4">Login Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-gray-50 dark:divide-gray-700/50">
+                                            {[...students, ...facultyList]
+                                                .filter(u => u.name.toLowerCase().includes(userSearch.toLowerCase()) || u.email.toLowerCase().includes(userSearch.toLowerCase()))
+                                                .map((user) => (
+                                                    <tr key={user._id} className="group hover:bg-gray-50/50 dark:hover:bg-white/5 transition-colors">
+                                                        <td className="px-4 py-4">
+                                                            <div className="flex items-center gap-3">
+                                                                <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold text-xs">
+                                                                    {user.name.charAt(0)}
+                                                                </div>
+                                                                <div>
+                                                                    <div className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                                                        {user.name}
+                                                                        <span className={`w-1.5 h-1.5 rounded-full ${user.isLoginAllowed !== false ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                                                                    </div>
+                                                                    <div className="text-[10px] text-gray-400 font-mono">{user.email}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td className="px-4 py-4">
+                                                            <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-tighter border ${user.role === 'faculty' ? 'bg-purple-50 text-purple-600 border-purple-200' : 'bg-blue-50 text-blue-600 border-blue-200'
+                                                                }`}>
+                                                                {user.role}
+                                                            </span>
+                                                        </td>
+                                                        <td className="px-4 py-4">
+                                                            <div className="flex items-center gap-3">
+                                                                <button
+                                                                    disabled={user.isToggling}
+                                                                    onClick={() => handleToggleStatus(user._id, user.isLoginAllowed !== false)}
+                                                                    className={`relative inline-flex h-5 w-10 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${user.isLoginAllowed !== false ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
+                                                                        } ${user.isToggling ? 'opacity-50 cursor-wait' : ''}`}
+                                                                >
+                                                                    <motion.span
+                                                                        layout
+                                                                        aria-hidden="true"
+                                                                        className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${user.isLoginAllowed !== false ? 'translate-x-5' : 'translate-x-0'
+                                                                            }`}
+                                                                    />
+                                                                </button>
+                                                                <span className={`text-[10px] font-black uppercase tracking-widest ${user.isLoginAllowed !== false ? 'text-blue-600' : 'text-gray-400'} flex items-center gap-2`}>
+                                                                    {user.isLoginAllowed !== false ? 'ALLOWED' : 'RESTRICTED'}
+                                                                    {user.isToggling && <div className="w-2 h-2 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>}
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {activeTab === 'modules_docs' && (
+                        <motion.div
+                            key="modules_docs"
                             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
                         >
                             <RequirementsDocs />
+                            <button className="mt-4 text-sm text-blue-500 font-bold" onClick={() => setActiveTab('settings')}>← Back to Settings</button>
                         </motion.div>
                     )}
 

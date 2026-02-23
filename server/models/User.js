@@ -78,6 +78,10 @@ const userSchema = mongoose.Schema({
     semester: {
         type: String,
         default: '1'
+    },
+    isLoginAllowed: {
+        type: Boolean,
+        default: true
     }
 }, {
     timestamps: true,

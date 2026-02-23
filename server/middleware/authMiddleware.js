@@ -30,6 +30,12 @@ const protect = async (req, res, next) => {
                 return res.status(401).json({ message: 'Not authorized, user not found' });
             }
 
+            // Check if login is allowed (for students and faculty)
+            if (req.user.role !== 'admin' && req.user.isLoginAllowed === false) {
+                console.warn(`[Auth] User restricted, blocking access: ${req.user.name}`);
+                return res.status(401).json({ message: 'Access denied. Your account is restricted.' });
+            }
+
             console.log(`[Auth] Authenticated user: ${req.user.name} (${req.user.role})`);
             return next();
         } catch (error) {
