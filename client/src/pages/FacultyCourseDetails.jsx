@@ -270,7 +270,7 @@ const FacultyCourseDetails = () => {
                     </button>
                     <div className="flex items-center gap-3">
                         <span className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-widest shadow-sm">
-                            Subject Intelligence Portal v0.8
+                            Syllabus Intelligence OS v0.8
                         </span>
                     </div>
                 </motion.div>

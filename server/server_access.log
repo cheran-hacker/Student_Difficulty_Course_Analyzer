@@ -55637,3 +55637,46 @@
 [2026-02-23T09:33:26.726Z] [AuthRouter] GET /api/auth/users?role=faculty
 [2026-02-23T09:33:27.082Z] GET /api/requests
 [2026-02-23T09:33:27.317Z] GET /api/requests
+[2026-02-23T09:33:56.922Z] GET /api/settings
+[2026-02-23T09:34:26.920Z] GET /api/settings
+[2026-02-23T09:34:56.921Z] GET /api/settings
+[2026-02-23T09:35:02.038Z] GET /api/courses?limit=1000
+[2026-02-23T09:35:02.047Z] GET /api/settings
+[2026-02-23T09:35:02.050Z] GET /api/auth/users
+[2026-02-23T09:35:02.051Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:35:02.055Z] GET /api/requests
+[2026-02-23T09:35:02.061Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:35:02.062Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:35:02.148Z] GET /api/settings
+[2026-02-23T09:35:02.283Z] GET /api/auth/users
+[2026-02-23T09:35:02.284Z] GET /api/requests
+[2026-02-23T09:35:02.285Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:35:02.286Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:35:02.291Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:35:02.502Z] GET /api/courses?limit=1000
+[2026-02-23T09:35:26.929Z] GET /api/settings
+[2026-02-23T09:36:55.929Z] GET /api/settings
+[2026-02-23T09:37:55.916Z] GET /api/settings
+[2026-02-23T09:38:55.919Z] GET /api/settings
+[2026-02-23T09:39:26.276Z] GET /api/settings
+[2026-02-23T09:39:29.435Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:39:29.440Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:39:29.824Z] GET /api/auth/users?role=faculty
+[2026-02-23T09:39:29.832Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-23T09:39:30.946Z] GET /api/auth/users
+[2026-02-23T09:39:30.953Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:39:31.193Z] GET /api/auth/users
+[2026-02-23T09:39:31.197Z] [AuthRouter] GET /api/auth/users
+[2026-02-23T09:39:32.076Z] GET /api/requests
+[2026-02-23T09:39:32.080Z] GET /api/admin/faculty-requests
+[2026-02-23T09:39:32.404Z] GET /api/requests
+[2026-02-23T09:39:32.408Z] GET /api/admin/faculty-requests
+[2026-02-23T09:39:33.549Z] GET /api/courses?limit=1000
+[2026-02-23T09:39:34.415Z] GET /api/courses?limit=1000
+[2026-02-23T09:39:56.925Z] GET /api/settings
+[2026-02-23T09:40:26.926Z] GET /api/settings
+[2026-02-23T09:41:55.919Z] GET /api/settings
+[2026-02-23T09:42:55.921Z] GET /api/settings
+[2026-02-23T09:43:55.932Z] GET /api/settings
+[2026-02-23T09:44:55.917Z] GET /api/settings
+[2026-02-23T09:45:55.928Z] GET /api/settings

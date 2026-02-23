@@ -60,7 +60,7 @@ const StudentList = ({ externalSearchTerm }) => {
 
     const handleDelete = async (id, e) => {
         e.stopPropagation();
-        if (window.confirm('Are you sure you want to remove this cadet from the corps?')) {
+        if (window.confirm('Are you sure you want to remove this student from the records?')) {
             try {
                 const userInfo = JSON.parse(localStorage.getItem('userInfo'));
                 await axios.delete(getApiUrl(`/api/auth/users/${id}`), {
@@ -294,7 +294,7 @@ const StudentList = ({ externalSearchTerm }) => {
                         <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
                             <MagnifyingGlassIcon className="w-8 h-8 text-gray-400" />
                         </div>
-                        <p className="text-gray-500 dark:text-gray-400 font-medium">No cadets found matching "{searchTerm}"</p>
+                        <p className="text-gray-500 dark:text-gray-400 font-medium">No students found matching "{searchTerm}"</p>
                     </div>
                 )}
             </div>
@@ -342,7 +342,7 @@ const StudentList = ({ externalSearchTerm }) => {
                     onClose={() => setShowBulkImportModal(false)}
                     onSuccess={() => {
                         fetchStudents();
-                        alert('Cadets imported successfully!');
+                        alert('Students imported successfully!');
                     }}
                     role="student"
                 />

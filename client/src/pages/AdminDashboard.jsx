@@ -476,7 +476,7 @@ const AdminDashboard = () => {
                                     onClick={() => window.open('/admin/register-student', 'RegistrationForm', 'width=1200,height=900,scrollbars=yes')}
                                     className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-105 transition transform font-bold text-sm uppercase tracking-wide"
                                 >
-                                    <PlusIcon className="w-5 h-5" /> Enroll Cadet
+                                    <PlusIcon className="w-5 h-5" /> Enroll Student
                                 </button>
                             </div>
                             <StudentList externalSearchTerm={searchTerm} />
@@ -505,7 +505,7 @@ const AdminDashboard = () => {
                             <div className="bg-white dark:bg-gray-800/40 backdrop-blur-md p-8 rounded-3xl border border-gray-100 dark:border-gray-700/50 shadow-sm">
                                 <div className="flex justify-between items-center mb-8">
                                     <div>
-                                        <h2 className="text-2xl font-black text-gray-900 dark:text-white">User Access Dashboard</h2>
+                                        <h2 className="text-2xl font-black text-gray-900 dark:text-white">Access Control Matrix</h2>
                                         <p className="text-gray-500 dark:text-gray-400 text-sm">Monitor and manage institutional access</p>
                                     </div>
                                     <div className="flex gap-2">
@@ -554,13 +554,13 @@ const AdminDashboard = () => {
                                             onClick={() => handleBulkToggle(true)}
                                             className="flex-1 md:flex-none px-4 py-2.5 rounded-xl bg-blue-500/10 text-blue-500 text-[10px] font-black uppercase tracking-widest border border-blue-500/20 hover:bg-blue-500 hover:text-white transition-all"
                                         >
-                                            Allow View
+                                            Authorize Access
                                         </button>
                                         <button
                                             onClick={() => handleBulkToggle(false)}
                                             className="flex-1 md:flex-none px-4 py-2.5 rounded-xl bg-red-500/10 text-red-500 text-[10px] font-black uppercase tracking-widest border border-red-500/20 hover:bg-red-500 hover:text-white transition-all"
                                         >
-                                            Restrict View
+                                            Revoke Access
                                         </button>
                                     </div>
                                 </div>
@@ -635,7 +635,7 @@ const AdminDashboard = () => {
                                                                     />
                                                                 </button>
                                                                 <div className={`text-[10px] font-black uppercase tracking-widest flex items-center gap-2 ${user.isLoginAllowed !== false ? 'text-blue-500' : 'text-gray-400'}`}>
-                                                                    {user.isLoginAllowed !== false ? 'ACCESS GRANTED' : 'RESTRICTED'}
+                                                                    {user.isLoginAllowed !== false ? 'AUTHORIZED' : 'DENIED'}
                                                                     {user.isToggling && <div className="w-2.5 h-2.5 border-2 border-current border-t-transparent rounded-full animate-spin"></div>}
                                                                 </div>
                                                             </div>
@@ -681,7 +681,7 @@ const AdminDashboard = () => {
                             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"></div>
 
                             <div className="flex justify-between items-center mb-8">
-                                <h2 className="text-2xl font-black text-gray-900 dark:text-white">Initialize New Course</h2>
+                                <h2 className="text-2xl font-black text-gray-900 dark:text-white">Initialize Syllabus HQ</h2>
                                 <button onClick={() => setShowModal(false)} className="bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition">
                                     <PlusIcon className="w-5 h-5 transform rotate-45 text-gray-500 dark:text-gray-400" />
                                 </button>
@@ -758,7 +758,7 @@ const AdminDashboard = () => {
                                 </div>
 
                                 <button type="submit" className="w-full py-4 mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 transition transform hover:scale-[1.01] uppercase tracking-wider text-sm">
-                                    Confirm Creation
+                                    Confirm Deployment
                                 </button>
                             </form>
                         </motion.div>
