@@ -23,8 +23,8 @@ const GamificationCard = ({ user }) => {
     const mouseXSpring = useSpring(x);
     const mouseYSpring = useSpring(y);
 
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["12deg", "-12deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["4deg", "-4deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-4deg", "4deg"]);
 
     const handleMouseMove = (e) => {
         const rect = ref.current.getBoundingClientRect();
@@ -57,7 +57,7 @@ const GamificationCard = ({ user }) => {
             animate={{ opacity: 1, scale: 1 }}
             className="col-span-12 md:col-span-4 relative group perspective-1000 holographic-shine interaction-card"
         >
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-pink-500/10 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
             <div className="relative h-full p-8 rounded-[2.5rem] glass-ultra shadow-2xl overflow-hidden relative">
                 <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 via-transparent to-purple-500/5 pointer-events-none"></div>
@@ -102,7 +102,7 @@ const GamificationCard = ({ user }) => {
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
-                        className="absolute h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.5)]"
+                        className="absolute h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full"
                     >
                         <div className="absolute inset-0 bg-white/20 animate-pulse-slow"></div>
                     </motion.div>
@@ -121,8 +121,9 @@ const GamificationCard = ({ user }) => {
                 </div>
 
                 {/* Floating Particles */}
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none" />
-                <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+                {/* Optimized background accents - removed blurs */}
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-cyan-500/5 rounded-full pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-purple-500/5 rounded-full pointer-events-none" />
             </div>
         </motion.div>
     );

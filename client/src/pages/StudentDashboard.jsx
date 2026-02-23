@@ -103,8 +103,8 @@ const CourseCard = memo(forwardRef(({ course, idx, isEnrolled, onEnroll, onDrop 
     const mouseXSpring = useSpring(x);
     const mouseYSpring = useSpring(y);
 
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["4deg", "-4deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-4deg", "4deg"]);
 
     const [resources, setResources] = useState([]);
     const [loadingResources, setLoadingResources] = useState(false);
@@ -162,8 +162,6 @@ const CourseCard = memo(forwardRef(({ course, idx, isEnrolled, onEnroll, onDrop 
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             whileHover={{ y: -10, scale: 1.02 }}
-            className="glass-ultra rounded-[2.5rem] shadow-xl hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 group flex flex-col h-full relative perspective-1000 holographic-shine interaction-card"
-            ref={ref}
         >
             <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 

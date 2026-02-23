@@ -36,6 +36,11 @@ const CustomTooltip = ({ active, payload, label }) => {
     return null;
 };
 
+/*
+- [x] Professionalize terminology (User opted to keep most game-themed terms except "Edit Dossier")
+- [/] Refine Student Details UI layout (Email card visibility)
+- [x] Verify all UI labels are clear
+*/
 const StudentDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -140,24 +145,32 @@ const StudentDetails = () => {
         { label: 'Register Number', value: student.studentId || 'N/A', icon: IdentificationIcon, color: 'text-blue-500', bg: 'bg-blue-500/10' },
         { label: 'Current Semester', value: `Semester ${formData.semester}`, icon: CalendarDaysIcon, color: 'text-indigo-500', bg: 'bg-indigo-500/10' },
         { label: 'Academic Year', value: `Year ${formData.year}`, icon: AcademicCapIcon, color: 'text-purple-500', bg: 'bg-purple-500/10' },
-        { label: 'Department', value: student.department || 'General Engineering', icon: BuildingOfficeIcon, color: 'text-cyan-500', bg: 'bg-cyan-500/10' }
+        { label: 'Department', value: student.department || 'General Engineering', icon: BuildingOfficeIcon, color: 'text-cyan-500', bg: 'bg-cyan-500/10' },
+        { label: 'Email Address', value: student.email || 'N/A', icon: EnvelopeIcon, color: 'text-rose-500', bg: 'bg-rose-500/10' }
     ];
 
     return (
-        <div className="min-h-screen pt-24 px-4 pb-12 bg-gray-50 dark:bg-[#0a0a0c] transition-colors duration-500 relative overflow-x-hidden">
-            {/* Ultra Ambient Background System */}
-            <div className="absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-transparent rounded-full blur-[150px] pointer-events-none mix-blend-screen animate-pulse-slow"></div>
-            <div className="absolute bottom-[-20%] right-[-10%] w-[1000px] h-[1000px] bg-gradient-to-tl from-cyan-500/10 via-blue-500/10 to-transparent rounded-full blur-[150px] pointer-events-none mix-blend-screen"></div>
+        <div className="min-h-screen pt-24 px-4 pb-12 bg-gray-50 dark:bg-[#0a0a0c] transition-colors duration-500 relative overflow-hidden">
+            {/* Ultra Ambient Background System - Adjusted to prevent vertical spillover */}
+            <div className="absolute top-0 left-0 w-[1000px] h-[1000px] bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-transparent rounded-full blur-[150px] pointer-events-none mix-blend-screen animate-pulse-slow translate-x-[-20%] translate-y-[-20%]"></div>
+            <div className="absolute bottom-0 right-0 w-[1000px] h-[1000px] bg-gradient-to-tl from-cyan-500/10 via-blue-500/10 to-transparent rounded-full blur-[150px] pointer-events-none mix-blend-screen translate-x-[20%] translate-y-[20%]"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <motion.button
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    onClick={() => navigate(-1)}
+                    onClick={() => {
+                        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+                        if (userInfo?.role === 'admin') {
+                            navigate('/admin?tab=students');
+                        } else {
+                            navigate('/dashboard');
+                        }
+                    }}
                     className="flex items-center text-slate-400 hover:text-indigo-500 mb-10 transition-all group font-black text-[10px] uppercase tracking-[0.3em]"
                 >
                     <ArrowLeftIcon className="w-4 h-4 mr-3 group-hover:-translate-x-2 transition-transform" />
-                    Return to Student Corpus
+                    {JSON.parse(localStorage.getItem('userInfo'))?.role === 'admin' ? 'Return to Student Corps' : 'Return to Dashboard'}
                 </motion.button>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
@@ -165,7 +178,7 @@ const StudentDetails = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="lg:col-span-8 bg-white/60 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] p-10 lg:p-14 border border-white/40 dark:border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.25)] relative overflow-hidden group"
+                        className="lg:col-span-8 bg-white/60 dark:bg-white/5 backdrop-blur-3xl rounded-[3.5rem] p-6 sm:p-10 lg:p-14 border border-white/40 dark:border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.25)] relative overflow-hidden group"
                     >
                         {/* Interactive Shine Effect */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 pointer-events-none"></div>
@@ -176,7 +189,7 @@ const StudentDetails = () => {
                                 className="absolute top-10 right-10 flex items-center gap-3 px-6 py-3 bg-indigo-500 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-[0_15px_30px_-5px_rgba(79,70,229,0.4)] hover:shadow-[0_20px_40px_-5px_rgba(79,70,229,0.5)] hover:scale-105 transition-all z-20"
                             >
                                 <PencilSquareIcon className="w-4 h-4" />
-                                Edit Dossier
+                                Edit Profile
                             </button>
                         )}
 
@@ -203,15 +216,15 @@ const StudentDetails = () => {
                                     >
                                         <div className="space-y-2">
                                             <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
-                                            <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold" />
+                                            <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-3 sm:p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold text-sm" />
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Cadet ID</label>
-                                            <input type="text" value={formData.studentId} onChange={(e) => setFormData({ ...formData, studentId: e.target.value })} className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold" />
+                                            <input type="text" value={formData.studentId} onChange={(e) => setFormData({ ...formData, studentId: e.target.value })} className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-3 sm:p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold text-sm" />
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Email Access</label>
-                                            <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold" />
+                                            <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-3 sm:p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold text-sm" />
                                         </div>
 
                                         <div className="space-y-2">
@@ -219,19 +232,19 @@ const StudentDetails = () => {
                                             <select
                                                 value={formData.department}
                                                 onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                                                className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold"
+                                                className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-3 sm:p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold text-sm"
                                             >
                                                 {departments.map(dept => <option key={dept} value={dept}>{dept}</option>)}
                                             </select>
                                         </div>
 
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             <div className="space-y-2">
                                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Year</label>
                                                 <select
                                                     value={formData.year}
                                                     onChange={(e) => setFormData({ ...formData, year: e.target.value })}
-                                                    className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold"
+                                                    className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-3 sm:p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold text-sm"
                                                 >
                                                     {years.map(y => <option key={y} value={y}>Year {y}</option>)}
                                                 </select>
@@ -241,14 +254,14 @@ const StudentDetails = () => {
                                                 <select
                                                     value={formData.semester}
                                                     onChange={(e) => setFormData({ ...formData, semester: e.target.value })}
-                                                    className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold"
+                                                    className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-3 sm:p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold text-sm"
                                                 >
                                                     {[1, 2, 3, 4, 5, 6, 7, 8].map(s => <option key={s} value={s.toString()}>Sem {s}</option>)}
                                                 </select>
                                             </div>
                                         </div>
 
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             <div className="space-y-2">
                                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">GPA</label>
                                                 <input
@@ -259,7 +272,7 @@ const StudentDetails = () => {
                                                         const val = e.target.value === '' ? 0 : parseFloat(e.target.value);
                                                         setFormData({ ...formData, gpa: isNaN(val) ? 0 : val });
                                                     }}
-                                                    className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold"
+                                                    className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-3 sm:p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold text-sm"
                                                 />
                                             </div>
                                             <div className="space-y-2">
@@ -272,7 +285,7 @@ const StudentDetails = () => {
                                                         const val = e.target.value === '' ? 0 : parseFloat(e.target.value);
                                                         setFormData({ ...formData, cgpa: isNaN(val) ? 0 : val });
                                                     }}
-                                                    className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold"
+                                                    className="w-full bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 rounded-2xl p-3 sm:p-4 outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition font-bold text-sm"
                                                 />
                                             </div>
                                         </div>
@@ -289,14 +302,45 @@ const StudentDetails = () => {
                                                 {student.name}
                                             </h1>
 
-                                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                                                {academicMetrics.map((m, i) => (
-                                                    <div key={i} className="flex flex-col gap-2 p-6 rounded-[2rem] bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 items-center md:items-start group/stat hover:bg-white dark:hover:bg-white/10 transition-all">
-                                                        <div className={`w-10 h-10 rounded-xl ${m.bg} ${m.color} flex items-center justify-center mb-1 group-hover/stat:scale-110 transition-transform`}>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                                {/* Specialized Full-Width Header Metrics */}
+                                                {[academicMetrics.find(m => m.label.toLowerCase().includes('register')),
+                                                academicMetrics.find(m => m.label.toLowerCase().includes('email'))].map((m, i) => m && (
+                                                    <div
+                                                        key={`header-${i}`}
+                                                        className="col-span-1 sm:col-span-2 lg:col-span-3 flex flex-row items-center gap-6 p-6 rounded-[2.5rem] bg-indigo-50/50 dark:bg-indigo-500/5 border border-indigo-100/50 dark:border-indigo-500/10 group/stat hover:bg-white dark:hover:bg-white/10 transition-all min-h-[100px] relative overflow-hidden"
+                                                    >
+                                                        <div className={`shrink-0 w-12 h-12 rounded-2xl ${m.bg} ${m.color} flex items-center justify-center group-hover/stat:scale-110 transition-transform shadow-sm`}>
+                                                            <m.icon className="w-6 h-6" />
+                                                        </div>
+                                                        <div className="flex flex-col min-w-0 flex-1">
+                                                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">
+                                                                {m.label}
+                                                            </span>
+                                                            <span className="text-[14px] font-black text-slate-800 dark:text-slate-200 selection:bg-indigo-500 leading-tight break-all">
+                                                                {m.value}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                ))}
+
+                                                {/* Compact Secondary Metrics */}
+                                                {academicMetrics.filter(m => !m.label.toLowerCase().includes('register') && !m.label.toLowerCase().includes('email')).map((m, i) => (
+                                                    <div
+                                                        key={`compact-${i}`}
+                                                        className="flex flex-col items-center md:items-start p-6 rounded-[2.5rem] bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 group/stat hover:bg-white dark:hover:bg-white/10 transition-all min-h-[140px] relative overflow-hidden"
+                                                    >
+                                                        <div className={`shrink-0 w-10 h-10 rounded-xl ${m.bg} ${m.color} flex items-center justify-center mb-4 group-hover/stat:scale-110 transition-transform`}>
                                                             <m.icon className="w-5 h-5" />
                                                         </div>
-                                                        <span className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">{m.label}</span>
-                                                        <span className="text-sm font-black text-slate-800 dark:text-slate-200 truncate w-full">{m.value}</span>
+                                                        <div className="flex flex-col gap-1 min-w-0 w-full text-center md:text-left">
+                                                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                                                                {m.label}
+                                                            </span>
+                                                            <span className="text-[13px] font-black text-slate-800 dark:text-slate-200 selection:bg-indigo-500 leading-tight">
+                                                                {m.value}
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 ))}
                                             </div>
@@ -488,7 +532,7 @@ const StudentDetails = () => {
                 </div>
 
                 {/* Footer Intelligence Accent */}
-                <div className="mt-20 flex justify-center py-10 border-t border-slate-100 dark:border-white/5">
+                <div className="mt-12 flex justify-center py-10 border-t border-slate-100 dark:border-white/5">
                     <div className="flex items-center gap-6 opacity-30 text-[8px] font-black uppercase tracking-[0.8em] text-slate-400">
                         <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
                         Intelligence Engine Version 6.0 Stable

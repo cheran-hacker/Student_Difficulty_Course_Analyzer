@@ -6,7 +6,8 @@ import { API_ENDPOINTS, getApiUrl } from '../config/api';
 import {
     PlusIcon, ChartPieIcon, AcademicCapIcon, UserGroupIcon,
     InboxStackIcon, MagnifyingGlassIcon, ExclamationTriangleIcon, CheckBadgeIcon, CpuChipIcon,
-    BoltIcon, ChatBubbleLeftRightIcon, BookOpenIcon, FunnelIcon
+    BoltIcon, ChatBubbleLeftRightIcon, BookOpenIcon, FunnelIcon, ClockIcon,
+    ShieldExclamationIcon, ArrowRightOnRectangleIcon, UserCircleIcon, XMarkIcon
 } from '@heroicons/react/24/solid';
 import SyllabusUpload from '../components/SyllabusUpload';
 import AdminRequests from '../components/AdminRequests';
@@ -18,8 +19,8 @@ import RequirementsDocs from '../components/RequirementsDocs';
 import SyllabusManager from '../components/SyllabusManager';
 import FacultyRequestList from '../components/FacultyRequestList';
 import AdminProfileCard from '../components/AdminProfileCard';
+import RegisterStudent from './RegisterStudent';
 import { DEPARTMENTS } from '../config/departments';
-import { UserCircleIcon } from '@heroicons/react/24/solid';
 
 const AdminDashboard = () => {
     const [courses, setCourses] = useState([]);
@@ -28,13 +29,13 @@ const AdminDashboard = () => {
     const [requests, setRequests] = useState([]); // For Stats
     const [showModal, setShowModal] = useState(false);
 
-    // Tab Persistence via URL
     const [searchParams, setSearchParams] = useSearchParams();
     const activeTab = searchParams.get('tab') || 'overview';
     const setActiveTab = (tab) => setSearchParams({ tab });
-
     const [searchTerm, setSearchTerm] = useState('');
     const [userSearch, setUserSearch] = useState('');
+    const [accessFilter, setAccessFilter] = useState('all'); // all, student, faculty
+    // Removed duplicate declaration of [courses, setCourses]
     const [filterDept, setFilterDept] = useState('');
     const [filterSemester, setFilterSemester] = useState('');
     const navigate = useNavigate(); // For redirect
@@ -92,7 +93,7 @@ const AdminDashboard = () => {
         } catch (error) { console.error(error); }
     };
 
-    const fetchFacultyForModal = async (token) => {
+    const fetchFacultyUsers = async (token) => {
         try {
             const config = { headers: { Authorization: `Bearer ${token}` } };
             const { data } = await axios.get(getApiUrl('/api/auth/users?role=faculty'), config);
@@ -115,14 +116,14 @@ const AdminDashboard = () => {
             fetchSettings();
             fetchStudents(userInfo.token);
             fetchRequests(userInfo.token);
-            fetchFacultyForModal(userInfo.token);
+            fetchFacultyUsers(userInfo.token);
         }
     }, [userInfo]);
 
     // Refetch faculty when modal opens to ensure up-to-date list
     useEffect(() => {
         if (showModal && userInfo) {
-            fetchFacultyForModal(userInfo.token);
+            fetchFacultyUsers(userInfo.token);
         }
     }, [showModal, userInfo]);
 
@@ -165,13 +166,32 @@ const AdminDashboard = () => {
         }
     };
 
+    const handleBulkToggle = async (status) => {
+        const filteredUsers = [...students, ...facultyList].filter(u => {
+            const matchesSearch = u.name.toLowerCase().includes(userSearch.toLowerCase()) ||
+                u.email.toLowerCase().includes(userSearch.toLowerCase());
+            const matchesRole = accessFilter === 'all' || u.role === accessFilter;
+            return matchesSearch && matchesRole;
+        });
+
+        if (filteredUsers.length === 0) return;
+        if (!window.confirm(`Are you sure you want to ${status ? 'ALLOW' : 'RESTRICT'} access for ${filteredUsers.length} users?`)) return;
+
+        // Process sequentially or in chunks to avoid overwhelming server/socket
+        for (const user of filteredUsers) {
+            if (user.isLoginAllowed !== status) {
+                await handleToggleStatus(user._id, !status);
+            }
+        }
+    };
+
     const handleCreateCourse = async (e) => {
         e.preventDefault();
         try {
             const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
             await axios.post(API_ENDPOINTS.COURSES, {
                 ...newCourse,
-                // Instructors are now selected from list, assume array of emails or IDs. 
+                // Instructors are now selected from list, assume array of emails or IDs.
                 // Backend expects array of strings (emails presumably, based on previous manual entry).
                 // Let's ensure newCourse.instructors is an array of emails.
             }, config);
@@ -280,7 +300,7 @@ const AdminDashboard = () => {
                         <button
                             key={item.id}
                             onClick={() => setActiveTab(item.id)}
-                            className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all whitespace-nowrap relative overflow-hidden ${activeTab === item.id
+                            className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all whitespace-nowrap relative overflow-hidden shrink-0 ${activeTab === item.id
                                 ? 'text-white shadow-lg bg-gradient-to-r from-blue-600 to-indigo-600'
                                 : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/50 hover:text-gray-900 dark:hover:text-white'
                                 }`}
@@ -330,14 +350,14 @@ const AdminDashboard = () => {
                             key="courses"
                             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
                         >
-                            <div className="flex justify-between items-center mb-6">
+                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                                 <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 flex items-center gap-2">
                                     <AcademicCapIcon className="w-7 h-7 text-blue-500" />
                                     Course Directory
                                 </h2>
                                 <button
                                     onClick={() => setShowModal(true)}
-                                    className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105 transition transform font-bold text-sm uppercase tracking-wide"
+                                    className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105 transition transform font-bold text-sm uppercase tracking-wide"
                                 >
                                     <PlusIcon className="w-5 h-5" /> Initialize Course
                                 </button>
@@ -445,7 +465,20 @@ const AdminDashboard = () => {
                         <motion.div
                             key="students"
                             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                            className="space-y-6"
                         >
+                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                                <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 flex items-center gap-2">
+                                    <UserGroupIcon className="w-7 h-7 text-indigo-500" />
+                                    Student Corps
+                                </h2>
+                                <button
+                                    onClick={() => window.open('/admin/register-student', 'RegistrationForm', 'width=1200,height=900,scrollbars=yes')}
+                                    className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-105 transition transform font-bold text-sm uppercase tracking-wide"
+                                >
+                                    <PlusIcon className="w-5 h-5" /> Enroll Cadet
+                                </button>
+                            </div>
                             <StudentList externalSearchTerm={searchTerm} />
                         </motion.div>
                     )}
@@ -472,99 +505,139 @@ const AdminDashboard = () => {
                             <div className="bg-white dark:bg-gray-800/40 backdrop-blur-md p-8 rounded-3xl border border-gray-100 dark:border-gray-700/50 shadow-sm">
                                 <div className="flex justify-between items-center mb-8">
                                     <div>
-                                        <h2 className="text-2xl font-black text-gray-900 dark:text-white">Settings</h2>
-                                        <p className="text-gray-500 dark:text-gray-400 text-sm">Configure system preferences and user access</p>
+                                        <h2 className="text-2xl font-black text-gray-900 dark:text-white">User Access Dashboard</h2>
+                                        <p className="text-gray-500 dark:text-gray-400 text-sm">Monitor and manage institutional access</p>
                                     </div>
                                     <div className="flex gap-2">
                                         <button
                                             onClick={toggleMaintenance}
-                                            className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition ${maintenance ? 'bg-red-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}
+                                            className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition ${maintenance ? 'bg-red-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}
                                         >
-                                            Maintenance Mode: {maintenance ? 'ON' : 'OFF'}
+                                            Maintenance: {maintenance ? 'ON' : 'OFF'}
                                         </button>
                                     </div>
                                 </div>
 
-                                <div className="border-b border-gray-100 dark:border-gray-700 mb-8">
-                                    <nav className="flex gap-8">
-                                        <button className="pb-4 pr-2 text-sm font-bold text-blue-600 border-b-2 border-blue-600">User Access Control</button>
-                                        <button className="pb-4 pr-2 text-sm font-bold text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition" onClick={() => setActiveTab('modules_docs')}>System Docs</button>
-                                    </nav>
-                                    <div className="relative mt-4 flex items-center gap-2">
-                                        <div className="relative flex-1">
-                                            <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                                            <input
-                                                type="text"
-                                                placeholder="Search users by name or email..."
-                                                className="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-700 rounded-2xl text-sm focus:ring-2 focus:ring-blue-500/50 transition-all outline-none"
-                                                value={userSearch}
-                                                onChange={(e) => setUserSearch(e.target.value)}
-                                            />
-                                            {userSearch && (
-                                                <button
-                                                    onClick={() => setUserSearch('')}
-                                                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors"
-                                                >
-                                                    <PlusIcon className="w-3 h-3 rotate-45 text-gray-400" />
-                                                </button>
-                                            )}
+                                {/* Access Stats Cards */}
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                    {[
+                                        { label: 'Total Accounts', count: students.length + facultyList.length, color: 'indigo', icon: <UserCircleIcon className="w-5 h-5" />, bg: 'bg-indigo-500/10', text: 'text-indigo-600' },
+                                        { label: 'Allowed Access', count: [...students, ...facultyList].filter(u => u.isLoginAllowed !== false).length, color: 'blue', icon: <CheckBadgeIcon className="w-5 h-5" />, bg: 'bg-blue-500/10', text: 'text-blue-600' },
+                                        { label: 'Restricted', count: [...students, ...facultyList].filter(u => u.isLoginAllowed === false).length, color: 'red', icon: <ShieldExclamationIcon className="w-5 h-5" />, bg: 'bg-red-500/10', text: 'text-red-600' }
+                                    ].map((stat, i) => (
+                                        <div key={i} className={`p-6 rounded-[2rem] bg-gradient-to-br from-white to-gray-50 dark:from-white/5 dark:to-transparent border border-gray-100 dark:border-white/5 shadow-sm`}>
+                                            <div className="flex justify-between items-start mb-4">
+                                                <div className={`p-3 rounded-2xl ${stat.bg} ${stat.text}`}>
+                                                    {stat.icon}
+                                                </div>
+                                                <span className={`text-2xl font-black text-gray-900 dark:text-white`}>{stat.count}</span>
+                                            </div>
+                                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">{stat.label}</p>
                                         </div>
+                                    ))}
+                                </div>
+
+                                <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8 pb-8 border-b border-gray-100 dark:border-white/5">
+                                    <div className="flex p-1.5 bg-gray-100 dark:bg-gray-900/50 rounded-2xl w-full md:w-auto">
+                                        {['all', 'student', 'faculty'].map(tab => (
+                                            <button
+                                                key={tab}
+                                                onClick={() => setAccessFilter(tab)}
+                                                className={`px-6 py-2 rounded-xl text-xs font-bold capitalize transition-all ${accessFilter === tab ? 'bg-white dark:bg-gray-800 text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-700 dark:hover:text-white'}`}
+                                            >
+                                                {tab === 'all' ? 'All Roles' : tab + 's'}
+                                            </button>
+                                        ))}
+                                    </div>
+                                    <div className="flex gap-3 w-full md:w-auto">
+                                        <button
+                                            onClick={() => handleBulkToggle(true)}
+                                            className="flex-1 md:flex-none px-4 py-2.5 rounded-xl bg-blue-500/10 text-blue-500 text-[10px] font-black uppercase tracking-widest border border-blue-500/20 hover:bg-blue-500 hover:text-white transition-all"
+                                        >
+                                            Allow View
+                                        </button>
+                                        <button
+                                            onClick={() => handleBulkToggle(false)}
+                                            className="flex-1 md:flex-none px-4 py-2.5 rounded-xl bg-red-500/10 text-red-500 text-[10px] font-black uppercase tracking-widest border border-red-500/20 hover:bg-red-500 hover:text-white transition-all"
+                                        >
+                                            Restrict View
+                                        </button>
                                     </div>
                                 </div>
 
-                                <div className="overflow-x-auto">
+                                <div className="relative mb-6">
+                                    <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                    <input
+                                        type="text"
+                                        placeholder="Search by name, ID or email..."
+                                        className="w-full pl-10 pr-4 py-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-100 dark:border-white/5 rounded-3xl text-sm focus:ring-2 focus:ring-blue-500/30 transition-all outline-none"
+                                        value={userSearch}
+                                        onChange={(e) => setUserSearch(e.target.value)}
+                                    />
+                                </div>
+
+                                <div className="overflow-x-auto overflow-y-visible">
                                     <table className="w-full text-left">
                                         <thead>
-                                            <tr className="text-[10px] font-black uppercase tracking-widest text-gray-400 border-b border-gray-50 dark:border-gray-700/50">
-                                                <th className="px-4 py-4">Employee / User</th>
+                                            <tr className="text-[10px] font-black uppercase tracking-widest text-gray-400 border-b border-gray-50 dark:border-white/5">
+                                                <th className="px-4 py-4">Identity</th>
                                                 <th className="px-4 py-4">Role</th>
-                                                <th className="px-4 py-4">Login Status</th>
+                                                <th className="px-4 py-4">Last Active</th>
+                                                <th className="px-4 py-4">Access Status</th>
                                             </tr>
                                         </thead>
-                                        <tbody className="divide-y divide-gray-50 dark:divide-gray-700/50">
+                                        <tbody className="divide-y divide-gray-50 dark:divide-white/5">
                                             {[...students, ...facultyList]
-                                                .filter(u => u.name.toLowerCase().includes(userSearch.toLowerCase()) || u.email.toLowerCase().includes(userSearch.toLowerCase()))
+                                                .filter(u => (accessFilter === 'all' || u.role === accessFilter) &&
+                                                    (u.name.toLowerCase().includes(userSearch.toLowerCase()) || u.email.toLowerCase().includes(userSearch.toLowerCase())))
                                                 .map((user) => (
-                                                    <tr key={user._id} className="group hover:bg-gray-50/50 dark:hover:bg-white/5 transition-colors">
-                                                        <td className="px-4 py-4">
-                                                            <div className="flex items-center gap-3">
-                                                                <div className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold text-xs">
-                                                                    {user.name.charAt(0)}
+                                                    <tr key={user._id} className="group hover:bg-gray-50/50 dark:hover:bg-white/5 transition-all">
+                                                        <td className="px-4 py-5">
+                                                            <div className="flex items-center gap-4">
+                                                                <div className="relative">
+                                                                    <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-black text-sm shadow-lg shadow-indigo-500/20">
+                                                                        {user.name.charAt(0)}
+                                                                    </div>
+                                                                    <span className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full border-2 border-white dark:border-[#1a1b20] ${user.isLoginAllowed !== false ? 'bg-green-500' : 'bg-red-500'}`}></span>
                                                                 </div>
                                                                 <div>
-                                                                    <div className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                                                                        {user.name}
-                                                                        <span className={`w-1.5 h-1.5 rounded-full ${user.isLoginAllowed !== false ? 'bg-green-500' : 'bg-red-500'}`}></span>
-                                                                    </div>
-                                                                    <div className="text-[10px] text-gray-400 font-mono">{user.email}</div>
+                                                                    <div className="text-sm font-bold text-gray-900 dark:text-white leading-none mb-1">{user.name}</div>
+                                                                    <div className="text-[10px] text-gray-400 font-mono tracking-tight">{user.email}</div>
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td className="px-4 py-4">
-                                                            <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-tighter border ${user.role === 'faculty' ? 'bg-purple-50 text-purple-600 border-purple-200' : 'bg-blue-50 text-blue-600 border-blue-200'
-                                                                }`}>
+                                                        <td className="px-4 py-5 font-bold">
+                                                            <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-widest border ${user.role === 'faculty' ? 'bg-purple-500/10 text-purple-500 border-purple-500/20' : 'bg-blue-500/10 text-blue-500 border-blue-500/20'}`}>
                                                                 {user.role}
                                                             </span>
                                                         </td>
-                                                        <td className="px-4 py-4">
-                                                            <div className="flex items-center gap-3">
+                                                        <td className="px-4 py-5">
+                                                            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                                                                <ClockIcon className="w-3.5 h-3.5" />
+                                                                <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
+                                                                    {user.streak?.lastLogin ? new Date(user.streak.lastLogin).toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Never'}
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td className="px-4 py-5">
+                                                            <div className="flex items-center gap-4">
                                                                 <button
                                                                     disabled={user.isToggling}
                                                                     onClick={() => handleToggleStatus(user._id, user.isLoginAllowed !== false)}
-                                                                    className={`relative inline-flex h-5 w-10 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${user.isLoginAllowed !== false ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
-                                                                        } ${user.isToggling ? 'opacity-50 cursor-wait' : ''}`}
+                                                                    className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-all duration-300 ease-in-out focus:outline-none ${user.isLoginAllowed !== false ? 'bg-blue-600 shadow-lg shadow-blue-500/30' : 'bg-gray-200 dark:bg-white/5'
+                                                                        } ${user.isToggling ? 'opacity-50 cursor-wait scale-90' : 'hover:scale-110'}`}
                                                                 >
                                                                     <motion.span
                                                                         layout
-                                                                        aria-hidden="true"
-                                                                        className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${user.isLoginAllowed !== false ? 'translate-x-5' : 'translate-x-0'
+                                                                        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                                                                        className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-xl ring-0 ${user.isLoginAllowed !== false ? 'translate-x-5' : 'translate-x-0'
                                                                             }`}
                                                                     />
                                                                 </button>
-                                                                <span className={`text-[10px] font-black uppercase tracking-widest ${user.isLoginAllowed !== false ? 'text-blue-600' : 'text-gray-400'} flex items-center gap-2`}>
-                                                                    {user.isLoginAllowed !== false ? 'ALLOWED' : 'RESTRICTED'}
-                                                                    {user.isToggling && <div className="w-2 h-2 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>}
-                                                                </span>
+                                                                <div className={`text-[10px] font-black uppercase tracking-widest flex items-center gap-2 ${user.isLoginAllowed !== false ? 'text-blue-500' : 'text-gray-400'}`}>
+                                                                    {user.isLoginAllowed !== false ? 'ACCESS GRANTED' : 'RESTRICTED'}
+                                                                    {user.isToggling && <div className="w-2.5 h-2.5 border-2 border-current border-t-transparent rounded-full animate-spin"></div>}
+                                                                </div>
                                                             </div>
                                                         </td>
                                                     </tr>

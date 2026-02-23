@@ -13,11 +13,13 @@ import {
     InformationCircleIcon,
     XMarkIcon,
     ArrowUpTrayIcon,
+    ArrowDownTrayIcon,
     EyeIcon,
     EyeSlashIcon
 } from '@heroicons/react/24/outline';
 import { getApiUrl } from '../config/api';
 import { DEPARTMENTS } from '../config/departments';
+import { exportToCSV } from '../utils/csvExport';
 import BulkImportModal from './BulkImportModal';
 
 // --- Sub-components (Modals) ---
@@ -287,31 +289,38 @@ const FacultyList = () => {
 
     return (
         <div className="space-y-6">
-            <div className="flex justify-between items-center">
-                <div className="relative">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div className="relative w-full sm:w-64">
                     <MagnifyingGlassIcon className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                     <input
                         type="text"
                         placeholder="Search faculty..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10 pr-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500/20"
+                        className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500/20"
                     />
                 </div>
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-2 w-full sm:w-auto">
+                    <button
+                        onClick={() => exportToCSV(filteredFaculty, 'Faculty_Registry')}
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-xl font-bold border border-indigo-200 dark:border-indigo-500/20 hover:bg-indigo-500 hover:text-white transition text-xs"
+                    >
+                        <ArrowDownTrayIcon className="w-4 h-4" />
+                        Export
+                    </button>
                     <button
                         onClick={() => setShowBulkImportModal(true)}
-                        className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-bold border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-bold border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition text-xs"
                     >
-                        <ArrowUpTrayIcon className="w-5 h-5" />
-                        Import CSV
+                        <ArrowUpTrayIcon className="w-4 h-4" />
+                        Import
                     </button>
                     <button
                         onClick={() => setShowAddModal(true)}
-                        className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition text-xs"
                     >
-                        <PlusIcon className="w-5 h-5" />
-                        Add Faculty
+                        <PlusIcon className="w-4 h-4" />
+                        Add
                     </button>
                 </div>
             </div>

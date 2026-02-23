@@ -219,7 +219,7 @@ const CourseAnalysis = () => {
                     </motion.div>
 
                     {/* Personal Difficulty Card (Module 1) */}
-                    {difficultyPrediction && (
+                    {difficultyPrediction && !isAdmin && (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}
                             className="flex items-center gap-4 bg-gradient-to-r from-violet-600 to-indigo-600 p-4 rounded-2xl border border-white/10 shadow-lg text-white"
@@ -524,8 +524,8 @@ const CourseAnalysis = () => {
                                             <tr key={i} className="border-b border-gray-50 dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-700/30 transition">
                                                 <td className="p-4 text-gray-900 dark:text-white font-bold">{fb.user?.name || 'Anonymous'}</td>
                                                 <td className="p-4">
-                                                    <span className={`px-2 py-1 rounded text-xs font-bold ${fb.difficultyIndex > 4 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}`}>
-                                                        {fb.difficultyIndex}/5
+                                                    <span className={`px-2 py-1 rounded text-xs font-bold ${fb.difficultyIndex > 7 ? 'bg-red-100 text-red-600' : (fb.difficultyIndex > 4 ? 'bg-orange-100 text-orange-600' : 'bg-green-100 text-green-600')}`}>
+                                                        {fb.difficultyIndex}/10
                                                     </span>
                                                 </td>
                                                 <td className="p-4">{fb.timeCommitment} hrs</td>

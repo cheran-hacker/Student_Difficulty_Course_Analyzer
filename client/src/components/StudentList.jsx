@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { UserIcon, FunnelIcon, MagnifyingGlassIcon, SparklesIcon, KeyIcon, PlusIcon } from '@heroicons/react/24/solid';
+import { UserIcon, FunnelIcon, MagnifyingGlassIcon, SparklesIcon, KeyIcon, PlusIcon, ArrowDownTrayIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 import { getApiUrl } from '../config/api';
+import { exportToCSV } from '../utils/csvExport';
 import AddStudentModal from './AddStudentModal';
 import BulkImportModal from './BulkImportModal';
 
@@ -134,34 +135,34 @@ const StudentList = ({ externalSearchTerm }) => {
                 </div>
 
                 {!externalSearchTerm && (
-                    <div className="flex items-center gap-4 w-full md:w-auto">
+                    <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                        <motion.button
+                            whileHover={{ scale: 1.02, y: -2 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => exportToCSV(filteredStudents, 'Student_Corps')}
+                            className="flex-1 md:flex-none flex items-center justify-center gap-3 px-6 py-3.5 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-black text-sm shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:bg-white dark:hover:bg-indigo-900/50 transition-all border border-indigo-100 dark:border-indigo-500/20"
+                        >
+                            <ArrowDownTrayIcon className="w-5 h-5" />
+                            <span className="hidden lg:inline uppercase tracking-widest">Export CSV</span>
+                            <span className="lg:hidden uppercase tracking-widest text-xs">Export</span>
+                        </motion.button>
                         <motion.button
                             whileHover={{ scale: 1.02, y: -2 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => setShowBulkImportModal(true)}
-                            className="flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 font-black text-sm shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
+                            className="flex-1 md:flex-none flex items-center justify-center gap-3 px-6 py-3.5 rounded-2xl bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-black text-sm shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
                         >
                             <span className="hidden lg:inline uppercase tracking-widest">Import CSV</span>
-                            <span className="lg:hidden">CSV</span>
+                            <span className="lg:hidden uppercase tracking-widest text-xs">CSV</span>
                         </motion.button>
-                        <motion.button
-                            whileHover={{ scale: 1.02, y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={() => window.open('/admin/register-student', 'RegistrationForm', 'width=1200,height=900,scrollbars=yes')}
-                            className="flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-indigo-600 text-white font-black text-sm shadow-[0_10px_30px_rgba(79,70,229,0.3)] hover:bg-indigo-500 transition-all border border-indigo-400/20"
-                        >
-                            <PlusIcon className="w-6 h-6" />
-                            <span className="hidden lg:inline uppercase tracking-widest">Register Cadet</span>
-                            <span className="lg:hidden">Add</span>
-                        </motion.button>
-                        <div className="relative group flex-grow md:flex-grow-0">
+                        <div className="relative group w-full md:w-80">
                             <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-indigo-500 transition-colors" />
                             <input
                                 type="text"
-                                placeholder="Search student by name or ID..."
+                                placeholder="Search student..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full md:w-80 pl-12 pr-6 py-3.5 bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-2xl text-sm font-bold outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all text-slate-900 dark:text-white placeholder:text-slate-400"
+                                className="w-full pl-12 pr-6 py-3.5 bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-2xl text-sm font-bold outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all text-slate-900 dark:text-white placeholder:text-slate-400"
                             />
                         </div>
                     </div>

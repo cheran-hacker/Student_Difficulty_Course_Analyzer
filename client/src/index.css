@@ -104,7 +104,7 @@ button {
 
 /* --- Ultra Global UI/UX v7.0 Extensions --- */
 
-/* Holographic Shine */
+/* Simplified Holographic Shine */
 .holographic-shine {
     position: relative;
     overflow: hidden;
@@ -113,26 +113,26 @@ button {
 .holographic-shine::before {
     content: '';
     position: absolute;
-    top: -150%;
-    left: -150%;
-    width: 400%;
-    height: 400%;
+    top: -100%;
+    left: -100%;
+    width: 250%;
+    height: 250%;
     background: linear-gradient(45deg,
             transparent 45%,
-            rgba(255, 255, 255, 0.1) 48%,
-            rgba(255, 255, 255, 0.4) 50%,
-            rgba(255, 255, 255, 0.1) 52%,
+            rgba(255, 255, 255, 0.05) 48%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.05) 52%,
             transparent 55%);
     transform: rotate(-45deg);
-    transition: all 0.5s;
+    transition: none;
     pointer-events: none;
     z-index: 1;
 }
 
 .holographic-shine:hover::before {
-    left: 150%;
-    top: 150%;
-    transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    left: 100%;
+    top: 100%;
+    transition: 0.6s ease-out;
 }
 
 /* Light Leak Effect */
@@ -154,10 +154,10 @@ button {
     animation: light-leak 15s ease-in-out infinite;
 }
 
-/* Ultra Glass v2 */
+/* Optimized Glass v2 - reduced blur for performance */
 .glass-ultra {
-    @apply backdrop-blur-[40px] bg-white/40 dark:bg-white/5 border border-white/20 dark:border-white/10;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    @apply backdrop-blur-[12px] bg-white/60 dark:bg-black/40 border border-white/20 dark:border-white/10;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
 }
 
 /* Specular Highlight */
@@ -209,10 +209,10 @@ button {
     content: '';
     position: absolute;
     aspect-ratio: 1;
-    width: 100px;
-    animation: border-beam 10s linear infinite;
+    width: 60px;
+    animation: border-beam 15s linear infinite;
     background: linear-gradient(to right, #6366f1, #a855f7, transparent);
-    offset-path: rect(0 auto auto 0 round 100px);
+    offset-path: rect(0 auto auto 0 round 60px);
 }
 
 .interaction-card {

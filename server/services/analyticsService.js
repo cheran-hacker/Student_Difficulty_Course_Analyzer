@@ -128,7 +128,17 @@ const getPersonalDifficultyScore = async (studentId, courseId) => {
     const course = await Course.findById(courseId);
     const user = await require('../models/User').findById(studentId); // Lazy load User to avoid circular dependency
 
-    if (!course || !user) throw new Error('Data not found');
+    if (!course) throw new Error('Course not found');
+
+    // Graceful handling for non-student users (Admins/Faculty without student record)
+    if (!user) {
+        return {
+            score: "N/A",
+            baseline: "5.0",
+            factor: "N/A",
+            rationale: "Personalized prediction is only available for students."
+        };
+    }
 
     // 1. Get Course Baseline Difficulty (Admin/Syllabus based or Aggregated)
     // For now, derive from feedback or generate a static score

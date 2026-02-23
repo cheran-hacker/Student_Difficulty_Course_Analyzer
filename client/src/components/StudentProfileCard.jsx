@@ -140,8 +140,8 @@ const StudentProfileCard = ({ user }) => {
     const mouseXSpring = useSpring(x, { stiffness: 40, damping: 20 });
     const mouseYSpring = useSpring(y, { stiffness: 40, damping: 20 });
 
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["3deg", "-3deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-3deg", "3deg"]);
     const shineX = useTransform(mouseXSpring, [-0.5, 0.5], ["-10%", "110%"]);
     const shineY = useTransform(mouseYSpring, [-0.5, 0.5], ["-10%", "110%"]);
 
@@ -193,19 +193,19 @@ const StudentProfileCard = ({ user }) => {
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className="max-w-[1440px] mx-auto relative group px-6 transform-gpu"
             >
-                {/* Massive Glow Aura */}
-                <div className={`absolute -inset-20 ${user?.role === 'faculty' ? 'bg-emerald-500/5' : 'bg-indigo-500/5'} rounded-[6rem] blur-[160px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none`} />
+                {/* Simplified Glow Aura */}
+                <div className={`absolute -inset-10 ${user?.role === 'faculty' ? 'bg-emerald-500/5' : 'bg-indigo-500/5'} rounded-[6rem] blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none`} />
 
-                <div className="relative rounded-[2rem] p-10 lg:p-14 border-[3px] border-slate-200 dark:border-white/10 shadow-[0_80px_160px_rgba(0,0,0,0.1)] dark:shadow-none overflow-hidden transition-all duration-300 transform-gpu backface-visibility-hidden contain-layout">
+                <div className="relative rounded-[2rem] p-10 lg:p-14 border-[2px] border-slate-200 dark:border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.08)] dark:shadow-none overflow-hidden transition-all duration-300 transform-gpu backface-visibility-hidden contain-layout">
                     {/* HUD Absolute Sharp Layer */}
                     <div className="absolute inset-0 bg-white dark:bg-[#050810] z-0 pointer-events-none" />
 
                     {/* Technical Grid Pattern */}
-                    <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:24px_24px] lg:[background-size:32px_32px]" />
+                    <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03] pointer-events-none bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:32px_32px]" />
 
                     {/* Role-Specific Technical Accents */}
-                    <div className={`absolute top-0 right-0 w-32 h-32 border-r-[4px] border-t-[4px] ${user?.role === 'faculty' ? 'border-emerald-500/20' : 'border-indigo-500/20'} pointer-events-none`} />
-                    <div className={`absolute bottom-0 left-0 w-32 h-32 border-l-[4px] border-b-[4px] ${user?.role === 'faculty' ? 'border-emerald-500/20' : 'border-indigo-500/20'} pointer-events-none`} />
+                    <div className={`absolute top-0 right-0 w-32 h-32 border-r-2 border-t-2 ${user?.role === 'faculty' ? 'border-emerald-500/15' : 'border-indigo-500/15'} pointer-events-none`} />
+                    <div className={`absolute bottom-0 left-0 w-32 h-32 border-l-2 border-b-2 ${user?.role === 'faculty' ? 'border-emerald-500/15' : 'border-indigo-500/15'} pointer-events-none`} />
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 relative z-20">
                         {/* LEFT: Personal Identity */}
@@ -214,26 +214,20 @@ const StudentProfileCard = ({ user }) => {
                                 {/* Enhanced Avatar with Orbital system */}
                                 <div className="relative mb-8">
                                     <motion.div
-                                        whileHover={{ scale: 1.05 }}
-                                        className={`w-44 h-44 sm:w-52 sm:h-52 rounded-[3.5rem] bg-gradient-to-br ${user?.role === 'faculty' ? 'from-emerald-600 via-emerald-500 to-teal-600' : 'from-indigo-600 via-indigo-500 to-purple-600'} p-1.5 flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.2)] ${user?.role === 'faculty' ? 'shadow-emerald-500/30' : 'shadow-indigo-500/20'} overflow-hidden relative group/avatar cursor-pointer transform-gpu`}
+                                        whileHover={{ scale: 1.02 }}
+                                        className={`w-44 h-44 sm:w-52 sm:h-52 rounded-[3.5rem] bg-gradient-to-br ${user?.role === 'faculty' ? 'from-emerald-600 via-emerald-500 to-teal-600' : 'from-indigo-600 via-indigo-500 to-purple-600'} p-1 flex items-center justify-center shadow-2xl ${user?.role === 'faculty' ? 'shadow-emerald-500/15' : 'shadow-indigo-500/10'} overflow-hidden relative group/avatar cursor-pointer transform-gpu`}
                                     >
-                                        <div className="w-full h-full bg-white dark:bg-[#0a0c10] rounded-[3.35rem] flex items-center justify-center overflow-hidden transition-colors transform-gpu">
-                                            <span className={`text-9xl font-black ${user?.role === 'faculty' ? 'text-emerald-500' : 'text-slate-900 dark:text-white'} drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] select-none`}>
+                                        <div className="w-full h-full bg-white dark:bg-[#0a0c10] rounded-[3.35rem] flex items-center justify-center overflow-hidden transition-colors transform-gpu font-outfit">
+                                            <span className={`text-9xl font-black ${user?.role === 'faculty' ? 'text-emerald-500' : 'text-slate-900 dark:text-white'} select-none`}>
                                                 {user?.name?.substring(0, 1).toUpperCase() || 'S'}
                                             </span>
-                                            <div className="absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent opacity-0 group-hover/avatar:opacity-100 transition-opacity" />
                                         </div>
                                     </motion.div>
-                                    {/* Avatar Orbits */}
+                                    {/* Avatar Orbits - Slowed and simplified */}
                                     <motion.div
                                         animate={{ rotate: -360 }}
-                                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                                        className="absolute inset-[-1rem] border border-dashed border-indigo-500/10 rounded-[3.5rem]"
-                                    />
-                                    <motion.div
-                                        animate={{ rotate: 360 }}
-                                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                        className="absolute inset-[-2rem] border border-indigo-500/5 rounded-[4.5rem]"
+                                        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                                        className="absolute inset-[-0.5rem] border border-dashed border-indigo-500/10 rounded-[3.5rem]"
                                     />
                                 </div>
 

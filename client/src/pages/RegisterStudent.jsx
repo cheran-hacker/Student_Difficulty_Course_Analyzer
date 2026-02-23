@@ -18,7 +18,24 @@ import {
 import { API_ENDPOINTS } from '../config/api';
 import { DEPARTMENTS } from '../config/departments';
 
-const RegisterStudent = () => {
+// Variants defined outside to prevent re-creation on render
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.2
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
+const RegisterStudent = ({ isModal = false, onSuccess }) => {
     const [darkMode, setDarkMode] = useState(true);
     const [formData, setFormData] = useState({
         name: '',
@@ -38,8 +55,10 @@ const RegisterStudent = () => {
     const departments = DEPARTMENTS;
 
     useEffect(() => {
-        document.title = "Cadet Registration | Secure Terminal";
-    }, []);
+        if (!isModal) {
+            document.title = "Cadet Registration | Secure Terminal";
+        }
+    }, [isModal]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -69,9 +88,14 @@ const RegisterStudent = () => {
 
             await axios.post(API_ENDPOINTS.USERS_ADMIN, formData, config);
             setSuccess(true);
-            setTimeout(() => {
-                window.close();
-            }, 2000);
+
+            if (onSuccess) {
+                setTimeout(() => onSuccess(), 1500);
+            } else if (!isModal) {
+                setTimeout(() => {
+                    window.close();
+                }, 2000);
+            }
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to initialize cadet account');
         } finally {
@@ -80,8 +104,8 @@ const RegisterStudent = () => {
     };
 
     return (
-        <div className={`${darkMode ? 'dark' : ''}`}>
-            <div className="min-h-screen bg-slate-50 dark:bg-[#020617] transition-colors duration-500 flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden font-outfit">
+        <div className={`${darkMode ? 'dark' : ''} ${isModal ? 'h-full' : ''}`}>
+            <div className={`${isModal ? 'min-h-full py-0' : 'min-h-screen py-12'} bg-slate-50 dark:bg-[#020617] transition-colors duration-500 flex flex-col items-center justify-center p-6 relative overflow-hidden font-outfit`}>
 
                 {/* Ultra Background Layer */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -97,7 +121,7 @@ const RegisterStudent = () => {
                     initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
                     animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full max-w-6xl bg-white/70 dark:bg-[#0f172a]/60 backdrop-blur-[40px] rounded-[4rem] shadow-[0_40px_120px_-20px_rgba(0,0,0,0.3)] dark:shadow-[0_40px_120px_-20px_rgba(0,0,0,0.6)] border border-white/40 dark:border-white/10 relative z-10 overflow-hidden flex flex-col md:flex-row min-h-[85vh]"
+                    className={`w-full ${isModal ? 'max-w-none' : 'max-w-6xl'} bg-white/70 dark:bg-[#0f172a]/60 backdrop-blur-[40px] ${isModal ? 'rounded-none border-none' : 'rounded-[4rem] border border-white/40 dark:border-white/10'} shadow-[0_40px_120px_-20px_rgba(0,0,0,0.3)] dark:shadow-[0_40px_120px_-20px_rgba(0,0,0,0.6)] relative z-10 overflow-hidden flex flex-col md:flex-row min-h-[85vh]`}
                 >
                     {/* Left Panel: Information & Branding */}
                     <div className="md:w-[35%] bg-indigo-600 dark:bg-indigo-700 p-12 text-white flex flex-col justify-between relative overflow-hidden">
@@ -159,13 +183,25 @@ const RegisterStudent = () => {
                                 <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center shadow-xl shadow-green-500/20">
                                     <ShieldCheckIcon className="w-12 h-12 text-white" />
                                 </div>
-                                <div>
+                                <div className="space-y-2">
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Deployment Successful</h3>
-                                    <p className="text-slate-500 dark:text-slate-400 mt-2 font-medium">The cadet has been successfully onboarded. This window will now close.</p>
+                                    <p className="text-slate-500 dark:text-slate-400 font-medium">The cadet has been onboarded to the academic matrix.</p>
                                 </div>
+                                <button
+                                    onClick={() => window.close()}
+                                    className="px-8 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl text-sm font-black uppercase tracking-widest text-slate-600 dark:text-indigo-400 hover:bg-slate-200 dark:hover:bg-indigo-500/20 transition-all"
+                                >
+                                    Dismiss Terminal
+                                </button>
                             </motion.div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-12">
+                            <motion.form
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                onSubmit={handleSubmit}
+                                className="space-y-12"
+                            >
                                 {error && !error.includes('Domain') && (
                                     <motion.div
                                         initial={{ opacity: 0, x: -10 }}
@@ -178,14 +214,13 @@ const RegisterStudent = () => {
                                 )}
 
                                 {/* Form Section: Identity */}
-                                <div className="space-y-8">
+                                <motion.div variants={itemVariants} className="space-y-8">
                                     <div className="flex items-center gap-4 mb-4">
                                         <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center text-slate-400 dark:text-indigo-400">
                                             <IdentificationIcon className="w-5 h-5" />
                                         </div>
                                         <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight">Identity Specifications</h3>
                                     </div>
-
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <div className="space-y-3">
                                             <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Legal Full Name</label>
@@ -195,7 +230,7 @@ const RegisterStudent = () => {
                                                 className="w-full px-7 py-5 rounded-2xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-bold outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all text-lg shadow-sm"
                                                 placeholder="e.g. MARCUS AURELIUS"
                                                 value={formData.name}
-                                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                onChange={(e) => setFormData({ ...formData, name: e.target.value.toUpperCase() })}
                                             />
                                         </div>
                                         <div className="space-y-3">
@@ -206,21 +241,20 @@ const RegisterStudent = () => {
                                                 className="w-full px-7 py-5 rounded-2xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-mono font-bold outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all text-lg shadow-sm"
                                                 placeholder="7376XXXXXXXX"
                                                 value={formData.studentId}
-                                                onChange={(e) => setFormData({ ...formData, studentId: e.target.value })}
+                                                onChange={(e) => setFormData({ ...formData, studentId: e.target.value.toUpperCase() })}
                                             />
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
 
                                 {/* Form Section: Academic */}
-                                <div className="space-y-8">
+                                <motion.div variants={itemVariants} className="space-y-8">
                                     <div className="flex items-center gap-4 mb-4">
                                         <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center text-slate-400 dark:text-indigo-400">
                                             <AcademicCapIcon className="w-5 h-5" />
                                         </div>
                                         <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight">Academic Deployment</h3>
                                     </div>
-
                                     <div className="space-y-6">
                                         <div className="space-y-3">
                                             <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Department Sector</label>
@@ -241,12 +275,13 @@ const RegisterStudent = () => {
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div className="space-y-3">
                                             <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Academic Year</label>
                                             <div className="grid grid-cols-4 gap-4">
                                                 {['I', 'II', 'III', 'IV'].map(y => (
-                                                    <button
+                                                    <motion.button
+                                                        whileHover={{ y: -2 }}
+                                                        whileTap={{ scale: 0.98 }}
                                                         key={y}
                                                         type="button"
                                                         onClick={() => setFormData({ ...formData, year: y })}
@@ -256,12 +291,12 @@ const RegisterStudent = () => {
                                                             }`}
                                                     >
                                                         {y}
-                                                    </button>
+                                                    </motion.button>
                                                 ))}
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
 
                                 {/* Form Section: Performance */}
                                 <div className="space-y-8 bg-indigo-50/50 dark:bg-indigo-500/5 p-10 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-500/10">
@@ -312,19 +347,22 @@ const RegisterStudent = () => {
                                 </div>
 
                                 {/* Form Section: Auth */}
-                                <div className="space-y-8 bg-slate-50 dark:bg-black/30 p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-inner">
+                                <motion.div variants={itemVariants} className="space-y-8 bg-slate-50 dark:bg-black/30 p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-inner">
                                     <div className="flex items-center gap-4 mb-4">
                                         <div className="w-10 h-10 rounded-xl bg-white dark:bg-white/10 flex items-center justify-center text-slate-400 dark:text-indigo-400 shadow-sm">
                                             <KeyIcon className="w-5 h-5" />
                                         </div>
                                         <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight">Security Credentials</h3>
                                     </div>
-
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <div className="space-y-3">
                                             <div className="flex justify-between items-center">
                                                 <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Official Email Address</label>
-                                                <span className="text-[10px] font-bold text-indigo-500 bg-indigo-500/10 px-2 py-0.5 rounded-full border border-indigo-500/20">SECURE DOMAIN REQUIRED</span>
+                                                {formData.email.toLowerCase().endsWith('@bitsathy.ac.in') && (
+                                                    <span className="text-[10px] font-bold text-green-500 bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20 flex items-center gap-1">
+                                                        <ShieldCheckIcon className="w-3 h-3" /> VERIFIED DOMAIN
+                                                    </span>
+                                                )}
                                             </div>
                                             <input
                                                 required
@@ -333,16 +371,16 @@ const RegisterStudent = () => {
                                                 placeholder="cadet@bitsathy.ac.in"
                                                 value={formData.email}
                                                 onChange={(e) => {
-                                                    setFormData({ ...formData, email: e.target.value });
+                                                    setFormData({ ...formData, email: e.target.value.toLowerCase() });
                                                     if (error && error.includes('Domain')) setError('');
                                                 }}
                                             />
                                             <AnimatePresence>
                                                 {error && error.includes('Domain') && (
                                                     <motion.div
-                                                        initial={{ opacity: 0, y: -10 }}
-                                                        animate={{ opacity: 1, y: 0 }}
-                                                        exit={{ opacity: 0, y: -10 }}
+                                                        initial={{ opacity: 0, scale: 0.95 }}
+                                                        animate={{ opacity: 1, scale: 1 }}
+                                                        exit={{ opacity: 0, scale: 0.95 }}
                                                         className="mt-3 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold flex items-center gap-3"
                                                     >
                                                         <div className="w-2 h-2 rounded-full bg-red-500 shadow-lg shadow-red-500/50" />
@@ -363,10 +401,10 @@ const RegisterStudent = () => {
                                             />
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
 
                                 {/* Actions */}
-                                <div className="pt-8">
+                                <motion.div variants={itemVariants} className="pt-8">
                                     <button
                                         type="submit"
                                         disabled={loading}
@@ -375,16 +413,14 @@ const RegisterStudent = () => {
                                         {loading ? (
                                             <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
                                         ) : (
-                                            <>
-                                                <div className="flex items-center gap-4 animate-pulse">
-                                                    <UserPlusIcon className="w-8 h-8 group-hover:rotate-12 transition-transform" />
-                                                    Initialize Cadet Lifecycle
-                                                </div>
-                                            </>
+                                            <div className="flex items-center gap-4">
+                                                <UserPlusIcon className="w-8 h-8 group-hover:rotate-12 transition-transform" />
+                                                Initialize Cadet Lifecycle
+                                            </div>
                                         )}
                                     </button>
-                                </div>
-                            </form>
+                                </motion.div>
+                            </motion.form>
                         )}
                     </div>
                 </motion.div>
