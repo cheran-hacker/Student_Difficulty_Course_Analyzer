@@ -286,6 +286,7 @@ const updateUser = async (req, res) => {
                 if (req.body.year) user.year = req.body.year;
                 if (req.body.semester) user.semester = req.body.semester;
                 if (req.body.studentId) user.studentId = req.body.studentId;
+                if (req.body.facultyId) user.facultyId = req.body.facultyId;
                 if (req.body.gpa !== undefined) user.gpa = req.body.gpa;
                 if (req.body.cgpa !== undefined) user.cgpa = req.body.cgpa;
             }
@@ -306,6 +307,8 @@ const updateUser = async (req, res) => {
                 streak: updatedUser.streak,
                 badges: updatedUser.badges,
                 token: generateToken(updatedUser._id),
+                facultyId: updatedUser.facultyId,
+                studentId: updatedUser.studentId
             });
         } else {
             res.status(404).json({ message: 'User not found' });
@@ -359,7 +362,7 @@ const resetPassword = async (req, res) => {
 // @route   POST /api/auth/users
 // @access  Private/Admin
 const adminCreateUser = async (req, res) => {
-    const { name, email, password, role, studentId, department, year, semester, gpa, cgpa } = req.body;
+    const { name, email, password, role, studentId, facultyId, department, year, semester, gpa, cgpa } = req.body;
     const ip = req.ip;
 
     try {
@@ -389,12 +392,21 @@ const adminCreateUser = async (req, res) => {
             }
         }
 
+        // Faculty ID Logic: Only check if role is faculty
+        if (assignedRole === 'faculty' && facultyId) {
+            const idExists = await User.findOne({ facultyId });
+            if (idExists) {
+                return res.status(400).json({ message: 'User already exists with this Faculty ID' });
+            }
+        }
+
         const user = await User.create({
             name,
             email,
             password,
             role: assignedRole,
             studentId: assignedRole === 'student' ? studentId : undefined,
+            facultyId: assignedRole === 'faculty' ? facultyId : undefined,
             department,
             year: assignedRole === 'student' ? (year || 'III') : undefined,
             semester: assignedRole === 'student' ? (semester || '1') : undefined,
@@ -411,6 +423,7 @@ const adminCreateUser = async (req, res) => {
                 email: user.email,
                 role: user.role,
                 studentId: user.studentId,
+                facultyId: user.facultyId,
                 department: user.department,
                 year: user.year,
                 semester: user.semester,

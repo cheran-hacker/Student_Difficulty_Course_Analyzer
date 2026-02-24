@@ -56060,3 +56060,27 @@
 [2026-02-23T10:14:55.918Z] GET /api/settings
 [2026-02-23T10:14:55.931Z] GET /api/settings
 [2026-02-23T10:15:02.509Z] 🚀 SERVER RESTART: 2904 - UNIQUE_ID: 1771841702510
+[2026-02-24T05:58:40.661Z] 🚀 SERVER RESTART: 20208 - UNIQUE_ID: 1771912720661
+[2026-02-24T05:58:44.339Z] 🚀 SERVER RESTART: 19960 - UNIQUE_ID: 1771912724340
+[2026-02-24T05:58:54.414Z] GET /api/settings
+[2026-02-24T05:58:54.599Z] GET /api/settings
+[2026-02-24T05:59:06.776Z] POST /api/auth/login
+[2026-02-24T05:59:06.780Z] [AuthRouter] POST /api/auth/login
+[2026-02-24T05:59:07.394Z] GET /api/settings
+[2026-02-24T05:59:07.409Z] GET /api/courses?limit=1000
+[2026-02-24T05:59:07.414Z] GET /api/auth/users
+[2026-02-24T05:59:07.440Z] [AuthRouter] GET /api/auth/users
+[2026-02-24T05:59:07.466Z] GET /api/requests
+[2026-02-24T05:59:07.471Z] GET /api/auth/users?role=faculty
+[2026-02-24T05:59:07.486Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-24T05:59:07.894Z] GET /api/requests
+[2026-02-24T05:59:08.393Z] GET /api/requests
+[2026-02-24T05:59:10.489Z] GET /api/auth/users?role=faculty
+[2026-02-24T05:59:10.494Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-24T05:59:10.894Z] GET /api/auth/users?role=faculty
+[2026-02-24T05:59:10.900Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-24T05:59:19.828Z] PUT /api/auth/users/6997eea25c9c9ee73e41587c
+[2026-02-24T05:59:19.836Z] [AuthRouter] PUT /api/auth/users/6997eea25c9c9ee73e41587c
+[2026-02-24T05:59:20.646Z] GET /api/auth/users?role=faculty
+[2026-02-24T05:59:20.657Z] [AuthRouter] GET /api/auth/users?role=faculty
+[2026-02-24T05:59:24.422Z] GET /api/settings
