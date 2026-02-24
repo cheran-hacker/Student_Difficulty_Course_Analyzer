@@ -161,6 +161,7 @@ const authUser = async (req, res) => {
                 semester: user.semester,
                 year: user.year,
                 studentId: user.studentId,
+                facultyId: user.facultyId,
                 gpa: user.gpa,
                 cgpa: user.cgpa,
                 courses: user.courses || []
@@ -211,6 +212,7 @@ const registerUser = async (req, res) => {
                 semester: user.semester,
                 year: user.year,
                 studentId: user.studentId,
+                facultyId: user.facultyId,
                 gpa: user.gpa,
                 cgpa: user.cgpa,
                 courses: user.courses || [],
@@ -285,8 +287,8 @@ const updateUser = async (req, res) => {
                 if (req.body.department) user.department = req.body.department;
                 if (req.body.year) user.year = req.body.year;
                 if (req.body.semester) user.semester = req.body.semester;
-                if (req.body.studentId) user.studentId = req.body.studentId;
-                if (req.body.facultyId) user.facultyId = req.body.facultyId;
+                if (req.body.studentId || req.body.studentid) user.studentId = req.body.studentId || req.body.studentid;
+                if (req.body.facultyId || req.body.facultyid) user.facultyId = req.body.facultyId || req.body.facultyid;
                 if (req.body.gpa !== undefined) user.gpa = req.body.gpa;
                 if (req.body.cgpa !== undefined) user.cgpa = req.body.cgpa;
             }
@@ -392,9 +394,12 @@ const adminCreateUser = async (req, res) => {
             }
         }
 
+        const fId = facultyId || req.body.facultyid;
+        const sId = studentId || req.body.studentid;
+
         // Faculty ID Logic: Only check if role is faculty
-        if (assignedRole === 'faculty' && facultyId) {
-            const idExists = await User.findOne({ facultyId });
+        if (assignedRole === 'faculty' && fId) {
+            const idExists = await User.findOne({ facultyId: fId });
             if (idExists) {
                 return res.status(400).json({ message: 'User already exists with this Faculty ID' });
             }
@@ -405,8 +410,8 @@ const adminCreateUser = async (req, res) => {
             email,
             password,
             role: assignedRole,
-            studentId: assignedRole === 'student' ? studentId : undefined,
-            facultyId: assignedRole === 'faculty' ? facultyId : undefined,
+            studentId: assignedRole === 'student' ? sId : undefined,
+            facultyId: assignedRole === 'faculty' ? fId : undefined,
             department,
             year: assignedRole === 'student' ? (year || 'III') : undefined,
             semester: assignedRole === 'student' ? (semester || '1') : undefined,
@@ -607,7 +612,7 @@ const bulkCreateUsers = async (req, res) => {
 
 const getAllFaculty = async (req, res) => {
     try {
-        const faculty = await User.find({ role: 'faculty' }).select('name email department');
+        const faculty = await User.find({ role: 'faculty' }).select('name email department facultyId');
         res.json(faculty);
     } catch (error) {
         console.error('Error fetching faculty:', error);

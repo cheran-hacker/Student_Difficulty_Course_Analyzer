@@ -145,12 +145,16 @@ const BulkImportModal = ({ onClose, onSuccess, role = 'faculty' }) => {
             if (!rowData.email || !rowData.email.includes('@')) {
                 errors.push(`Row ${i + 1}: Invalid email`);
             }
-            if (role === 'student' && !rowData.studentid) {
+            if (role === 'student' && !rowData.studentid && !rowData.studentId) {
                 errors.push(`Row ${i + 1}: Missing Student ID`);
             }
 
-            // Add role and default semester for students if missing
+            // Normalize fields to camelCase for the model
             const finalRow = { ...rowData, role };
+            if (rowData.facultyid) finalRow.facultyId = rowData.facultyid;
+            if (rowData.studentid) finalRow.studentId = rowData.studentid;
+
+            // Add role and default semester for students if missing
             if (role === 'student') {
                 if (!finalRow.semester) finalRow.semester = '1';
 
