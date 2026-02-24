@@ -208,7 +208,7 @@ const AdminDashboard = () => {
         { id: 'students', label: 'Student Corps', icon: <UserGroupIcon className="w-5 h-5" /> },
         { id: 'requests', label: 'System Uplink', icon: <InboxStackIcon className="w-5 h-5" /> },
         { id: 'syllabus', label: 'Syllabus Archives', icon: <BookOpenIcon className="w-5 h-5" /> },
-        { id: 'settings', label: 'Intelligence Ops', icon: <CpuChipIcon className="w-5 h-5" /> },
+        { id: 'settings', label: 'Access control', icon: <CpuChipIcon className="w-5 h-5" /> },
         { id: 'profile', label: 'Admin Profile', icon: <UserCircleIcon className="w-5 h-5" /> },
     ];
 
