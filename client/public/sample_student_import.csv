@@ -1,0 +1,21 @@
+name,studentid,email,password,department,year,semester,gpa,cgpa
+Aravind Kumar,7376231CS101,aravind.cs23@bitsathy.ac.in,aravindkumar,CSE,III,5,8.4,8.1
+Keerthana S,7376231CS102,keerthana.cs23@bitsathy.ac.in,keerthanas,CSE,III,5,8.7,8.3
+Nivetha M,7376232IT121,nivetha.it23@bitsathy.ac.in,nivetham,IT,III,5,8.1,7.9
+Rohith K,7376232IT122,rohith.it23@bitsathy.ac.in,rohithk,IT,III,5,7.8,7.6
+Surya Narayanan,7376231EC201,surya.ec23@bitsathy.ac.in,suryanarayanan,ECE,III,5,8.5,8.0
+Lakshitha R,7376231EC202,lakshitha.ec23@bitsathy.ac.in,lakshithar,ECE,III,5,8.2,8.0
+Manoj B,7376231ME101,manoj.me23@bitsathy.ac.in,manojb,ME,III,5,7.9,7.7
+Vignesh Kumar,7376231ME102,vignesh.me23@bitsathy.ac.in,vigneshkumar,ME,III,5,8.0,7.8
+Dharani P,7376231CS103,dharani.cs23@bitsathy.ac.in,dharanip,CSE,III,5,8.6,8.4
+Harini V,7376232IT123,harini.it23@bitsathy.ac.in,hariniv,IT,III,5,8.3,8.1
+Ajay Prakash,7376241CS131,ajay.cs24@bitsathy.ac.in,ajayprakash,CSE,II,3,8.1,7.8
+Sanjana R,7376241CS132,sanjana.cs24@bitsathy.ac.in,sanjanar,CSE,II,3,8.5,8.2
+Pranav R,7376242IT133,pranav.it24@bitsathy.ac.in,pranavr,IT,II,3,7.9,7.6
+Deepthi K,7376242IT134,deepthi.it24@bitsathy.ac.in,deepthik,IT,II,3,8.2,7.9
+Kavin Raj,7376241EC141,kavin.ec24@bitsathy.ac.in,kavinraj,ECE,II,3,8.0,7.7
+Naveena P,7376241EC142,naveena.ec24@bitsathy.ac.in,naveenap,ECE,II,3,8.4,8.1
+Tharun M,7376241ME111,tharun.me24@bitsathy.ac.in,tharunm,ME,II,3,7.8,7.5
+Ashwin R,7376241ME112,ashwin.me24@bitsathy.ac.in,ashwinr,ME,II,3,8.3,8.0
+Gayathri S,7376241CS133,gayathri.cs24@bitsathy.ac.in,gayathris,CSE,II,3,8.6,8.4
+Mithra S,7376242IT135,mithra.it24@bitsathy.ac.in,mithras,IT,II,3,8.0,7.8

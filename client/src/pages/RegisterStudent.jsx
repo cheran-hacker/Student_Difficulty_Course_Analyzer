@@ -109,19 +109,16 @@ const RegisterStudent = ({ isModal = false, onSuccess }) => {
 
                 {/* Ultra Background Layer */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-indigo-500/20 dark:bg-indigo-600/10 blur-[150px] rounded-full animate-float" />
-                    <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-purple-500/20 dark:bg-purple-600/10 blur-[150px] rounded-full animate-float [animation-delay:2s]" />
-                    <div className="absolute top-[30%] right-[10%] w-[30%] h-[30%] bg-blue-500/10 dark:bg-blue-600/5 blur-[120px] rounded-full animate-float [animation-delay:4s]" />
-                    <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-                    {/* Scanline Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/10 to-transparent h-[40vh] w-full animate-scanline z-50 pointer-events-none opacity-50" />
+                    <div className="absolute top-[-10%] left-[-5%] w-[50%] h-[50%] bg-indigo-500/10 dark:bg-indigo-600/5 blur-[120px] rounded-full" />
+                    <div className="absolute bottom-[-10%] right-[-5%] w-[50%] h-[50%] bg-purple-500/10 dark:bg-purple-600/5 blur-[120px] rounded-full" />
+                    <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
                 </div>
 
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
-                    animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className={`w-full ${isModal ? 'max-w-none' : 'max-w-6xl'} bg-white/70 dark:bg-[#0f172a]/60 backdrop-blur-[40px] ${isModal ? 'rounded-none border-none' : 'rounded-[4rem] border border-white/40 dark:border-white/10'} shadow-[0_40px_120px_-20px_rgba(0,0,0,0.3)] dark:shadow-[0_40px_120px_-20px_rgba(0,0,0,0.6)] relative z-10 overflow-hidden flex flex-col md:flex-row min-h-[85vh]`}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className={`w-full ${isModal ? 'max-w-none' : 'max-w-7xl'} bg-white dark:bg-[#0f172a]/95 backdrop-blur-xl ${isModal ? 'rounded-none border-none' : 'rounded-[3rem] border border-white/20 dark:border-white/10'} shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] relative z-10 overflow-hidden flex flex-col md:flex-row min-h-[85vh] will-change-transform`}
                 >
                     {/* Left Panel: Information & Branding */}
                     <div className="md:w-[35%] bg-indigo-600 dark:bg-indigo-700 p-12 text-white flex flex-col justify-between relative overflow-hidden">

@@ -560,7 +560,7 @@ const getUserAssignedCourses = async (req, res) => {
 // Bulk create users (Faculty/Student)
 const bulkCreateUsers = async (req, res) => {
     try {
-        const users = req.body; // Expecting an array of user objects
+        const users = req.body;
         if (!Array.isArray(users) || users.length === 0) {
             return res.status(400).json({ message: 'Invalid data format. Expected an array of users.' });
         }
@@ -568,8 +568,9 @@ const bulkCreateUsers = async (req, res) => {
         const errors = [];
         const validUsers = [];
         const emails = new Set();
+        const studentIds = new Set();
+        const facultyIds = new Set();
 
-        // 1. Client-side duplicate check (within the batch)
         for (const [index, user] of users.entries()) {
             if (!user.name || !user.email || !user.password || !user.department) {
                 errors.push(`Row ${index + 1}: Missing required fields (Name, Email, Password, Department)`);
@@ -581,32 +582,47 @@ const bulkCreateUsers = async (req, res) => {
             }
             emails.add(user.email);
 
-            // Hash password before adding
+            if (user.studentId) studentIds.add(user.studentId);
+            if (user.facultyId) facultyIds.add(user.facultyId);
+
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(user.password, salt);
 
-            validUsers.push({ ...user, password: hashedPassword, role: user.role || 'student' }); // Default to student if not specified, but usually passed
+            validUsers.push({ ...user, password: hashedPassword, role: user.role || 'student' });
         }
 
         if (errors.length > 0) {
-            return res.status(400).json({ message: 'Validation failed', errors });
+            return res.status(400).json({ message: 'Pre-upload validation failed', errors });
         }
 
-        // 2. Database duplicate check
-        const existingUsers = await User.find({ email: { $in: Array.from(emails) } });
-        if (existingUsers.length > 0) {
-            const existingEmails = existingUsers.map(u => u.email).join(', ');
-            return res.status(400).json({ message: `The following emails already exist: ${existingEmails}` });
+        // 2. Comprehensive Database duplicate check
+        const findDuplicates = [];
+        if (emails.size > 0) findDuplicates.push({ email: { $in: Array.from(emails) } });
+        if (studentIds.size > 0) findDuplicates.push({ studentId: { $in: Array.from(studentIds) } });
+        if (facultyIds.size > 0) findDuplicates.push({ facultyId: { $in: Array.from(facultyIds) } });
+
+        if (findDuplicates.length > 0) {
+            const existingUsers = await User.find({ $or: findDuplicates });
+            if (existingUsers.length > 0) {
+                const dupEmails = existingUsers.filter(u => emails.has(u.email)).map(u => u.email);
+                const dupSIds = existingUsers.filter(u => u.studentId && studentIds.has(u.studentId)).map(u => u.studentId);
+                const dupFIds = existingUsers.filter(u => u.facultyId && facultyIds.has(u.facultyId)).map(u => u.facultyId);
+
+                let msg = 'Duplicates found in database: ';
+                if (dupEmails.length > 0) msg += `Emails (${dupEmails.join(', ')}) `;
+                if (dupSIds.length > 0) msg += `Student IDs (${dupSIds.join(', ')}) `;
+                if (dupFIds.length > 0) msg += `Faculty IDs (${dupFIds.join(', ')})`;
+
+                return res.status(400).json({ message: msg.trim() });
+            }
         }
 
-        // 3. Insert
         await User.insertMany(validUsers);
-
         res.status(201).json({ message: `Successfully imported ${validUsers.length} users` });
 
     } catch (error) {
         console.error('Bulk create error:', error);
-        res.status(500).json({ message: 'Server Error during bulk import' });
+        res.status(500).json({ message: 'Server Error: ' + (error.code === 11000 ? 'Concurrent unique constraint violation detected. Please try again.' : error.message) });
     }
 };
 

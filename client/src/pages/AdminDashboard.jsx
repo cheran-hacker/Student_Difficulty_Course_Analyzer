@@ -480,7 +480,7 @@ const AdminDashboard = () => {
                                     Student Corps
                                 </h2>
                                 <button
-                                    onClick={() => window.open('/admin/register-student', 'RegistrationForm', 'width=1200,height=900,scrollbars=yes')}
+                                    onClick={() => window.open('/admin/register-student', 'RegistrationForm', 'width=1500,height=1000,scrollbars=yes')}
                                     className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-105 transition transform font-bold text-sm uppercase tracking-wide"
                                 >
                                     <PlusIcon className="w-5 h-5" /> Enroll Student
