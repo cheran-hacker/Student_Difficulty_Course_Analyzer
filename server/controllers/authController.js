@@ -566,19 +566,18 @@ const bulkCreateUsers = async (req, res) => {
         }
 
         const errors = [];
-        const validUsers = [];
         const emails = new Set();
         const studentIds = new Set();
         const facultyIds = new Set();
 
-        for (const [index, user] of users.entries()) {
+        const validUsers = await Promise.all(users.map(async (user, index) => {
             if (!user.name || !user.email || !user.password || !user.department) {
                 errors.push(`Row ${index + 1}: Missing required fields (Name, Email, Password, Department)`);
-                continue;
+                return null;
             }
             if (emails.has(user.email)) {
                 errors.push(`Row ${index + 1}: Duplicate email in batch (${user.email})`);
-                continue;
+                return null;
             }
             emails.add(user.email);
 
@@ -588,8 +587,11 @@ const bulkCreateUsers = async (req, res) => {
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(user.password, salt);
 
-            validUsers.push({ ...user, password: hashedPassword, role: user.role || 'student' });
-        }
+            return { ...user, password: hashedPassword, role: user.role || 'student' };
+        }));
+
+        // Filter out nulls from validation failures
+        const finalValidUsers = validUsers.filter(u => u !== null);
 
         if (errors.length > 0) {
             return res.status(400).json({ message: 'Pre-upload validation failed', errors });
@@ -617,8 +619,8 @@ const bulkCreateUsers = async (req, res) => {
             }
         }
 
-        await User.insertMany(validUsers);
-        res.status(201).json({ message: `Successfully imported ${validUsers.length} users` });
+        await User.insertMany(finalValidUsers);
+        res.status(201).json({ message: `Successfully imported ${finalValidUsers.length} users` });
 
     } catch (error) {
         console.error('Bulk create error:', error);

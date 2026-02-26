@@ -266,24 +266,24 @@ const BulkImportModal = ({ onClose, onSuccess, role = 'faculty' }) => {
             await axios.post(getApiUrl('/api/auth/users/bulk'), fullDataRef.current, config);
 
             setUploadStatus('success');
+            // Keep loading true during success transition to prevent double clicks
             setTimeout(() => {
                 onSuccess();
                 onClose();
-            }, 2000);
+            }, 1500);
         } catch (error) {
+            setLoading(false);
             console.error("Matrix Upload Failure:", error);
             if (error.response) {
                 console.error("Server Response Data:", error.response.data);
             }
             setUploadStatus('error');
             setValidationErrors([error.response?.data?.message || 'Upload failed']);
-        } finally {
-            setLoading(false);
         }
     };
 
     return (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-start justify-center z-50 p-4 pt-16 overflow-y-auto">
             <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -421,11 +421,13 @@ const BulkImportModal = ({ onClose, onSuccess, role = 'faculty' }) => {
                     </button>
                     <button
                         onClick={handleUpload}
-                        disabled={loading || previewData.length === 0 || validationErrors.length > 0}
+                        disabled={loading || !!uploadStatus || previewData.length === 0 || validationErrors.length > 0}
                         className="flex-1 px-6 py-3 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center gap-2"
                     >
-                        {loading ? <ArrowPathIcon className="w-5 h-5 animate-spin" /> : <CheckCircleIcon className="w-5 h-5" />}
-                        {loading ? (validating ? 'Analyzing...' : 'Importing...') : 'Confirm Import'}
+                        {loading ? <ArrowPathIcon className="w-5 h-5 animate-spin" /> :
+                            uploadStatus === 'success' ? <CheckCircleIcon className="w-5 h-5" /> : <CheckCircleIcon className="w-5 h-5" />}
+                        {loading ? (validating ? 'Analyzing...' : 'Importing...') :
+                            uploadStatus === 'success' ? 'Success!' : 'Confirm Import'}
                     </button>
                 </div>
             </motion.div>
